@@ -1,0 +1,54 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion Versions.compileSdk
+    buildToolsVersion Versions.buildTools
+
+    defaultConfig {
+        applicationId ApplicationId.id
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
+        versionCode Releases.versionCode
+        versionName Releases.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    sourceSets {
+        main {
+            java.srcDirs += 'src/main/kotlin'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation Kotlin.stdlib
+
+    implementation AndroidX.ktx
+    implementation AndroidX.fragment
+    implementation AndroidX.appcompat
+
+    implementation Layout.constraint
+
+    implementation Navigation.navigationFragment
+    implementation Navigation.navigationUi
+
+    implementation project(Modules.coreAndroid)
+    implementation project(Modules.navigator)
+    implementation project(Modules.dashboard)
+    implementation project(Modules.injector)
+    implementation project(Modules.uiKit)
+
+    implementation Dagger.core
+    kapt Dagger.compiler
+}

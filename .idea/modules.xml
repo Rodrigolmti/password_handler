@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="password_keeper/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core-android/core-android.iml" filepath="$PROJECT_DIR$/.idea/modules/core-android/core-android.iml" group="password_keeper/core-android" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dashboard/dashboard.iml" filepath="$PROJECT_DIR$/.idea/modules/dashboard/dashboard.iml" group="password_keeper/dashboard" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/injector/injector.iml" filepath="$PROJECT_DIR$/.idea/modules/injector/injector.iml" group="password_keeper/injector" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/navigator/navigator.iml" filepath="$PROJECT_DIR$/.idea/modules/navigator/navigator.iml" group="password_keeper/navigator" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/password_keeper.iml" filepath="$PROJECT_DIR$/.idea/modules/password_keeper.iml" group="password_keeper" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/password_keeper_buildSrc.iml" filepath="$PROJECT_DIR$/.idea/modules/password_keeper_buildSrc.iml" group="password_keeper/password_keeper_buildSrc" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ui-kit/ui-kit.iml" filepath="$PROJECT_DIR$/.idea/modules/ui-kit/ui-kit.iml" group="password_keeper/ui-kit" />
+    </modules>
+  </component>
+</project>
