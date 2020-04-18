@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="dashboard_menu_home">Home</string>
-    <string name="dashboard_menu_password">Password</string>
+    <string name="dashboard_menu_passwords">Passwords</string>
+    <string name="dashboard_menu_password_generator">Generator</string>
     <string name="dashboard_menu_settings">Settings</string>
 </resources>

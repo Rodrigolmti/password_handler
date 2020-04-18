@@ -1,8 +1,8 @@
 package br.com.rodrigolmti.dashboard.di
 
 import br.com.rodrigolmti.dashboard.ui.DashboardActivity
-import br.com.rodrigolmti.dashboard.ui.home.HomeFragment
-import br.com.rodrigolmti.dashboard.ui.password.PasswordFragment
+import br.com.rodrigolmti.dashboard.ui.passwords.PasswordsFragment
+import br.com.rodrigolmti.dashboard.ui.password_generator.PasswordGeneratorFragment
 import br.com.rodrigolmti.dashboard.ui.settings.SettingsFragment
 import br.com.rodrigolmti.injector.CoreComponent
 import br.com.rodrigolmti.injector.coreComponent
@@ -15,9 +15,9 @@ import dagger.Component
 )
 interface DashboardComponent {
 
-    fun inject(fragment: HomeFragment)
+    fun inject(fragment: PasswordsFragment)
 
-    fun inject(fragment: PasswordFragment)
+    fun inject(generatorFragment: PasswordGeneratorFragment)
 
     fun inject(fragment: SettingsFragment)
 
