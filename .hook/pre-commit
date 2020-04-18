@@ -1,15 +1,5 @@
-#!/bin/bash
-
-git stash -q --keep-index
-
-echo "Running git pre-commit hook"
-
-./gradlew ktlint
-
-RESULT=$?
-
-git stash pop -q
-
-# return 1 exit code if running checks fails
-[ $RESULT -ne 0 ] && exit 1
-exit 0
+#!/bin/sh
+# Code style validation
+# https://github.com/shyiko/ktlint
+ROOT_FOLDER=$(git rev-parse --show-toplevel)
+git diff --name-only --cached --relative | grep '\.kt[s"]\?$' | xargs $ROOT_FOLDER/ktlint --relative .

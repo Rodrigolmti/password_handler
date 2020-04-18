@@ -7,6 +7,7 @@ import br.com.rodrigolmti.injector.CoreComponentProvider
 class MainApp : Application(
 
 
+
 ), CoreComponentProvider {
 
     private lateinit var coreComponent: CoreComponent
