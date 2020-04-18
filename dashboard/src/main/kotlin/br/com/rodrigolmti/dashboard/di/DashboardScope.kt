@@ -6,3 +6,8 @@ import javax.inject.Scope
 @MustBeDocumented
 @Retention(AnnotationRetention.RUNTIME)
 internal annotation class DashboardScope
+
+
+
+
+
