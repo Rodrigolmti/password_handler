@@ -8,9 +8,6 @@ configurations {
 
 dependencies {
   ktlint "com.pinterest:ktlint:0.32.0"
-  // additional 3rd party ruleset(s) can be specified here
-  // just add them to the classpath (e.g. ktlint 'groupId:artifactId:version') and
-  // ktlint will pick them up
 }
 
 task ktlint(type: JavaExec, group: "verification") {
@@ -18,48 +15,11 @@ task ktlint(type: JavaExec, group: "verification") {
   classpath = configurations.ktlint
   main = "com.pinterest.ktlint.Main"
   args "src/**/*.kt"
-  // to generate report in checkstyle format prepend following args:
-  // "--reporter=plain", "--reporter=checkstyle,output=${buildDir}/ktlint.xml"
-  // see https://github.com/pinterest/ktlint#usage for more
 }
-check.dependsOn ktlint
 
 task ktlintFormat(type: JavaExec, group: "formatting") {
   description = "Fix Kotlin code style deviations."
   classpath = configurations.ktlint
   main = "com.pinterest.ktlint.Main"
   args "-F", "src/**/*.kt"
-}
-
-static def execute(cmd, output) {
-  ['sh', '-c', cmd].execute().waitForProcessOutput(output, System.err)
-}
-
-String files = ""
-
-task ktlintDiff {
-  def outputStream = new ByteArrayOutputStream()
-  def destination = System.getenv("BITRISEIO_GIT_BRANCH_DEST")
-  if (destination != null) {
-    execute("git diff origin/$destination --name-only --relative | grep '\\.kt[s\"]\\?\$'", outputStream)
-    files = outputStream.toString()
-  }
-}
-
-task ktlintCi(dependsOn: ktlintDiff, group: "verification") {
-  doFirst {
-    def diff = files.split("\n").findAll { if (!it.isBlank()) it }
-    if (!diff.empty) {
-      diff = diff.collect {
-        "${rootProject.projectDir}/${it}".trim()
-      }
-
-      javaexec {
-        description = "Check Kotlin code style."
-        classpath = configurations.ktlint
-        main = "com.pinterest.ktlint.Main"
-        args diff
-      }
-    }
-  }
 }

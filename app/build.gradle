@@ -53,3 +53,5 @@ dependencies {
     implementation Dagger.core
     kapt Dagger.compiler
 }
+
+check.dependsOn ktlint
