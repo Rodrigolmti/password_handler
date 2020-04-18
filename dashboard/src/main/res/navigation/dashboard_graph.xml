@@ -3,12 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/dashboard_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/home">
 
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/home"
         android:name="br.com.rodrigolmti.dashboard.ui.home.HomeFragment"
         android:label="home_fragment"
         tools:layout="@layout/home_fragment" />
+
+    <fragment
+        android:id="@+id/password"
+        android:name="br.com.rodrigolmti.dashboard.ui.password.PasswordFragment"
+        android:label="PasswordFragment" />
+
+    <fragment
+        android:id="@+id/settings"
+        android:name="br.com.rodrigolmti.dashboard.ui.settings.SettingsFragment"
+        android:label="PasswordFragment" />
 
 </navigation>

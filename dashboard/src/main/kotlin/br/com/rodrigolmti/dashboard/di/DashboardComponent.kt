@@ -2,6 +2,8 @@ package br.com.rodrigolmti.dashboard.di
 
 import br.com.rodrigolmti.dashboard.ui.DashboardActivity
 import br.com.rodrigolmti.dashboard.ui.home.HomeFragment
+import br.com.rodrigolmti.dashboard.ui.password.PasswordFragment
+import br.com.rodrigolmti.dashboard.ui.settings.SettingsFragment
 import br.com.rodrigolmti.injector.CoreComponent
 import br.com.rodrigolmti.injector.coreComponent
 import dagger.Component
@@ -14,6 +16,10 @@ import dagger.Component
 interface DashboardComponent {
 
     fun inject(fragment: HomeFragment)
+
+    fun inject(fragment: PasswordFragment)
+
+    fun inject(fragment: SettingsFragment)
 
     @Component.Builder
     interface Builder {

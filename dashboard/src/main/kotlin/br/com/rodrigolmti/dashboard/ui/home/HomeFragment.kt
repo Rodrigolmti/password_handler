@@ -9,11 +9,12 @@ import br.com.rodrigolmti.core_android.BaseFragment
 import br.com.rodrigolmti.core_android.viewModelByFactory
 import br.com.rodrigolmti.dashboard.R
 import br.com.rodrigolmti.dashboard.ui.DashboardActivity
+import br.com.rodrigolmti.dashboard.ui.settings.SettingsViewModel
 
 class HomeFragment : BaseFragment() {
 
-    private val viewModel by viewModelByFactory<HomeViewModel> {
-        HomeViewModel()
+    private val viewModel by viewModelByFactory<SettingsViewModel> {
+        SettingsViewModel()
     }
 
     override fun onCreateView(

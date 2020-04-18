@@ -4,10 +4,7 @@ import android.app.Application
 import br.com.rodrigolmti.injector.CoreComponent
 import br.com.rodrigolmti.injector.CoreComponentProvider
 
-class MainApp : Application(
-
-
-), CoreComponentProvider {
+class MainApp : Application(), CoreComponentProvider {
 
     private lateinit var coreComponent: CoreComponent
 
@@ -18,10 +15,3 @@ class MainApp : Application(
 
     override fun coreComponent(): CoreComponent = coreComponent
 }
-
-
-
-
-
-
-
