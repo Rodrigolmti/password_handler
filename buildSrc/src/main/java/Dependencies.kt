@@ -10,6 +10,7 @@ object Versions {
     const val compileSdk = 29
     const val minSdk = 21
     const val targetSdk = 29
+    const val lottie = "3.4.0"
 }
 
 object Releases {
@@ -73,6 +74,10 @@ object AndroidX {
     const val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
     const val design = "com.google.android.material:material:${Versions.support}"
     const val fragment = "androidx.fragment:fragment-ktx:${Versions.fragment}"
+}
+
+object Libraries {
+    const val lottie = "com.airbnb.android:lottie:${Versions.lottie}"
 }
 
 object Layout {

@@ -5,16 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import br.com.rodrigolmti.core_android.BaseFragment
-import br.com.rodrigolmti.core_android.viewModelByFactory
+import br.com.rodrigolmti.core_android.base.BaseFragment
+import br.com.rodrigolmti.core_android.extensions.viewModelByFactory
 import br.com.rodrigolmti.dashboard.R
 import br.com.rodrigolmti.dashboard.ui.DashboardActivity
 
 class SettingsFragment : BaseFragment() {
 
-    private val viewModel by viewModelByFactory<SettingsViewModel> {
-        SettingsViewModel()
-    }
+    private val viewModel by lazy { getViewModel(SettingsViewModel::class.java) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

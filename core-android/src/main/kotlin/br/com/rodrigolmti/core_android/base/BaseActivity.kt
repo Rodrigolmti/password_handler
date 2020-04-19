@@ -1,4 +1,4 @@
-package br.com.rodrigolmti.core_android
+package br.com.rodrigolmti.core_android.base
 
 import androidx.appcompat.app.AppCompatActivity
 

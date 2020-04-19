@@ -1,16 +1,18 @@
 package br.com.rodrigolmti.dashboard.di
 
+import br.com.rodrigolmti.dashboard.di.modules.DashboardModule
 import br.com.rodrigolmti.dashboard.ui.DashboardActivity
-import br.com.rodrigolmti.dashboard.ui.passwords.PasswordsFragment
 import br.com.rodrigolmti.dashboard.ui.password_generator.PasswordGeneratorFragment
+import br.com.rodrigolmti.dashboard.ui.passwords.PasswordsFragment
 import br.com.rodrigolmti.dashboard.ui.settings.SettingsFragment
 import br.com.rodrigolmti.injector.CoreComponent
+import br.com.rodrigolmti.injector.ViewModelFactoryModule
 import br.com.rodrigolmti.injector.coreComponent
 import dagger.Component
 
 @DashboardScope
 @Component(
-    modules = [DashboardModule::class],
+    modules = [ViewModelFactoryModule::class, DashboardModule::class],
     dependencies = [CoreComponent::class]
 )
 interface DashboardComponent {

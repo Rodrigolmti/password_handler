@@ -50,6 +50,8 @@ dependencies {
     implementation Lifecycle.liveData
     implementation Lifecycle.viewModel
 
+    implementation Libraries.lottie
+
     implementation Navigation.navigationFragment
     implementation Navigation.navigationUi
 

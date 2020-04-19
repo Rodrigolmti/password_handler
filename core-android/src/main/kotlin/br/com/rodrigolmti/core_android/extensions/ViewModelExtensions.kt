@@ -1,4 +1,4 @@
-package br.com.rodrigolmti.core_android
+package br.com.rodrigolmti.core_android.extensions
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -17,7 +17,11 @@ inline fun <reified VM : ViewModel> Fragment.viewModelByFactory(
     noinline create: CreateViewModel
 ): Lazy<VM> {
     return viewModels {
-        createViewModelFactoryFactory(this, defaultArgs, create)
+        createViewModelFactoryFactory(
+            this,
+            defaultArgs,
+            create
+        )
     }
 }
 
@@ -26,7 +30,11 @@ inline fun <reified VM : ViewModel> Fragment.activityViewModelByFactory(
     noinline create: CreateViewModel
 ): Lazy<VM> {
     return activityViewModels {
-        createViewModelFactoryFactory(this, defaultArgs, create)
+        createViewModelFactoryFactory(
+            this,
+            defaultArgs,
+            create
+        )
     }
 }
 
