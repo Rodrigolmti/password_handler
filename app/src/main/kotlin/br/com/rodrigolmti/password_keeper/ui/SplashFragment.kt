@@ -30,6 +30,6 @@ class SplashFragment : Fragment() {
         Handler().postDelayed({
             startActivity(Actions.openDashboard(requireContext()))
             activity?.finish()
-        }, 100L)
+        }, 2000L)
     }
 }

@@ -42,6 +42,8 @@ dependencies {
 
     implementation Layout.constraint
 
+    implementation Libraries.lottie
+
     implementation Navigation.navigationFragment
     implementation Navigation.navigationUi
 

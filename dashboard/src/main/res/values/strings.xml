@@ -17,5 +17,8 @@
     <string name="password_generator_small_letters">Small letters:</string>
     <string name="password_generator_numbers">Numbers:</string>
     <string name="password_generator_special_characters">Special characters:</string>
+    <string name="password_generator_copy">Copy</string>
+    <string name="password_generator_save">Save</string>
+    <string name="passwod_generator_copy_message">Password copy to clipboard</string>
 
 </resources>

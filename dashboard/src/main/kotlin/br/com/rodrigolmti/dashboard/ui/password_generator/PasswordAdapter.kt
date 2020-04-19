@@ -11,18 +11,18 @@ import kotlinx.android.synthetic.main.password_row.view.*
 class PasswordAdapter(
     private val password: List<PasswordModel>,
     val onCopyClick: (item: PasswordModel) -> Unit,
-    val onAddClick: (item: PasswordModel) -> Unit
+    val onSaveClick: (item: PasswordModel) -> Unit
 ) :
     RecyclerView.Adapter<PasswordAdapter.ViewHolder>() {
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bindData(item: PasswordModel) {
             itemView.password.text = item.password
-            itemView.icCopy.setOnClickListener {
+            itemView.tvCopy.setOnClickListener {
                 onCopyClick(item)
             }
-            itemView.icAdd.setOnClickListener {
-                onAddClick(item)
+            itemView.tvSave.setOnClickListener {
+                onSaveClick(item)
             }
         }
     }
