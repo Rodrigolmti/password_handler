@@ -15,6 +15,11 @@
             android:defaultValue="@null"
             app:argType="br.com.rodrigolmti.dashboard.domain.model.PasswordModel"
             app:nullable="true" />
+        <argument
+            android:name="savedPasswordModel"
+            app:argType="br.com.rodrigolmti.dashboard.domain.model.SavedPasswordModel"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
 
     <fragment
@@ -39,6 +44,10 @@
         android:id="@+id/passwords"
         android:name="br.com.rodrigolmti.dashboard.ui.passwords.PasswordsFragment"
         android:label="List of Passwords"
-        tools:layout="@layout/passwords_fragment" />
+        tools:layout="@layout/passwords_fragment" >
+        <action
+            android:id="@+id/action_passwords_to_password"
+            app:destination="@id/password" />
+    </fragment>
 
 </navigation>

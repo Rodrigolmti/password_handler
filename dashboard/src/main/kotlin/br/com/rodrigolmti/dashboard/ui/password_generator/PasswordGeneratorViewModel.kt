@@ -57,14 +57,15 @@ internal class PasswordGeneratorViewModel @Inject constructor(
                     isSpecialChars = action.isSpecialChars
                 )
 
-                viewState.state.value = PasswordGeneratorViewState.State.IDLE
                 generatePasswordUseCase(passwordGenerator).handleResult(
                     onSuccess = {
+                        viewState.state.value = PasswordGeneratorViewState.State.IDLE
                         viewState.action.value =
                             PasswordGeneratorViewState.Action.ShowPasswordList(it)
                         model.passwords = it
                     },
                     onError = {
+                        viewState.state.value = PasswordGeneratorViewState.State.IDLE
                         viewState.action.value = PasswordGeneratorViewState.Action.ShowError
                     }
                 )

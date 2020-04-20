@@ -9,10 +9,13 @@
     <string name="action_save">Save</string>
     <string name="action_edit">Edit</string>
 
-    <string name="passwords_title">Saved Passwords</string>
-    <string name="passwords_description">You can see here your saved passwords, for more detail select one of them!</string>
+    <string name="passwords_fragment_title">Saved Passwords</string>
+    <string name="passwords_fragment_description">You can see here your saved passwords, for more detail select one of them!</string>
 
     <string name="password_fragment_title_save">Save password</string>
+    <string name="password_fragment_title_edit">Edit password</string>
+    <string name="password_fragment_invalid_password">Invalid password, check and try again!</string>
+    <string name="password_fragment_invalid_label">Invalid label, check and try again!</string>
 
     <string name="password_generator_fragment_title">Password Generator</string>
     <string name="password_generator_fragment_description">Generate your passwords by setting the parameters above!</string>
