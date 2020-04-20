@@ -5,26 +5,30 @@
     <string name="dashboard_menu_password_generator">Generator</string>
     <string name="dashboard_menu_settings">Settings</string>
 
+    <string name="action_copy">Copy</string>
+    <string name="action_save">Save</string>
+    <string name="action_edit">Edit</string>
+
     <string name="passwords_title">Saved Passwords</string>
     <string name="passwords_description">You can see here your saved passwords, for more detail select one of them!</string>
 
-    <string name="password_generator_title">Password Generator</string>
-    <string name="password_generator_description">Generate your passwords by setting the parameters above!</string>
-    <string name="password_generator_generate">Generate</string>
-    <string name="password_generator_clear">Clear</string>
-    <string name="password_generator_password_length">Password length:</string>
-    <string name="password_generator_password_number">Password number:</string>
-    <string name="password_generator_default_number">1</string>
-    <string name="password_generator_default_length">8</string>
-    <string name="password_generator_uppercase_letters">Uppercase letters:</string>
-    <string name="password_generator_small_letters">Small letters:</string>
-    <string name="password_generator_numbers">Numbers:</string>
-    <string name="password_generator_special_characters">Special characters:</string>
-    <string name="password_generator_copy">Copy</string>
-    <string name="password_generator_save">Save</string>
-    <string name="password_generator_copy_message">Password copy to clipboard</string>
-    <string name="password_generator_too_small">The password should be at least with 1 character!</string>
-    <string name="password_generator_no_params">Select at least one option!</string>
-    <string name="password_generator_error">Something went wrong, check your parameters and try again!</string>
+    <string name="password_fragment_title_save">Save password</string>
+
+    <string name="password_generator_fragment_title">Password Generator</string>
+    <string name="password_generator_fragment_description">Generate your passwords by setting the parameters above!</string>
+    <string name="password_generator_fragment_generate">Generate</string>
+    <string name="password_generator_fragment_clear">Clear</string>
+    <string name="password_generator_fragment_length">Password length:</string>
+    <string name="password_generator_fragment_number">Password number:</string>
+    <string name="password_generator_fragment_default_number">1</string>
+    <string name="password_generator_fragment_default_length">8</string>
+    <string name="password_generator_fragment_uppercase_letters">Uppercase letters:</string>
+    <string name="password_generator_fragment_small_letters">Small letters:</string>
+    <string name="password_generator_fragment_numbers">Numbers:</string>
+    <string name="password_generator_fragment_special_characters">Special characters:</string>
+    <string name="password_generator_fragment_copy_message">Password copy to clipboard</string>
+    <string name="password_generator_fragment_too_small">The password should be at least with 1 character!</string>
+    <string name="password_generator_fragment_no_params">Select at least one option!</string>
+    <string name="password_generator_fragment_error">Something went wrong, check your parameters and try again!</string>
 
 </resources>

@@ -13,7 +13,11 @@ interface PasswordStrengthUseCase {
 class PasswordStrength @Inject constructor() : PasswordStrengthUseCase {
 
     override suspend fun invoke(password: String): Int {
-        return calculate(password) + 1
+        return try {
+            calculate(password) + 1
+        } catch (error: Exception) {
+            0
+        }
     }
 
     private fun calculate(

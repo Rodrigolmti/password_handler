@@ -1,6 +1,8 @@
 package br.com.rodrigolmti.dashboard.ui.password_generator
 
-sealed class PasswordGeneratorAction {
+internal sealed class PasswordGeneratorAction {
+    object InitView : PasswordGeneratorAction()
+    object ClearModel : PasswordGeneratorAction()
     data class GeneratePassword(
         val passwordLength: Int,
         val passwordNumber: Int,

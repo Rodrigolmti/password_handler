@@ -2,7 +2,7 @@ package br.com.rodrigolmti.dashboard.domain.use_cases
 
 import br.com.rodrigolmti.core_android.Result
 import br.com.rodrigolmti.dashboard.domain.error.DashBoardError
-import br.com.rodrigolmti.dashboard.domain.model.PasswordGeneratorModel
+import br.com.rodrigolmti.dashboard.domain.model.PasswordGenerationModel
 import br.com.rodrigolmti.dashboard.domain.model.PasswordModel
 import java.security.SecureRandom
 import java.util.*
@@ -14,7 +14,7 @@ private const val CHARS = "!@#\$%&*()_+-=[]?"
 
 interface GeneratePasswordUseCase {
     suspend operator fun invoke(
-        model: PasswordGeneratorModel
+        model: PasswordGenerationModel
     ): Result<List<PasswordModel>, DashBoardError>
 }
 
@@ -23,7 +23,7 @@ class GeneratePassword @Inject constructor(
 ) : GeneratePasswordUseCase {
 
     override suspend fun invoke(
-        model: PasswordGeneratorModel
+        model: PasswordGenerationModel
     ): Result<List<PasswordModel>, DashBoardError> {
         return try {
             val allowedChars: List<String> = generateAllowedCharacters(model)
@@ -48,7 +48,7 @@ class GeneratePassword @Inject constructor(
         }
     }
 
-    private fun generateAllowedCharacters(model: PasswordGeneratorModel): List<String> {
+    private fun generateAllowedCharacters(model: PasswordGenerationModel): List<String> {
         val upperCaseLetter = LOWER_CASE_LETTERS.toUpperCase(Locale.getDefault())
 
         val stringBuilder = java.lang.StringBuilder()

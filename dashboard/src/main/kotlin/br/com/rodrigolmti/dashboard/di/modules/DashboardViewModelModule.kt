@@ -1,8 +1,9 @@
 package br.com.rodrigolmti.dashboard.di.modules
 
 import androidx.lifecycle.ViewModel
-import br.com.rodrigolmti.dashboard.ui.password_generator.PasswordGeneratorViewModel
 import br.com.rodrigolmti.dashboard.ui.password.PasswordViewModel
+import br.com.rodrigolmti.dashboard.ui.password_generator.PasswordGeneratorViewModel
+import br.com.rodrigolmti.dashboard.ui.passwords.PasswordsViewModel
 import br.com.rodrigolmti.dashboard.ui.settings.SettingsViewModel
 import br.com.rodrigolmti.injector.common.ViewModelKey
 import dagger.Binds
@@ -18,8 +19,13 @@ internal abstract class DashboardViewModelModule {
     ): ViewModel
 
     @[Binds IntoMap ViewModelKey(PasswordViewModel::class)]
-    internal abstract fun bindPasswordsViewModel(
+    internal abstract fun bindPasswordViewModel(
         viewModel: PasswordViewModel
+    ): ViewModel
+
+    @[Binds IntoMap ViewModelKey(PasswordsViewModel::class)]
+    internal abstract fun bindPasswordsViewModel(
+        viewModel: PasswordsViewModel
     ): ViewModel
 
     @[Binds IntoMap ViewModelKey(SettingsViewModel::class)]

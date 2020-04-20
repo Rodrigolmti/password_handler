@@ -8,7 +8,7 @@ import br.com.rodrigolmti.dashboard.R
 import br.com.rodrigolmti.dashboard.domain.model.PasswordModel
 import kotlinx.android.synthetic.main.generated_password_row.view.*
 
-class PasswordAdapter(
+internal class PasswordAdapter(
     private val password: List<PasswordModel>,
     val onCopyClick: (item: PasswordModel) -> Unit,
     val onSaveClick: (item: PasswordModel) -> Unit

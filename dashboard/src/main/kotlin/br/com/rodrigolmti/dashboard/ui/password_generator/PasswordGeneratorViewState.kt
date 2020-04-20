@@ -5,7 +5,7 @@ import br.com.rodrigolmti.core_android.SingleLiveEvent
 import br.com.rodrigolmti.dashboard.domain.model.PasswordModel
 import javax.inject.Inject
 
-class PasswordGeneratorState @Inject constructor() {
+internal class PasswordGeneratorViewState @Inject constructor() {
 
     val action: SingleLiveEvent<Action> = SingleLiveEvent()
     val state: MutableLiveData<State> = MutableLiveData()
@@ -14,8 +14,8 @@ class PasswordGeneratorState @Inject constructor() {
 
     sealed class Action {
         data class ShowPasswordList(val passwords: List<PasswordModel>) : Action()
-        object ShowNoParamSelectedError: Action()
-        object ShowNumberTooSmallError: Action()
+        object ShowNoParamSelectedError : Action()
+        object ShowNumberTooSmallError : Action()
         object ShowError : Action()
     }
 }

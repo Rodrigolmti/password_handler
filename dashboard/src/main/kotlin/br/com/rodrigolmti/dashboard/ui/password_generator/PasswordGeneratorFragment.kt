@@ -17,11 +17,11 @@ import br.com.rodrigolmti.core_android.base.BaseFragment
 import br.com.rodrigolmti.core_android.extensions.exhaustive
 import br.com.rodrigolmti.core_android.extensions.hide
 import br.com.rodrigolmti.core_android.extensions.show
+import br.com.rodrigolmti.core_android.navigation_modes.ImmersiveNavigationMode
+import br.com.rodrigolmti.core_android.navigation_modes.NavigationMode
 import br.com.rodrigolmti.dashboard.R
 import br.com.rodrigolmti.dashboard.domain.model.PasswordModel
 import br.com.rodrigolmti.dashboard.ui.DashboardActivity
-import br.com.rodrigolmti.core_android.navigation_modes.ImmersiveNavigationMode
-import br.com.rodrigolmti.core_android.navigation_modes.NavigationMode
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.password_generator_fragment.*
 
@@ -43,12 +43,14 @@ class PasswordGeneratorFragment : BaseFragment(), NavigationMode by ImmersiveNav
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.dispatchViewAction(PasswordGeneratorAction.InitView)
         setupFields()
     }
 
     private fun setupFields() {
         btnAction.setOnClickListener {
             if (recyclerView.visibility == View.VISIBLE) {
+                viewModel.dispatchViewAction(PasswordGeneratorAction.ClearModel)
                 recyclerView.adapter = null
                 toIdleState()
                 return@setOnClickListener
@@ -71,33 +73,33 @@ class PasswordGeneratorFragment : BaseFragment(), NavigationMode by ImmersiveNav
     private fun observeChanges() {
         viewModel.viewState.state.observe(viewLifecycleOwner, Observer { state ->
             when (state) {
-                PasswordGeneratorState.State.IDLE -> toIdleState()
-                PasswordGeneratorState.State.LOADING -> toLoadingState()
+                PasswordGeneratorViewState.State.IDLE -> toIdleState()
+                PasswordGeneratorViewState.State.LOADING -> toLoadingState()
             }.exhaustive
         })
         viewModel.viewState.action.observe(viewLifecycleOwner, Observer { action ->
             when (action) {
-                is PasswordGeneratorState.Action.ShowPasswordList -> {
-                    btnAction.text = getText(R.string.password_generator_clear)
+                is PasswordGeneratorViewState.Action.ShowPasswordList -> {
+                    btnAction.text = getText(R.string.password_generator_fragment_clear)
                     setupAdapter(action)
                     toListSate()
                 }
-                PasswordGeneratorState.Action.ShowError -> {
+                PasswordGeneratorViewState.Action.ShowError -> {
                     Snackbar.make(
                         viewHeader,
-                        getString(R.string.password_generator_error), Snackbar.LENGTH_SHORT
+                        getString(R.string.password_generator_fragment_error), Snackbar.LENGTH_SHORT
                     ).show()
                 }
-                PasswordGeneratorState.Action.ShowNoParamSelectedError -> {
+                PasswordGeneratorViewState.Action.ShowNoParamSelectedError -> {
                     Snackbar.make(
                         viewHeader,
-                        getString(R.string.password_generator_no_params), Snackbar.LENGTH_SHORT
+                        getString(R.string.password_generator_fragment_no_params), Snackbar.LENGTH_SHORT
                     ).show()
                 }
-                PasswordGeneratorState.Action.ShowNumberTooSmallError -> {
+                PasswordGeneratorViewState.Action.ShowNumberTooSmallError -> {
                     Snackbar.make(
                         viewHeader,
-                        getString(R.string.password_generator_too_small), Snackbar.LENGTH_SHORT
+                        getString(R.string.password_generator_fragment_too_small), Snackbar.LENGTH_SHORT
                     ).show()
                 }
             }.exhaustive
@@ -118,12 +120,15 @@ class PasswordGeneratorFragment : BaseFragment(), NavigationMode by ImmersiveNav
         }
     }
 
-    private fun setupAdapter(action: PasswordGeneratorState.Action.ShowPasswordList) {
+    private fun setupAdapter(action: PasswordGeneratorViewState.Action.ShowPasswordList) {
         recyclerView.apply {
             adapter = PasswordAdapter(
                 password = action.passwords,
                 onSaveClick = {
-                    findNavController().navigate(R.id.action_password_generator_to_password)
+                    PasswordGeneratorFragmentDirections.actionPasswordGeneratorToPassword(it)
+                        .also { navDirection ->
+                            findNavController().navigate(navDirection)
+                        }
                 },
                 onCopyClick = { model ->
                     handleCopyClick(model)
@@ -138,7 +143,7 @@ class PasswordGeneratorFragment : BaseFragment(), NavigationMode by ImmersiveNav
         }
         Snackbar.make(
             viewHeader,
-            getString(R.string.password_generator_copy_message), Snackbar.LENGTH_SHORT
+            getString(R.string.password_generator_fragment_copy_message), Snackbar.LENGTH_SHORT
         ).show()
     }
 
@@ -152,7 +157,7 @@ class PasswordGeneratorFragment : BaseFragment(), NavigationMode by ImmersiveNav
         lottie.hide()
         content.show()
         recyclerView.hide()
-        btnAction.text = getText(R.string.password_generator_generate)
+        btnAction.text = getText(R.string.password_generator_fragment_generate)
     }
 
     private fun toListSate() {

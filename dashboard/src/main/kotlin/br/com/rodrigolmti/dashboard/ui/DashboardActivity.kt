@@ -15,6 +15,10 @@ class DashboardActivity : AppCompatActivity(), NavigationContainer {
 
     val component: DashboardComponent by lazy { DashboardComponent.inject(this) }
 
+    private val navHostFragment: NavHostFragment? by lazy {
+        supportFragmentManager.findFragmentById(R.id.navHost) as NavHostFragment?
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dashboard_activity)
@@ -22,7 +26,7 @@ class DashboardActivity : AppCompatActivity(), NavigationContainer {
     }
 
     private fun setupFields() {
-        (supportFragmentManager.findFragmentById(R.id.navHost) as NavHostFragment?)?.let {
+        navHostFragment?.let {
             NavigationUI.setupWithNavController(
                 bottomNavigation,
                 it.navController

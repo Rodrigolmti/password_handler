@@ -8,26 +8,37 @@
     <fragment
         android:id="@+id/password"
         android:name="br.com.rodrigolmti.dashboard.ui.password.PasswordFragment"
-        android:label="home_fragment"
-        tools:layout="@layout/passwords_fragment" />
+        android:label="Save/Edit Password"
+        tools:layout="@layout/password_fragment">
+        <argument
+            android:name="passwordModel"
+            android:defaultValue="@null"
+            app:argType="br.com.rodrigolmti.dashboard.domain.model.PasswordModel"
+            app:nullable="true" />
+    </fragment>
 
     <fragment
         android:id="@+id/password_generator"
         android:name="br.com.rodrigolmti.dashboard.ui.password_generator.PasswordGeneratorFragment"
-        android:label="PasswordFragment" >
+        android:label="Generate Password"
+        tools:layout="@layout/password_generator_fragment">
         <action
             android:id="@+id/action_password_generator_to_password"
-            app:destination="@id/password" />
+            app:destination="@id/password">
+
+        </action>
     </fragment>
 
     <fragment
         android:id="@+id/settings"
         android:name="br.com.rodrigolmti.dashboard.ui.settings.SettingsFragment"
-        android:label="PasswordFragment" />
+        android:label="Settings"
+        tools:layout="@layout/settings_fragment" />
 
     <fragment
         android:id="@+id/passwords"
         android:name="br.com.rodrigolmti.dashboard.ui.passwords.PasswordsFragment"
-        android:label="PasswordsFragment" />
+        android:label="List of Passwords"
+        tools:layout="@layout/passwords_fragment" />
 
 </navigation>

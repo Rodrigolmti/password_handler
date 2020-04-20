@@ -1,6 +1,6 @@
 package br.com.rodrigolmti.dashboard.domain.model
 
-data class PasswordGeneratorModel(
+data class PasswordGenerationModel(
     val passwordNumber: Int,
     val passwordLength: Int,
     val isUpperCase: Boolean,
