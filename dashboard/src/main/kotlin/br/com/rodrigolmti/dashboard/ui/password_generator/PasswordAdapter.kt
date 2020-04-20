@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.rodrigolmti.dashboard.R
 import br.com.rodrigolmti.dashboard.domain.model.PasswordModel
-import kotlinx.android.synthetic.main.password_row.view.*
+import kotlinx.android.synthetic.main.generated_password_row.view.*
 
 class PasswordAdapter(
     private val password: List<PasswordModel>,
@@ -31,7 +31,7 @@ class PasswordAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             LayoutInflater.from(parent.context).inflate(
-                R.layout.password_row,
+                R.layout.generated_password_row,
                 parent,
                 false
             )

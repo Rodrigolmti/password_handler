@@ -6,13 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import br.com.rodrigolmti.core_android.base.BaseFragment
-import br.com.rodrigolmti.core_android.extensions.viewModelByFactory
 import br.com.rodrigolmti.dashboard.R
 import br.com.rodrigolmti.dashboard.ui.DashboardActivity
-import br.com.rodrigolmti.dashboard.ui.password_generator.PasswordGeneratorViewModel
-import br.com.rodrigolmti.dashboard.ui.settings.SettingsViewModel
+import br.com.rodrigolmti.dashboard.ui.password.PasswordViewModel
+import br.com.rodrigolmti.core_android.navigation_modes.ImmersiveNavigationMode
+import br.com.rodrigolmti.core_android.navigation_modes.NavigationMode
 
-class PasswordsFragment : BaseFragment() {
+class PasswordsFragment : BaseFragment(), NavigationMode by ImmersiveNavigationMode {
 
     private val viewModel by lazy { getViewModel(PasswordsViewModel::class.java) }
 

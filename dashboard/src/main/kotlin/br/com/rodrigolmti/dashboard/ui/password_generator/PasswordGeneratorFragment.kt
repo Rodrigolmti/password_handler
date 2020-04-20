@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,11 +20,12 @@ import br.com.rodrigolmti.core_android.extensions.show
 import br.com.rodrigolmti.dashboard.R
 import br.com.rodrigolmti.dashboard.domain.model.PasswordModel
 import br.com.rodrigolmti.dashboard.ui.DashboardActivity
+import br.com.rodrigolmti.core_android.navigation_modes.ImmersiveNavigationMode
+import br.com.rodrigolmti.core_android.navigation_modes.NavigationMode
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.password_generator_fragment.*
 
-
-class PasswordGeneratorFragment : BaseFragment() {
+class PasswordGeneratorFragment : BaseFragment(), NavigationMode by ImmersiveNavigationMode {
 
     private val viewModel by lazy { getViewModel(PasswordGeneratorViewModel::class.java) }
 
@@ -120,7 +122,9 @@ class PasswordGeneratorFragment : BaseFragment() {
         recyclerView.apply {
             adapter = PasswordAdapter(
                 password = action.passwords,
-                onSaveClick = {},
+                onSaveClick = {
+                    findNavController().navigate(R.id.action_password_generator_to_password)
+                },
                 onCopyClick = { model ->
                     handleCopyClick(model)
                 })

@@ -6,19 +6,28 @@
     app:startDestination="@id/passwords">
 
     <fragment
-        android:id="@+id/passwords"
-        android:name="br.com.rodrigolmti.dashboard.ui.passwords.PasswordsFragment"
+        android:id="@+id/password"
+        android:name="br.com.rodrigolmti.dashboard.ui.password.PasswordFragment"
         android:label="home_fragment"
         tools:layout="@layout/passwords_fragment" />
 
     <fragment
         android:id="@+id/password_generator"
         android:name="br.com.rodrigolmti.dashboard.ui.password_generator.PasswordGeneratorFragment"
-        android:label="PasswordFragment" />
+        android:label="PasswordFragment" >
+        <action
+            android:id="@+id/action_password_generator_to_password"
+            app:destination="@id/password" />
+    </fragment>
 
     <fragment
         android:id="@+id/settings"
         android:name="br.com.rodrigolmti.dashboard.ui.settings.SettingsFragment"
         android:label="PasswordFragment" />
+
+    <fragment
+        android:id="@+id/passwords"
+        android:name="br.com.rodrigolmti.dashboard.ui.passwords.PasswordsFragment"
+        android:label="PasswordsFragment" />
 
 </navigation>
