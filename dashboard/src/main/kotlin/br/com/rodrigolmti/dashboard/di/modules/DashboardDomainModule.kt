@@ -26,9 +26,9 @@ internal abstract class DashboardDomainModule {
     ): SavePasswordUseCase
 
     @[Binds Reusable]
-    abstract fun bindsGeneratePasswordUseCase(
-        generatePassword: GeneratePassword
-    ): GeneratePasswordUseCase
+    abstract fun bindsGeneratePreDeterminedPasswordUseCase(
+        generatePassword: GeneratePreDeterminedPassword
+    ): GeneratePreDeterminedPasswordUseCase
 
     @[Binds Reusable]
     abstract fun bindsPasswordStrengthUseCase(
@@ -44,4 +44,19 @@ internal abstract class DashboardDomainModule {
     abstract fun bindsDeleteSavedPasswordUseCase(
         deleteSavedPassword: DeleteSavedPassword
     ): DeleteSavedPasswordUseCase
+
+    @[Binds Reusable]
+    abstract fun bindsGetPasswordAllowedCharsUseCase(
+        getPasswordAllowedChars: GetPasswordAllowedChars
+    ): GetPasswordAllowedCharsUseCase
+
+    @[Binds Reusable]
+    abstract fun bindsGeneratePasswordUseCase(
+        generatePassword: GeneratePassword
+    ): GeneratePasswordUseCase
+
+    @[Binds Reusable]
+    abstract fun bindsGenerateRandomPasswordUseCase(
+        generateRandomPassword: GenerateRandomPassword
+    ): GenerateRandomPasswordUseCase
 }

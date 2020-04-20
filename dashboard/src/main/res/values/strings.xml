@@ -20,6 +20,7 @@
     <string name="password_fragment_update_error">Seems that there is a problem with the update, try again!</string>
     <string name="password_fragment_save_error">Seems that there is a problem to save, try again!</string>
     <string name="password_fragment_delete_error">Seems that there is a problem to delete, try again!</string>
+    <string name="password_fragment_generate_password_error">Something went wrong on the generation!</string>
 
     <string name="password_generator_fragment_title">Password Generator</string>
     <string name="password_generator_fragment_description">Generate your passwords by setting the parameters above!</string>

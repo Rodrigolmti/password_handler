@@ -5,8 +5,7 @@ import br.com.rodrigolmti.core_android.base.BaseViewModel
 import br.com.rodrigolmti.core_android.extensions.exhaustive
 import br.com.rodrigolmti.dashboard.domain.model.PasswordGenerationModel
 import br.com.rodrigolmti.dashboard.domain.model.PasswordModel
-import br.com.rodrigolmti.dashboard.domain.use_cases.GeneratePasswordUseCase
-import br.com.rodrigolmti.database.PasswordDatabase
+import br.com.rodrigolmti.dashboard.domain.use_cases.GeneratePreDeterminedPasswordUseCase
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -16,7 +15,7 @@ internal class PasswordGeneratorModel {
 
 internal class PasswordGeneratorViewModel @Inject constructor(
     override val viewState: PasswordGeneratorViewState,
-    private val generatePasswordUseCase: GeneratePasswordUseCase
+    private val generatePreDeterminedPasswordUseCase: GeneratePreDeterminedPasswordUseCase
 ) : BaseViewModel<PasswordGeneratorViewState, PasswordGeneratorAction>() {
 
     private val model: PasswordGeneratorModel = PasswordGeneratorModel()
@@ -57,7 +56,7 @@ internal class PasswordGeneratorViewModel @Inject constructor(
                     isSpecialChars = action.isSpecialChars
                 )
 
-                generatePasswordUseCase(passwordGenerator).handleResult(
+                generatePreDeterminedPasswordUseCase(passwordGenerator).handleResult(
                     onSuccess = {
                         viewState.state.value = PasswordGeneratorViewState.State.IDLE
                         viewState.action.value =

@@ -4,10 +4,7 @@ import androidx.lifecycle.viewModelScope
 import br.com.rodrigolmti.core_android.base.BaseViewModel
 import br.com.rodrigolmti.core_android.extensions.exhaustive
 import br.com.rodrigolmti.dashboard.domain.model.SavedPasswordModel
-import br.com.rodrigolmti.dashboard.domain.use_cases.DeleteSavedPasswordUseCase
-import br.com.rodrigolmti.dashboard.domain.use_cases.PasswordStrengthUseCase
-import br.com.rodrigolmti.dashboard.domain.use_cases.SavePasswordUseCase
-import br.com.rodrigolmti.dashboard.domain.use_cases.UpdateSavedPassword
+import br.com.rodrigolmti.dashboard.domain.use_cases.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -16,6 +13,7 @@ internal class PasswordViewModel @Inject constructor(
     private val savePasswordUseCase: SavePasswordUseCase,
     private val updateSavedPassword: UpdateSavedPassword,
     private val passwordStrengthUseCase: PasswordStrengthUseCase,
+    private val generateRandomPasswordUseCase: GenerateRandomPasswordUseCase,
     private val deleteSavedPasswordUseCase: DeleteSavedPasswordUseCase
 ) : BaseViewModel<PasswordViewState, PasswordAction>() {
 
@@ -30,6 +28,9 @@ internal class PasswordViewModel @Inject constructor(
             }
             is PasswordAction.DeleteSavedPassword -> {
                 deleteSavedPassword(viewAction.model)
+            }
+            is PasswordAction.ShufflePassword -> {
+                shufflePassword()
             }
         }.exhaustive
     }
@@ -105,6 +106,24 @@ internal class PasswordViewModel @Inject constructor(
                     PasswordViewState.Action.ShowDeletePasswordError
             },
             onFinish = {
+                viewState.state.value = PasswordViewState.State.IDLE
+            }
+        )
+    }
+
+    private fun shufflePassword() = viewModelScope.launch {
+        viewState.state.value = PasswordViewState.State.LOADING
+
+        generateRandomPasswordUseCase().handleResult(
+            onSuccess = {
+                viewState.action.value =
+                    PasswordViewState.Action.ShowGeneratedPassword(it)
+            },
+            onError = {
+                viewState.action.value =
+                    PasswordViewState.Action.ShowGeneratePasswordError
+            },
+            onFinish =  {
                 viewState.state.value = PasswordViewState.State.IDLE
             }
         )

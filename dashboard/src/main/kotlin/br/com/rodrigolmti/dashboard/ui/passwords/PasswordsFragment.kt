@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.rodrigolmti.core_android.base.BaseFragment
@@ -47,6 +48,11 @@ class PasswordsFragment : BaseFragment(), NavigationMode by ImmersiveNavigationM
     }
 
     private fun setupFields() {
+        fBtnAdd.setOnClickListener {
+            PasswordsFragmentDirections.actionPasswordsToPassword().also { navDirection ->
+                findNavController().navigate(navDirection)
+            }
+        }
         setupRecyclerView()
         observeChanges()
     }

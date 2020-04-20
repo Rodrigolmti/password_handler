@@ -73,6 +73,12 @@ class PasswordFragment : BaseFragment(), NavigationMode by DefaultNavigationMode
             viewModel.dispatchViewAction(PasswordAction.CalculatePasswordStrength(it))
         })
 
+        imgShuffle.setOnClickListener {
+            viewModel.dispatchViewAction(PasswordAction.ShufflePassword)
+        }
+
+        toolbar.title = getString(R.string.password_fragment_title_save)
+
         passwordModel?.let { model ->
             toolbar.title = getString(R.string.password_fragment_title_save)
             btnAction.text = getString(R.string.action_save)
@@ -110,44 +116,54 @@ class PasswordFragment : BaseFragment(), NavigationMode by DefaultNavigationMode
                 is PasswordViewState.Action.ShowPasswordStrength -> {
                     colorIndicator.selectedPosition = action.strength
                 }
-                PasswordViewState.Action.ShowInvalidPasswordLabel -> {
+                is PasswordViewState.Action.ShowInvalidPasswordLabel -> {
                     Snackbar.make(
                         content,
                         getString(R.string.password_fragment_invalid_label), Snackbar.LENGTH_SHORT
                     ).show()
                 }
-                PasswordViewState.Action.ShowInvalidPassword -> {
+                is PasswordViewState.Action.ShowInvalidPassword -> {
                     Snackbar.make(
                         content,
                         getString(R.string.password_fragment_invalid_password),
                         Snackbar.LENGTH_SHORT
                     ).show()
                 }
-                PasswordViewState.Action.ShowUpdatePasswordSuccess -> {
+                is PasswordViewState.Action.ShowUpdatePasswordSuccess -> {
                 }
-                PasswordViewState.Action.ShowSavePasswordSuccess -> {
+                is PasswordViewState.Action.ShowSavePasswordSuccess -> {
                 }
-                PasswordViewState.Action.ShowUpdatePasswordError -> {
+                is PasswordViewState.Action.ShowUpdatePasswordError -> {
                     Snackbar.make(
                         content,
                         getString(R.string.password_fragment_update_error),
                         Snackbar.LENGTH_SHORT
                     ).show()
                 }
-                PasswordViewState.Action.ShowSavePasswordError -> {
+                is PasswordViewState.Action.ShowSavePasswordError -> {
                     Snackbar.make(
                         content,
                         getString(R.string.password_fragment_save_error),
                         Snackbar.LENGTH_SHORT
                     ).show()
                 }
-                PasswordViewState.Action.ShowDeletePasswordSuccess -> {
+                is PasswordViewState.Action.ShowDeletePasswordSuccess -> {
                     findNavController().popBackStack()
                 }
-                PasswordViewState.Action.ShowDeletePasswordError -> {
+                is PasswordViewState.Action.ShowDeletePasswordError -> {
                     Snackbar.make(
                         content,
                         getString(R.string.password_fragment_delete_error),
+                        Snackbar.LENGTH_SHORT
+                    ).show()
+                }
+                is PasswordViewState.Action.ShowGeneratedPassword -> {
+                    etPassword.setText(action.password)
+                }
+                is PasswordViewState.Action.ShowGeneratePasswordError -> {
+                    Snackbar.make(
+                        content,
+                        getString(R.string.password_fragment_generate_password_error),
                         Snackbar.LENGTH_SHORT
                     ).show()
                 }
