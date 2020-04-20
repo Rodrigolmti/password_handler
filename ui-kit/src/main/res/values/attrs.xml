@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="ColorIndicatorWidget">
+        <attr name="barPadding" format="dimension"/>
+        <attr name="colorArray" format="reference"/>
+        <attr name="selectedPosition" format="integer"/>
+    </declare-styleable>
+
+</resources>

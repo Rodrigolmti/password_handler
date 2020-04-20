@@ -18,7 +18,9 @@ interface GeneratePasswordUseCase {
     ): Result<List<PasswordModel>, DashBoardError>
 }
 
-class GeneratePassword @Inject constructor() : GeneratePasswordUseCase {
+class GeneratePassword @Inject constructor(
+    private val passwordStrengthUseCase: PasswordStrengthUseCase
+) : GeneratePasswordUseCase {
 
     override suspend fun invoke(
         model: PasswordGeneratorModel
@@ -27,12 +29,16 @@ class GeneratePassword @Inject constructor() : GeneratePasswordUseCase {
             val allowedChars: List<String> = generateAllowedCharacters(model)
             val passwords: MutableList<PasswordModel> = mutableListOf()
             for (i: Int in 1..model.passwordNumber) {
+
+                val password = generatePassword(
+                    model.passwordLength,
+                    allowedChars
+                )
+
                 passwords.add(
                     PasswordModel(
-                        password = generatePassword(
-                            model.passwordLength,
-                            allowedChars
-                        )
+                        password = password,
+                        score = passwordStrengthUseCase(password)
                     )
                 )
             }

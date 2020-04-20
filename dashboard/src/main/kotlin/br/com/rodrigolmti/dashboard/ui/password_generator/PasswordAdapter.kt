@@ -18,6 +18,7 @@ class PasswordAdapter(
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bindData(item: PasswordModel) {
             itemView.password.text = item.password
+            itemView.colorIndicator.selectedPosition = item.score
             itemView.tvCopy.setOnClickListener {
                 onCopyClick(item)
             }
