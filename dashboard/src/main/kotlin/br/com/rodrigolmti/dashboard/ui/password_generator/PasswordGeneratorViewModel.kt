@@ -6,6 +6,7 @@ import br.com.rodrigolmti.core_android.extensions.exhaustive
 import br.com.rodrigolmti.dashboard.domain.model.PasswordGenerationModel
 import br.com.rodrigolmti.dashboard.domain.model.PasswordModel
 import br.com.rodrigolmti.dashboard.domain.use_cases.GeneratePasswordUseCase
+import br.com.rodrigolmti.database.PasswordDatabase
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

@@ -58,6 +58,7 @@ dependencies {
 
     implementation project(Modules.coreAndroid)
     implementation project(Modules.navigator)
+    implementation project(Modules.database)
     implementation project(Modules.injector)
     implementation project(Modules.uiKit)
 

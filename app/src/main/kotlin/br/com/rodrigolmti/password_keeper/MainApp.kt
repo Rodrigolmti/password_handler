@@ -10,7 +10,7 @@ class MainApp : Application(), CoreComponentProvider {
 
     override fun onCreate() {
         super.onCreate()
-        coreComponent = CoreComponent.inject()
+        coreComponent = CoreComponent.inject(this)
     }
 
     override fun coreComponent(): CoreComponent = coreComponent

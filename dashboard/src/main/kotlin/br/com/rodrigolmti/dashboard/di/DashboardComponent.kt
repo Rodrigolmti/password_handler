@@ -29,9 +29,9 @@ interface DashboardComponent {
     @Component.Builder
     interface Builder {
 
-        fun build(): DashboardComponent
-
         fun coreComponent(component: CoreComponent): Builder
+
+        fun build(): DashboardComponent
     }
 
     companion object {

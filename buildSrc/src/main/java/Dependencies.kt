@@ -10,7 +10,6 @@ object Versions {
     const val compileSdk = 29
     const val minSdk = 21
     const val targetSdk = 29
-    const val lottie = "3.4.0"
 }
 
 object Releases {
@@ -25,6 +24,7 @@ object Modules {
     const val injector = ":injector"
     const val navigator = ":navigator"
     const val uiKit = ":ui-kit"
+    const val database = ":database"
 }
 
 object Kotlin {
@@ -71,15 +71,23 @@ object AndroidX {
         const val transition = "1.0.1"
         const val annotation = "1.0.2"
         const val fragment = "1.2.2"
+        const val room = "2.2.5"
     }
 
     const val ktx = "androidx.core:core-ktx:${Versions.ktx}"
     const val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
     const val design = "com.google.android.material:material:${Versions.support}"
     const val fragment = "androidx.fragment:fragment-ktx:${Versions.fragment}"
+    const val room = "androidx.room:room-runtime:${Versions.room}"
+    const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
+    const val roomExt = "  androidx.room:room-ktx:${Versions.room}"
 }
 
 object Libraries {
+    object Versions {
+        const val lottie = "3.4.0"
+    }
+
     const val lottie = "com.airbnb.android:lottie:${Versions.lottie}"
 }
 

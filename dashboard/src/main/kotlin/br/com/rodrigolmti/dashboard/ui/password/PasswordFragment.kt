@@ -53,7 +53,7 @@ class PasswordFragment : BaseFragment(), NavigationMode by DefaultNavigationMode
 
         passwordModel?.let { model ->
             toolbar.title = getString(R.string.password_fragment_title_save)
-            btnAction.text = getString(R.string.action_edit)
+            btnAction.text = getString(R.string.action_save)
             etPassword.setText(model.password)
         }
         observeChanges()

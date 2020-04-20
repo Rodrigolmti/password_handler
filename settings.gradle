@@ -1,3 +1,4 @@
+include ':database'
 include ':ui-kit'
 include ':navigator'
 include ':core-android'
