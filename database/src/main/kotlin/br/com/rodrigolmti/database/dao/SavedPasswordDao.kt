@@ -1,8 +1,6 @@
 package br.com.rodrigolmti.database.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import br.com.rodrigolmti.database.entity.SavedPasswordEntity
 
 @Dao
@@ -13,4 +11,10 @@ interface SavedPasswordDao {
 
     @Insert
     fun insert(entity: SavedPasswordEntity)
+
+    @Update
+    fun update(entity: SavedPasswordEntity)
+
+    @Delete
+    fun delete(entity: SavedPasswordEntity)
 }

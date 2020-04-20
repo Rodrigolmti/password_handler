@@ -16,6 +16,17 @@ class AppLocalDataSource @Inject constructor(
     private val database: PasswordDatabase
 ) : LocalDataSource {
 
+    override suspend fun deletePassword(model: SavedPasswordModel): Result<Unit, DashBoardError> =
+        withContext(Dispatchers.IO) {
+            return@withContext try {
+                val entity = savedPasswordEntityMapper.mapFrom(model)
+                database.database().savedPasswordDao().delete(entity)
+                Result.Success(Unit)
+            } catch (error: Exception) {
+                Result.Error(DashBoardError.DeleteSavedPasswordError)
+            }
+        }
+
     override suspend fun savePassword(model: SavedPasswordModel): Result<Unit, DashBoardError> =
         withContext(Dispatchers.IO) {
             return@withContext try {
@@ -27,6 +38,17 @@ class AppLocalDataSource @Inject constructor(
             }
         }
 
+    override suspend fun updatePassword(model: SavedPasswordModel): Result<Unit, DashBoardError> =
+        withContext(Dispatchers.IO) {
+            return@withContext try {
+                val entity = savedPasswordEntityMapper.mapFrom(model)
+                database.database().savedPasswordDao().update(entity)
+                Result.Success(Unit)
+            } catch (error: Exception) {
+                Result.Error(DashBoardError.UpdateSavesPasswordError)
+            }
+        }
+
     override suspend fun getAllSavedPasswords(): Result<List<SavedPasswordModel>, DashBoardError> =
         withContext(Dispatchers.IO) {
             return@withContext try {
@@ -35,7 +57,7 @@ class AppLocalDataSource @Inject constructor(
                 }
                 Result.Success(passwords)
             } catch (error: Exception) {
-                Result.Error(DashBoardError.InsertSavedPasswordError)
+                Result.Error(DashBoardError.GetAllSavedPasswordsError)
             }
         }
 }

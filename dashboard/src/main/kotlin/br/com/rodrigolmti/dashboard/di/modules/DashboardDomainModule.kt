@@ -34,4 +34,14 @@ internal abstract class DashboardDomainModule {
     abstract fun bindsPasswordStrengthUseCase(
         passwordStrength: PasswordStrength
     ): PasswordStrengthUseCase
+
+    @[Binds Reusable]
+    abstract fun bindsUpdateSavedPasswordUseCase(
+        updateSavedPassword: UpdateSavedPassword
+    ): UpdateSavedPasswordUseCase
+
+    @[Binds Reusable]
+    abstract fun bindsDeleteSavedPasswordUseCase(
+        deleteSavedPassword: DeleteSavedPassword
+    ): DeleteSavedPasswordUseCase
 }

@@ -11,8 +11,14 @@ class AppDashboardRepository @Inject constructor(
     private val localDataSource: LocalDataSource
 ) : DashboardRepository {
 
+    override suspend fun deletePassword(model: SavedPasswordModel): Result<Unit, DashBoardError> =
+        localDataSource.deletePassword(model)
+
     override suspend fun savePassword(model: SavedPasswordModel): Result<Unit, DashBoardError> =
         localDataSource.savePassword(model)
+
+    override suspend fun updatePassword(model: SavedPasswordModel): Result<Unit, DashBoardError> =
+        localDataSource.updatePassword(model)
 
     override suspend fun getAllSavedPasswords(): Result<List<SavedPasswordModel>, DashBoardError> =
         localDataSource.getAllSavedPasswords()

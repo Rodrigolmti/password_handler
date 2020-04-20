@@ -12,15 +12,17 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.rodrigolmti.core_android.base.BaseFragment
 import br.com.rodrigolmti.core_android.extensions.exhaustive
-import br.com.rodrigolmti.core_android.extensions.hide
-import br.com.rodrigolmti.core_android.extensions.show
 import br.com.rodrigolmti.core_android.navigation_modes.ImmersiveNavigationMode
 import br.com.rodrigolmti.core_android.navigation_modes.NavigationMode
 import br.com.rodrigolmti.dashboard.R
 import br.com.rodrigolmti.dashboard.domain.model.SavedPasswordModel
 import br.com.rodrigolmti.dashboard.ui.DashboardActivity
 import br.com.rodrigolmti.dashboard.ui.passwords.PasswordsViewState.State.*
-import kotlinx.android.synthetic.main.password_generator_fragment.*
+import br.com.rodrigolmti.uikit.hide
+import br.com.rodrigolmti.uikit.show
+import kotlinx.android.synthetic.main.password_generator_fragment.lottie
+import kotlinx.android.synthetic.main.password_generator_fragment.recyclerView
+import kotlinx.android.synthetic.main.passwords_fragment.*
 
 class PasswordsFragment : BaseFragment(), NavigationMode by ImmersiveNavigationMode {
 
@@ -75,6 +77,9 @@ class PasswordsFragment : BaseFragment(), NavigationMode by ImmersiveNavigationM
                 ERROR -> {
                     toErrorState()
                 }
+                EMPTY_LIST -> {
+                    toEmptyState()
+                }
             }.exhaustive
         })
         viewModel.viewState.action.observe(viewLifecycleOwner, Observer { action ->
@@ -112,15 +117,28 @@ class PasswordsFragment : BaseFragment(), NavigationMode by ImmersiveNavigationM
     private fun toIdleState() {
         lottie.hide()
         recyclerView.show()
+        imgVoid.hide()
+        tvVoid.hide()
     }
 
     private fun toLoadingState() {
         lottie.show()
         recyclerView.hide()
+        imgVoid.hide()
+        tvVoid.hide()
     }
 
     private fun toErrorState() {
         lottie.hide()
         recyclerView.hide()
+        imgVoid.hide()
+        tvVoid.hide()
+    }
+
+    private fun toEmptyState() {
+        lottie.hide()
+        recyclerView.hide()
+        imgVoid.show()
+        tvVoid.show()
     }
 }

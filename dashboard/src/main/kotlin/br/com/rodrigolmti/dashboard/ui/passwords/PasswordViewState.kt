@@ -12,7 +12,7 @@ internal class PasswordsViewState @Inject constructor() {
     val action: SingleLiveEvent<Action> = SingleLiveEvent()
     val state: MutableLiveData<State> = MutableLiveData()
 
-    enum class State { IDLE, LOADING, ERROR }
+    enum class State { IDLE, LOADING, ERROR, EMPTY_LIST }
 
     sealed class Action {
         data class ShowSavedPasswordList(val passwords: List<SavedPasswordModel>) : Action()

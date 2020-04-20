@@ -4,11 +4,11 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
-import br.com.rodrigolmti.core_android.extensions.hide
-import br.com.rodrigolmti.core_android.extensions.show
 import br.com.rodrigolmti.core_android.navigation_modes.NavigationContainer
 import br.com.rodrigolmti.dashboard.R
 import br.com.rodrigolmti.dashboard.di.DashboardComponent
+import br.com.rodrigolmti.uikit.hide
+import br.com.rodrigolmti.uikit.show
 import kotlinx.android.synthetic.main.dashboard_activity.*
 
 class DashboardActivity : AppCompatActivity(), NavigationContainer {

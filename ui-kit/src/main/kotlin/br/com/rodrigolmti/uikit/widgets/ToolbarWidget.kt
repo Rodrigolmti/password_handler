@@ -4,6 +4,8 @@ import android.content.Context
 import android.util.AttributeSet
 import android.widget.FrameLayout
 import br.com.rodrigolmti.ui_kit.R
+import br.com.rodrigolmti.uikit.hide
+import br.com.rodrigolmti.uikit.show
 import kotlinx.android.synthetic.main.toolbar.view.*
 
 class ToolbarWidget : FrameLayout {
@@ -27,6 +29,9 @@ class ToolbarWidget : FrameLayout {
         imgBack.setOnClickListener {
             onBackClick?.invoke()
         }
+        imgMenu.setOnClickListener {
+            onMenuClick?.invoke()
+        }
     }
 
     var title: String? = null
@@ -37,4 +42,10 @@ class ToolbarWidget : FrameLayout {
         }
 
     var onBackClick: (() -> Unit)? = null
+
+    var onMenuClick: (() -> Unit)? = null
+        set(value) {
+            if (value != null) imgMenu.show() else imgMenu.hide()
+            field = value
+        }
 }

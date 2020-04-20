@@ -11,11 +11,15 @@
 
     <string name="passwords_fragment_title">Saved Passwords</string>
     <string name="passwords_fragment_description">You can see here your saved passwords, for more detail select one of them!</string>
+    <string name="passwords_fragment_void">Wooou looks like we got into some void, try to create some passwords, and come back!</string>
 
     <string name="password_fragment_title_save">Save password</string>
     <string name="password_fragment_title_edit">Edit password</string>
     <string name="password_fragment_invalid_password">Invalid password, check and try again!</string>
     <string name="password_fragment_invalid_label">Invalid label, check and try again!</string>
+    <string name="password_fragment_update_error">Seems that there is a problem with the update, try again!</string>
+    <string name="password_fragment_save_error">Seems that there is a problem to save, try again!</string>
+    <string name="password_fragment_delete_error">Seems that there is a problem to delete, try again!</string>
 
     <string name="password_generator_fragment_title">Password Generator</string>
     <string name="password_generator_fragment_description">Generate your passwords by setting the parameters above!</string>
@@ -24,7 +28,7 @@
     <string name="password_generator_fragment_length">Password length:</string>
     <string name="password_generator_fragment_number">Password number:</string>
     <string name="password_generator_fragment_default_number">1</string>
-    <string name="password_generator_fragment_default_length">8</string>
+    <string name="password_generator_fragment_default_length">12</string>
     <string name="password_generator_fragment_uppercase_letters">Uppercase letters:</string>
     <string name="password_generator_fragment_small_letters">Small letters:</string>
     <string name="password_generator_fragment_numbers">Numbers:</string>
@@ -32,6 +36,6 @@
     <string name="password_generator_fragment_copy_message">Password copy to clipboard</string>
     <string name="password_generator_fragment_too_small">The password should be at least with 1 character!</string>
     <string name="password_generator_fragment_no_params">Select at least one option!</string>
-    <string name="password_generator_fragment_error">Something went wrong, check your parameters and try again!</string>
+    <string name="password_generator_fragment_error">Seems that we have some broken pipes in the path, try again!</string>
 
 </resources>

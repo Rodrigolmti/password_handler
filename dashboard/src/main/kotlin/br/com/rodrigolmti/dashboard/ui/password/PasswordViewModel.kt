@@ -4,16 +4,19 @@ import androidx.lifecycle.viewModelScope
 import br.com.rodrigolmti.core_android.base.BaseViewModel
 import br.com.rodrigolmti.core_android.extensions.exhaustive
 import br.com.rodrigolmti.dashboard.domain.model.SavedPasswordModel
+import br.com.rodrigolmti.dashboard.domain.use_cases.DeleteSavedPasswordUseCase
 import br.com.rodrigolmti.dashboard.domain.use_cases.PasswordStrengthUseCase
 import br.com.rodrigolmti.dashboard.domain.use_cases.SavePasswordUseCase
-import br.com.rodrigolmti.dashboard.ui.passwords.PasswordsAction
+import br.com.rodrigolmti.dashboard.domain.use_cases.UpdateSavedPassword
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 internal class PasswordViewModel @Inject constructor(
     override val viewState: PasswordViewState,
     private val savePasswordUseCase: SavePasswordUseCase,
-    private val passwordStrengthUseCase: PasswordStrengthUseCase
+    private val updateSavedPassword: UpdateSavedPassword,
+    private val passwordStrengthUseCase: PasswordStrengthUseCase,
+    private val deleteSavedPasswordUseCase: DeleteSavedPasswordUseCase
 ) : BaseViewModel<PasswordViewState, PasswordAction>() {
 
     @Suppress("IMPLICIT_CAST_TO_ANY")
@@ -24,6 +27,9 @@ internal class PasswordViewModel @Inject constructor(
             }
             is PasswordAction.SavePassword -> {
                 savePassword(action = viewAction)
+            }
+            is PasswordAction.DeleteSavedPassword -> {
+                deleteSavedPassword(viewAction.model)
             }
         }.exhaustive
     }
@@ -39,9 +45,28 @@ internal class PasswordViewModel @Inject constructor(
                 viewState.state.value = PasswordViewState.State.LOADING
 
                 action.id?.let {
+                    val model = SavedPasswordModel(
+                        id = action.id,
+                        label = action.label,
+                        login = action.login,
+                        password = action.password,
+                        strength = action.strength
+                    )
 
+                    updateSavedPassword(model).handleResult(
+                        onSuccess = {
+                            viewState.action.value =
+                                PasswordViewState.Action.ShowUpdatePasswordSuccess
+                        },
+                        onError = {
+                            viewState.action.value =
+                                PasswordViewState.Action.ShowUpdatePasswordError
+                        },
+                        onFinish = {
+                            viewState.state.value = PasswordViewState.State.IDLE
+                        }
+                    )
                 } ?: run {
-
                     val model = SavedPasswordModel(
                         label = action.label,
                         login = action.login,
@@ -51,15 +76,38 @@ internal class PasswordViewModel @Inject constructor(
 
                     savePasswordUseCase(model).handleResult(
                         onSuccess = {
-                            print("")
+                            viewState.action.value =
+                                PasswordViewState.Action.ShowSavePasswordSuccess
                         },
                         onError = {
-                            print("")
+                            viewState.action.value =
+                                PasswordViewState.Action.ShowSavePasswordError
+                        },
+                        onFinish = {
+                            viewState.state.value = PasswordViewState.State.IDLE
                         }
                     )
                 }
             }
         }
+    }
+
+    private fun deleteSavedPassword(model: SavedPasswordModel) = viewModelScope.launch {
+        viewState.state.value = PasswordViewState.State.LOADING
+
+        deleteSavedPasswordUseCase(model).handleResult(
+            onSuccess = {
+                viewState.action.value =
+                    PasswordViewState.Action.ShowDeletePasswordSuccess
+            },
+            onError = {
+                viewState.action.value =
+                    PasswordViewState.Action.ShowDeletePasswordError
+            },
+            onFinish = {
+                viewState.state.value = PasswordViewState.State.IDLE
+            }
+        )
     }
 
     private fun validatePasswordLabel(label: String?): Boolean {

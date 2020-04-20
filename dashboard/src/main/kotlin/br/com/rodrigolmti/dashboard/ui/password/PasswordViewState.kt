@@ -14,6 +14,12 @@ internal class PasswordViewState @Inject constructor() {
     sealed class Action {
         data class ShowPasswordStrength(val strength: Int) : Action()
         object ShowInvalidPasswordLabel : Action()
+        object ShowUpdatePasswordSuccess : Action()
+        object ShowSavePasswordSuccess : Action()
+        object ShowDeletePasswordSuccess : Action()
+        object ShowUpdatePasswordError : Action()
+        object ShowSavePasswordError : Action()
+        object ShowDeletePasswordError : Action()
         object ShowInvalidPassword : Action()
     }
 }

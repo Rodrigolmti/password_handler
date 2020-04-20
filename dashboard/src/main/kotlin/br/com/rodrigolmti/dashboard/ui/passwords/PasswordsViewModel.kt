@@ -23,8 +23,12 @@ internal class PasswordsViewModel @Inject constructor(
         viewState.state.value = PasswordsViewState.State.LOADING
         getAllSavedPasswordsUseCase().handleResult(
             onSuccess =  {
-                viewState.state.value = PasswordsViewState.State.IDLE
-                viewState.action.value = PasswordsViewState.Action.ShowSavedPasswordList(it)
+                if (it.isNotEmpty()) {
+                    viewState.state.value = PasswordsViewState.State.IDLE
+                    viewState.action.value = PasswordsViewState.Action.ShowSavedPasswordList(it)
+                } else {
+                    viewState.state.value = PasswordsViewState.State.EMPTY_LIST
+                }
             },
             onError =  {
                 viewState.state.value = PasswordsViewState.State.ERROR

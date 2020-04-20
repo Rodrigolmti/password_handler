@@ -15,8 +15,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.rodrigolmti.core_android.base.BaseFragment
 import br.com.rodrigolmti.core_android.extensions.exhaustive
-import br.com.rodrigolmti.core_android.extensions.hide
-import br.com.rodrigolmti.core_android.extensions.show
+import br.com.rodrigolmti.core_android.extensions.hideKeyboard
+import br.com.rodrigolmti.uikit.hide
+import br.com.rodrigolmti.uikit.show
 import br.com.rodrigolmti.core_android.navigation_modes.ImmersiveNavigationMode
 import br.com.rodrigolmti.core_android.navigation_modes.NavigationMode
 import br.com.rodrigolmti.dashboard.R
@@ -49,6 +50,7 @@ class PasswordGeneratorFragment : BaseFragment(), NavigationMode by ImmersiveNav
 
     private fun setupFields() {
         btnAction.setOnClickListener {
+            viewHeader.hideKeyboard()
             if (recyclerView.visibility == View.VISIBLE) {
                 viewModel.dispatchViewAction(PasswordGeneratorAction.ClearModel)
                 recyclerView.adapter = null

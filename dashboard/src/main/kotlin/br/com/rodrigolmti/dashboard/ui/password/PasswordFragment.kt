@@ -10,14 +10,15 @@ import androidx.navigation.fragment.findNavController
 import br.com.rodrigolmti.core_android.TextChangedWatcher
 import br.com.rodrigolmti.core_android.base.BaseFragment
 import br.com.rodrigolmti.core_android.extensions.exhaustive
-import br.com.rodrigolmti.core_android.extensions.hide
-import br.com.rodrigolmti.core_android.extensions.show
+import br.com.rodrigolmti.core_android.extensions.hideKeyboard
 import br.com.rodrigolmti.core_android.navigation_modes.DefaultNavigationMode
 import br.com.rodrigolmti.core_android.navigation_modes.NavigationMode
 import br.com.rodrigolmti.dashboard.R
 import br.com.rodrigolmti.dashboard.domain.model.PasswordModel
 import br.com.rodrigolmti.dashboard.domain.model.SavedPasswordModel
 import br.com.rodrigolmti.dashboard.ui.DashboardActivity
+import br.com.rodrigolmti.uikit.hide
+import br.com.rodrigolmti.uikit.show
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.password_fragment.*
 
@@ -56,6 +57,7 @@ class PasswordFragment : BaseFragment(), NavigationMode by DefaultNavigationMode
         }
 
         btnAction.setOnClickListener {
+            content.hideKeyboard()
             viewModel.dispatchViewAction(
                 PasswordAction.SavePassword(
                     id = savedPasswordModel?.id,
@@ -83,11 +85,15 @@ class PasswordFragment : BaseFragment(), NavigationMode by DefaultNavigationMode
             etPasswordLabel.setText(model.label)
             etPasswordLogin.setText(model.login)
             etPassword.setText(model.password)
+            toolbar.onMenuClick = {
+                viewModel.dispatchViewAction(PasswordAction.DeleteSavedPassword(model))
+            }
         }
 
         observeChanges()
     }
 
+    @Suppress("IMPLICIT_CAST_TO_ANY")
     private fun observeChanges() {
         viewModel.viewState.state.observe(viewLifecycleOwner, Observer { state ->
             when (state) {
@@ -107,14 +113,42 @@ class PasswordFragment : BaseFragment(), NavigationMode by DefaultNavigationMode
                 PasswordViewState.Action.ShowInvalidPasswordLabel -> {
                     Snackbar.make(
                         content,
-                        getString(R.string.password_fragment_invalid_password),
-                        Snackbar.LENGTH_SHORT
+                        getString(R.string.password_fragment_invalid_label), Snackbar.LENGTH_SHORT
                     ).show()
                 }
                 PasswordViewState.Action.ShowInvalidPassword -> {
                     Snackbar.make(
                         content,
-                        getString(R.string.password_fragment_invalid_label), Snackbar.LENGTH_SHORT
+                        getString(R.string.password_fragment_invalid_password),
+                        Snackbar.LENGTH_SHORT
+                    ).show()
+                }
+                PasswordViewState.Action.ShowUpdatePasswordSuccess -> {
+                }
+                PasswordViewState.Action.ShowSavePasswordSuccess -> {
+                }
+                PasswordViewState.Action.ShowUpdatePasswordError -> {
+                    Snackbar.make(
+                        content,
+                        getString(R.string.password_fragment_update_error),
+                        Snackbar.LENGTH_SHORT
+                    ).show()
+                }
+                PasswordViewState.Action.ShowSavePasswordError -> {
+                    Snackbar.make(
+                        content,
+                        getString(R.string.password_fragment_save_error),
+                        Snackbar.LENGTH_SHORT
+                    ).show()
+                }
+                PasswordViewState.Action.ShowDeletePasswordSuccess -> {
+                    findNavController().popBackStack()
+                }
+                PasswordViewState.Action.ShowDeletePasswordError -> {
+                    Snackbar.make(
+                        content,
+                        getString(R.string.password_fragment_delete_error),
+                        Snackbar.LENGTH_SHORT
                     ).show()
                 }
             }.exhaustive

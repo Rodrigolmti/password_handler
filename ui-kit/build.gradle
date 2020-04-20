@@ -37,6 +37,8 @@ android {
 dependencies {
     implementation Kotlin.stdlib
 
+    implementation Layout.constraint
+
     implementation AndroidX.ktx
     implementation AndroidX.appcompat
 }

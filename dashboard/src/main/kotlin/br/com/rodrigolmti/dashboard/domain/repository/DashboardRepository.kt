@@ -6,7 +6,11 @@ import br.com.rodrigolmti.dashboard.domain.model.SavedPasswordModel
 
 interface DashboardRepository {
 
+    suspend fun deletePassword(model: SavedPasswordModel): Result<Unit, DashBoardError>
+
     suspend fun savePassword(model: SavedPasswordModel): Result<Unit, DashBoardError>
+
+    suspend fun updatePassword(model: SavedPasswordModel): Result<Unit, DashBoardError>
 
     suspend fun getAllSavedPasswords(): Result<List<SavedPasswordModel>, DashBoardError>
 }
