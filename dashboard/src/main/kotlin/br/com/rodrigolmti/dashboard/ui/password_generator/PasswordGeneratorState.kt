@@ -14,6 +14,8 @@ class PasswordGeneratorState @Inject constructor() {
 
     sealed class Action {
         data class ShowPasswordList(val passwords: List<PasswordModel>) : Action()
+        object ShowNoParamSelectedError: Action()
+        object ShowNumberTooSmallError: Action()
         object ShowError : Action()
     }
 }

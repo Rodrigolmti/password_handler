@@ -51,7 +51,6 @@ class PasswordGeneratorFragment : BaseFragment() {
                 toIdleState()
                 return@setOnClickListener
             }
-
             viewModel.dispatchViewAction(
                 PasswordGeneratorAction.GeneratePassword(
                     passwordLength = etPasswordLength.text.toString().toInt(),
@@ -82,7 +81,22 @@ class PasswordGeneratorFragment : BaseFragment() {
                     toListSate()
                 }
                 PasswordGeneratorState.Action.ShowError -> {
-
+                    Snackbar.make(
+                        viewHeader,
+                        getString(R.string.password_generator_error), Snackbar.LENGTH_SHORT
+                    ).show()
+                }
+                PasswordGeneratorState.Action.ShowNoParamSelectedError -> {
+                    Snackbar.make(
+                        viewHeader,
+                        getString(R.string.password_generator_no_params), Snackbar.LENGTH_SHORT
+                    ).show()
+                }
+                PasswordGeneratorState.Action.ShowNumberTooSmallError -> {
+                    Snackbar.make(
+                        viewHeader,
+                        getString(R.string.password_generator_too_small), Snackbar.LENGTH_SHORT
+                    ).show()
                 }
             }.exhaustive
         })
@@ -120,7 +134,7 @@ class PasswordGeneratorFragment : BaseFragment() {
         }
         Snackbar.make(
             viewHeader,
-            getString(R.string.passwod_generator_copy_message), Snackbar.LENGTH_SHORT
+            getString(R.string.password_generator_copy_message), Snackbar.LENGTH_SHORT
         ).show()
     }
 
@@ -134,6 +148,7 @@ class PasswordGeneratorFragment : BaseFragment() {
         lottie.hide()
         content.show()
         recyclerView.hide()
+        btnAction.text = getText(R.string.password_generator_generate)
     }
 
     private fun toListSate() {

@@ -19,6 +19,9 @@
     <string name="password_generator_special_characters">Special characters:</string>
     <string name="password_generator_copy">Copy</string>
     <string name="password_generator_save">Save</string>
-    <string name="passwod_generator_copy_message">Password copy to clipboard</string>
+    <string name="password_generator_copy_message">Password copy to clipboard</string>
+    <string name="password_generator_too_small">The password should be at least with 1 character!</string>
+    <string name="password_generator_no_params">Select at least one option!</string>
+    <string name="password_generator_error">Something went wrong, check your parameters and try again!</string>
 
 </resources>
