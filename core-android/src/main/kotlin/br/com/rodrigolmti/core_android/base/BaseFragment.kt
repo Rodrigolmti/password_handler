@@ -22,10 +22,10 @@ abstract class BaseFragment : Fragment() {
         savedInstanceState: Bundle?
     ) {
         super.onViewCreated(view, savedInstanceState)
-        setupBottomNavigationVisibility(view)
+        setupBottomNavigationVisibility()
     }
 
-    private fun setupBottomNavigationVisibility(view: View) {
+    private fun setupBottomNavigationVisibility() {
         setNavigationVisible(parentFragmentManager
             .fragments
             .mapNotNull { it as? NavigationMode }
