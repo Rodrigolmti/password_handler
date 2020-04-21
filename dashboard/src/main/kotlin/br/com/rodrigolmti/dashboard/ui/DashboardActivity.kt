@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import br.com.rodrigolmti.core_android.navigation_modes.NavigationContainer
+import br.com.rodrigolmti.core_android.navigation_modes.NavigationMode
 import br.com.rodrigolmti.dashboard.R
 import br.com.rodrigolmti.dashboard.di.DashboardComponent
 import br.com.rodrigolmti.uikit.hide
@@ -31,6 +32,19 @@ class DashboardActivity : AppCompatActivity(), NavigationContainer {
                 bottomNavigation,
                 it.navController
             )
+        }
+    }
+
+    override fun onBackPressed() {
+        navHostFragment?.let { navHost ->
+            val currentFragment = navHost.childFragmentManager.fragments[0]
+            if (currentFragment is NavigationMode && !currentFragment.isImmersive()) {
+                navHost.navController.popBackStack()
+            } else {
+                super.onBackPressed()
+            }
+        } ?: run {
+            super.onBackPressed()
         }
     }
 
