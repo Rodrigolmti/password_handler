@@ -130,8 +130,18 @@ class PasswordFragment : BaseFragment(), NavigationMode by DefaultNavigationMode
                     ).show()
                 }
                 is PasswordViewState.Action.ShowUpdatePasswordSuccess -> {
+                    Snackbar.make(
+                        content,
+                        getString(R.string.password_fragment_password_updated),
+                        Snackbar.LENGTH_SHORT
+                    ).show()
                 }
                 is PasswordViewState.Action.ShowSavePasswordSuccess -> {
+                    Snackbar.make(
+                        content,
+                        getString(R.string.password_fragment_password_saved),
+                        Snackbar.LENGTH_SHORT
+                    ).show()
                 }
                 is PasswordViewState.Action.ShowUpdatePasswordError -> {
                     Snackbar.make(

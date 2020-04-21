@@ -16,6 +16,8 @@
     <string name="password_fragment_title_save">Save password</string>
     <string name="password_fragment_title_edit">Edit password</string>
     <string name="password_fragment_invalid_password">Invalid password, check and try again!</string>
+    <string name="password_fragment_password_updated">Password updated!</string>
+    <string name="password_fragment_password_saved">Password saved!</string>
     <string name="password_fragment_invalid_label">Invalid label, check and try again!</string>
     <string name="password_fragment_update_error">Seems that there is a problem with the update, try again!</string>
     <string name="password_fragment_save_error">Seems that there is a problem to save, try again!</string>

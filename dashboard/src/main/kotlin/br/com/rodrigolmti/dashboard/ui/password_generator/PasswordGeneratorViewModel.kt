@@ -9,16 +9,15 @@ import br.com.rodrigolmti.dashboard.domain.use_cases.GeneratePreDeterminedPasswo
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-internal class PasswordGeneratorModel {
+internal class PasswordGeneratorModel @Inject constructor() {
     var passwords: List<PasswordModel> = emptyList()
 }
 
 internal class PasswordGeneratorViewModel @Inject constructor(
     override val viewState: PasswordGeneratorViewState,
+    private val model: PasswordGeneratorModel,
     private val generatePreDeterminedPasswordUseCase: GeneratePreDeterminedPasswordUseCase
 ) : BaseViewModel<PasswordGeneratorViewState, PasswordGeneratorAction>() {
-
-    private val model: PasswordGeneratorModel = PasswordGeneratorModel()
 
     @Suppress("IMPLICIT_CAST_TO_ANY")
     override fun dispatchViewAction(viewAction: PasswordGeneratorAction) {

@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import androidx.core.content.ContextCompat
+import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -48,6 +50,21 @@ class PasswordsFragment : BaseFragment(), NavigationMode by ImmersiveNavigationM
     }
 
     private fun setupFields() {
+        etSearch.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                viewModel.dispatchViewAction(PasswordsAction.FilterPasswords(etSearch.text.toString()))
+            }
+            true
+        }
+
+        etSearch.addTextChangedListener {
+            viewModel.dispatchViewAction(PasswordsAction.FilterPasswords(it.toString()))
+        }
+
+        imgSearch.setOnClickListener {
+            viewModel.dispatchViewAction(PasswordsAction.FilterPasswords(etSearch.text.toString()))
+        }
+
         fBtnAdd.setOnClickListener {
             PasswordsFragmentDirections.actionPasswordsToPassword().also { navDirection ->
                 findNavController().navigate(navDirection)
