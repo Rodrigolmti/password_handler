@@ -38,8 +38,10 @@ dependencies {
     implementation Kotlin.stdlib
 
     implementation AndroidX.ktx
-    implementation AndroidX.appcompat
     implementation AndroidX.fragment
+    implementation AndroidX.appcompat
+
+    implementation Navigation.navigationUi
 
     implementation Dagger.core
 }

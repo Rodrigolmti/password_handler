@@ -10,4 +10,8 @@ data class SavedPasswordModel(
     val strength: Int = 0,
     val login: String? = null,
     val label: String
-) : Parcelable
+) : Parcelable {
+
+    val obfuscatedPassword: String
+        get() = List(password.length) { "*" }.joinToString().replace(",", "").trim()
+}

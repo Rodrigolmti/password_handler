@@ -18,7 +18,7 @@ internal class SavedPasswordsAdapter(
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bindData(item: SavedPasswordModel) {
-            itemView.tvPassword.text = item.password
+            itemView.tvPassword.text = item.obfuscatedPassword
             itemView.tvPasswordLabel.text = item.label
             itemView.tvPasswordLogin.text = item.login ?: "-"
             itemView.setOnClickListener {

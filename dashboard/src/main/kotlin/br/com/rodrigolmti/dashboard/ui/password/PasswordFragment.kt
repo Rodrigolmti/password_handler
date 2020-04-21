@@ -19,7 +19,6 @@ import br.com.rodrigolmti.dashboard.domain.model.SavedPasswordModel
 import br.com.rodrigolmti.dashboard.ui.DashboardActivity
 import br.com.rodrigolmti.uikit.hide
 import br.com.rodrigolmti.uikit.show
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.password_fragment.*
 
 class PasswordFragment : BaseFragment(), NavigationMode by DefaultNavigationMode {
@@ -117,65 +116,34 @@ class PasswordFragment : BaseFragment(), NavigationMode by DefaultNavigationMode
                     colorIndicator.selectedPosition = action.strength
                 }
                 is PasswordViewState.Action.ShowInvalidPasswordLabel -> {
-                    Snackbar.make(
-                        content,
-                        getString(R.string.password_fragment_invalid_label), Snackbar.LENGTH_SHORT
-                    ).show()
+                    showSnackbar(getString(R.string.password_fragment_invalid_label))
                 }
                 is PasswordViewState.Action.ShowInvalidPassword -> {
-                    Snackbar.make(
-                        content,
-                        getString(R.string.password_fragment_invalid_password),
-                        Snackbar.LENGTH_SHORT
-                    ).show()
+                    showSnackbar(getString(R.string.password_fragment_invalid_password))
                 }
                 is PasswordViewState.Action.ShowUpdatePasswordSuccess -> {
-                    Snackbar.make(
-                        content,
-                        getString(R.string.password_fragment_password_updated),
-                        Snackbar.LENGTH_SHORT
-                    ).show()
+                    showSnackbar(getString(R.string.password_fragment_password_updated))
                 }
                 is PasswordViewState.Action.ShowSavePasswordSuccess -> {
-                    Snackbar.make(
-                        content,
-                        getString(R.string.password_fragment_password_saved),
-                        Snackbar.LENGTH_SHORT
-                    ).show()
+                    showSnackbar(getString(R.string.password_fragment_password_saved))
                 }
                 is PasswordViewState.Action.ShowUpdatePasswordError -> {
-                    Snackbar.make(
-                        content,
-                        getString(R.string.password_fragment_update_error),
-                        Snackbar.LENGTH_SHORT
-                    ).show()
+                    showSnackbar(getString(R.string.password_fragment_update_error))
                 }
                 is PasswordViewState.Action.ShowSavePasswordError -> {
-                    Snackbar.make(
-                        content,
-                        getString(R.string.password_fragment_save_error),
-                        Snackbar.LENGTH_SHORT
-                    ).show()
+                    showSnackbar(getString(R.string.password_fragment_save_error))
                 }
                 is PasswordViewState.Action.ShowDeletePasswordSuccess -> {
                     findNavController().popBackStack()
                 }
                 is PasswordViewState.Action.ShowDeletePasswordError -> {
-                    Snackbar.make(
-                        content,
-                        getString(R.string.password_fragment_delete_error),
-                        Snackbar.LENGTH_SHORT
-                    ).show()
+                    showSnackbar(getString(R.string.password_fragment_delete_error))
                 }
                 is PasswordViewState.Action.ShowGeneratedPassword -> {
                     etPassword.setText(action.password)
                 }
                 is PasswordViewState.Action.ShowGeneratePasswordError -> {
-                    Snackbar.make(
-                        content,
-                        getString(R.string.password_fragment_generate_password_error),
-                        Snackbar.LENGTH_SHORT
-                    ).show()
+                    showSnackbar(getString(R.string.password_fragment_generate_password_error))
                 }
             }.exhaustive
         })

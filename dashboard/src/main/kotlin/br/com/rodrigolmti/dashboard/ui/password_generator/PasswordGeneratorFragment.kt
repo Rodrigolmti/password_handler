@@ -1,7 +1,5 @@
 package br.com.rodrigolmti.dashboard.ui.password_generator
 
-import android.content.ClipData
-import android.content.ClipboardManager
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,8 +10,8 @@ import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import br.com.rodrigolmti.core_android.base.BaseFragment
+import br.com.rodrigolmti.core_android.extensions.copy
 import br.com.rodrigolmti.core_android.extensions.exhaustive
 import br.com.rodrigolmti.core_android.extensions.hideKeyboard
 import br.com.rodrigolmti.uikit.hide
@@ -87,24 +85,13 @@ class PasswordGeneratorFragment : BaseFragment(), NavigationMode by ImmersiveNav
                     toListSate()
                 }
                 PasswordGeneratorViewState.Action.ShowError -> {
-                    Snackbar.make(
-                        viewHeader,
-                        getString(R.string.password_generator_fragment_error), Snackbar.LENGTH_SHORT
-                    ).show()
+                    showSnackbar(getString(R.string.password_generator_fragment_error))
                 }
                 PasswordGeneratorViewState.Action.ShowNoParamSelectedError -> {
-                    Snackbar.make(
-                        viewHeader,
-                        getString(R.string.password_generator_fragment_no_params),
-                        Snackbar.LENGTH_SHORT
-                    ).show()
+                    showSnackbar(getString(R.string.password_generator_fragment_no_params))
                 }
                 PasswordGeneratorViewState.Action.ShowNumberTooSmallError -> {
-                    Snackbar.make(
-                        viewHeader,
-                        getString(R.string.password_generator_fragment_too_small),
-                        Snackbar.LENGTH_SHORT
-                    ).show()
+                    showSnackbar(getString(R.string.password_generator_fragment_too_small))
                 }
             }.exhaustive
         })
@@ -141,15 +128,9 @@ class PasswordGeneratorFragment : BaseFragment(), NavigationMode by ImmersiveNav
         }
     }
 
-    private fun RecyclerView.handleCopyClick(model: PasswordModel) {
-        (context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager).also { clipboard ->
-            val clip = ClipData.newPlainText("", model.password)
-            clipboard.setPrimaryClip(clip)
-        }
-        Snackbar.make(
-            viewHeader,
-            getString(R.string.password_generator_fragment_copy_message), Snackbar.LENGTH_SHORT
-        ).show()
+    private fun handleCopyClick(model: PasswordModel) {
+        requireContext().copy(model.password)
+        showSnackbar(getString(R.string.password_generator_fragment_copy_message))
     }
 
     private fun toLoadingState() {

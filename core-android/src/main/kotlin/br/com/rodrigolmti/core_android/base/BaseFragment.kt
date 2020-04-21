@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import br.com.rodrigolmti.core_android.navigation_modes.NavigationContainer
 import br.com.rodrigolmti.core_android.navigation_modes.NavigationMode
+import com.google.android.material.snackbar.Snackbar
 import javax.inject.Inject
 
 abstract class BaseFragment : Fragment() {
@@ -35,5 +36,15 @@ abstract class BaseFragment : Fragment() {
 
     private fun setNavigationVisible(isImmersiveFlow: Boolean) {
         (activity as? NavigationContainer)?.isImmersiveFlow = isImmersiveFlow
+    }
+
+    fun showSnackbar(message: String, duration: Int = Snackbar.LENGTH_SHORT) {
+        view?.let {
+            Snackbar.make(
+                it,
+                message,
+                duration
+            ).show()
+        }
     }
 }

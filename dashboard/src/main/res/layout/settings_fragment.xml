@@ -1,11 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true">
+
+    <View
+        android:id="@+id/viewHeader"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/header_view_height"
+        android:background="@drawable/password_generator_top_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
-        android:text="settings"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/padding_start"
+        android:paddingTop="@dimen/padding_top_large"
+        android:paddingEnd="@dimen/padding_end"
+        android:text="@string/settings_fragment_title"
+        android:textColor="@android:color/white"
+        android:textSize="26sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/padding_start"
+        android:paddingTop="@dimen/padding_top_medium"
+        android:paddingEnd="@dimen/padding_end"
+        android:text="@string/settings_fragment_description"
+        android:textColor="@color/gray_light"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
+        android:contentDescription="@null"
+        android:paddingStart="@dimen/padding_start"
+        android:paddingEnd="@dimen/padding_end"
+        android:src="@drawable/ic_settings_board"
+        app:layout_constraintBottom_toBottomOf="@+id/viewHeader"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="loading.json"
+        app:lottie_loop="true" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingStart="16dp"
+        android:paddingTop="30dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="70dp"
+        android:visibility="gone"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewHeader"
+        tools:itemCount="4"
+        tools:listitem="@layout/generated_password_row" />
+
+    <ScrollView
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:paddingStart="@dimen/padding_view"
+        android:paddingTop="30dp"
+        android:paddingEnd="@dimen/padding_view"
+        android:paddingBottom="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewHeader">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical">
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -50,13 +50,20 @@ internal class PasswordsViewModel @Inject constructor(
     }
 
     private fun filterPassword(query: String) {
+        viewState.state.value = PasswordsViewState.State.IDLE
         if (query.isEmpty()) {
             viewState.action.value =
                 PasswordsViewState.Action.ShowSavedPasswordList(model.passwords)
+            return
         }
-        val filter = model.passwords.filter { password ->
+        model.passwords.filter { password ->
             password.label.contains(query) || password.login?.contains(query) == true
+        }.run {
+            if (isEmpty()) {
+                viewState.state.value = PasswordsViewState.State.EMPTY_LIST
+                return
+            }
+            viewState.action.value = PasswordsViewState.Action.ShowSavedPasswordList(this)
         }
-        viewState.action.value = PasswordsViewState.Action.ShowSavedPasswordList(filter)
     }
 }

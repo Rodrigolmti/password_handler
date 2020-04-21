@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.rodrigolmti.core_android.base.BaseFragment
+import br.com.rodrigolmti.core_android.extensions.copy
 import br.com.rodrigolmti.core_android.extensions.exhaustive
 import br.com.rodrigolmti.core_android.navigation_modes.ImmersiveNavigationMode
 import br.com.rodrigolmti.core_android.navigation_modes.NavigationMode
@@ -98,7 +99,7 @@ class PasswordsFragment : BaseFragment(), NavigationMode by ImmersiveNavigationM
                     toLoadingState()
                 }
                 ERROR -> {
-                    toErrorState()
+                    showSnackbar(getString(R.string.generic_error))
                 }
                 EMPTY_LIST -> {
                     toEmptyState()
@@ -129,10 +130,17 @@ class PasswordsFragment : BaseFragment(), NavigationMode by ImmersiveNavigationM
                     }
                 },
                 onCopyLoginClick = { model ->
+                    if (model.login.isNullOrEmpty()) {
+                        showSnackbar(getString(R.string.passwords_fragment_copy_login_error_message))
+                        return@SavedPasswordsAdapter
+                    }
 
+                    requireContext().copy(model.login)
+                    showSnackbar(getString(R.string.passwords_fragment_copy_login_message))
                 },
                 onCopyPasswordClick = { model ->
-
+                    requireContext().copy(model.password)
+                    showSnackbar(getString(R.string.passwords_fragment_copy_password_message))
                 })
         }
     }
@@ -146,13 +154,6 @@ class PasswordsFragment : BaseFragment(), NavigationMode by ImmersiveNavigationM
 
     private fun toLoadingState() {
         lottie.show()
-        recyclerView.hide()
-        imgVoid.hide()
-        tvVoid.hide()
-    }
-
-    private fun toErrorState() {
-        lottie.hide()
         recyclerView.hide()
         imgVoid.hide()
         tvVoid.hide()
