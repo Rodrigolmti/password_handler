@@ -5,9 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import br.com.rodrigolmti.password_keeper.R
 import br.com.rodrigolmti.password_keeper.di.AppComponent
 
-class SplashActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
-    val component: AppComponent by lazy { AppComponent.inject() }
+    val component: AppComponent by lazy { AppComponent.inject(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

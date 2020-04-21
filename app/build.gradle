@@ -47,6 +47,7 @@ dependencies {
     implementation Navigation.navigationFragment
     implementation Navigation.navigationUi
 
+    implementation project(Modules.userPreferences)
     implementation project(Modules.coreAndroid)
     implementation project(Modules.navigator)
     implementation project(Modules.dashboard)

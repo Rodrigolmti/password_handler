@@ -3,6 +3,7 @@ package br.com.rodrigolmti.injector
 import android.app.Activity
 import android.app.Application
 import br.com.rodrigolmti.database.PasswordDatabase
+import br.com.rodrigolmti.user_preferences.UserPreferences
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -14,6 +15,8 @@ import javax.inject.Singleton
 interface CoreComponent {
 
     fun providesDatabase(): PasswordDatabase
+
+    fun providesUserPreferences(): UserPreferences
 
     @Component.Builder
     interface Builder {

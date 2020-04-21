@@ -1,4 +1,4 @@
-package br.com.rodrigolmti.password_keeper.ui
+package br.com.rodrigolmti.password_keeper.ui.splash
 
 import android.content.Context
 import android.os.Bundle
@@ -6,11 +6,14 @@ import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import br.com.rodrigolmti.core_android.base.BaseFragment
 import br.com.rodrigolmti.navigator.Actions
 import br.com.rodrigolmti.password_keeper.R
+import br.com.rodrigolmti.password_keeper.ui.MainActivity
 
-class SplashFragment : Fragment() {
+class SplashFragment : BaseFragment() {
+
+    private val viewModel by lazy { getViewModel(SplashViewModel::class.java) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,7 +25,7 @@ class SplashFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        (context as SplashActivity).component.inject(this)
+        (context as MainActivity).component.inject(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

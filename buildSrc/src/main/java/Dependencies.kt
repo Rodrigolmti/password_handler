@@ -25,6 +25,7 @@ object Modules {
     const val navigator = ":navigator"
     const val uiKit = ":ui-kit"
     const val database = ":database"
+    const val userPreferences = ":user-preferences"
 }
 
 object Kotlin {
@@ -68,8 +69,6 @@ object AndroidX {
         const val ktx = "1.2.0"
         const val appcompat = "1.1.0"
         const val support = "1.0.0"
-        const val transition = "1.0.1"
-        const val annotation = "1.0.2"
         const val fragment = "1.2.2"
         const val room = "2.2.5"
     }

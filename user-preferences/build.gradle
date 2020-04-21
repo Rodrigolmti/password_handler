@@ -13,7 +13,6 @@ android {
         versionCode Releases.versionCode
         versionName Releases.versionName
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
 
@@ -29,16 +28,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 }
 
 dependencies {
     implementation Kotlin.stdlib
-
-    implementation Lifecycle.liveData
-    implementation Lifecycle.viewModel
-
-    implementation project(Modules.database)
-    implementation project(Modules.userPreferences)
 
     implementation Dagger.core
     kapt Dagger.compiler

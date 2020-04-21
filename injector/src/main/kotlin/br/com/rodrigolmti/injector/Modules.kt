@@ -4,11 +4,18 @@ import androidx.lifecycle.ViewModelProvider
 import br.com.rodrigolmti.database.AppPasswordDatabase
 import br.com.rodrigolmti.database.PasswordDatabase
 import br.com.rodrigolmti.injector.common.ViewModelProviderFactory
+import br.com.rodrigolmti.user_preferences.AppUserPreferences
+import br.com.rodrigolmti.user_preferences.UserPreferences
 import dagger.Binds
 import dagger.Module
 
 @Module
 internal abstract class CoreModule {
+
+    @[Binds]
+    abstract fun bindUserPreferences(
+        appUserPreferences: AppUserPreferences
+    ): UserPreferences
 
     @[Binds]
     abstract fun bindAppDatabase(
