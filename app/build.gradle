@@ -80,6 +80,9 @@ dependencies {
     implementation Navigation.navigationFragment
     implementation Navigation.navigationUi
 
+    implementation Firebase.analytics
+    implementation Firebase.crashlytics
+
     implementation project(Modules.userPreferences)
     implementation project(Modules.coreAndroid)
     implementation project(Modules.navigator)
@@ -93,3 +96,6 @@ dependencies {
 }
 
 check.dependsOn ktlint
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'

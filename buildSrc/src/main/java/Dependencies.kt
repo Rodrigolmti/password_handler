@@ -62,7 +62,16 @@ object Navigation {
     const val navigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.navigationVersion}"
     const val navigationArgs =
         "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigationVersion}"
+}
 
+object Firebase {
+    object Versions {
+        const val analytics = "17.0.0"
+        const val crashlytics = "17.0.0-beta04"
+    }
+
+    const val analytics = "com.google.firebase:firebase-core:${Versions.analytics}"
+    const val crashlytics = "com.google.firebase:firebase-crashlytics:${Versions.crashlytics}"
 }
 
 object AndroidX {
