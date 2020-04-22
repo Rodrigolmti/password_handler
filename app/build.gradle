@@ -34,10 +34,34 @@ android {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
+    signingConfigs {
+        release {
+            storeFile file("keys/release.keystore")
+            storePassword "7nkjq5POjRhT10CZNAYN6fZu8j01Hj4FNfp"
+            keyAlias "release"
+            keyPassword "fnswA9slDwAc0D3zIuUu7C47MkqyEAbjnKW"
+        }
+
+        debug {
+            storeFile file('keys/debug.keystore')
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
+    }
+
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            minifyEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            consumerProguardFiles 'proguard-file.pro'
+        }
+        debug {
+            signingConfig signingConfigs.debug
+            ext.alwaysUpdateBuildId = false
+            ext.enableCrashlytics = false
         }
     }
 }
