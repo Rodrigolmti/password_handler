@@ -42,6 +42,9 @@ android {
 dependencies {
     implementation Kotlin.stdlib
 
+    implementation project(Modules.userPreferences)
+    implementation project(Modules.coreAndroid)
+
     implementation Dagger.core
     kapt Dagger.compiler
 }

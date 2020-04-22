@@ -1,3 +1,4 @@
+include ':security'
 include ':user-preferences'
 include ':database'
 include ':ui-kit'

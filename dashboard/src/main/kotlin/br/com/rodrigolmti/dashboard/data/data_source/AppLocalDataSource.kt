@@ -6,6 +6,7 @@ import br.com.rodrigolmti.dashboard.data.mapper.SavedPasswordModelMapper
 import br.com.rodrigolmti.dashboard.domain.error.DashboardError
 import br.com.rodrigolmti.dashboard.domain.model.SavedPasswordModel
 import br.com.rodrigolmti.database.PasswordDatabase
+import br.com.rodrigolmti.user_preferences.UserPreferences
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -13,6 +14,7 @@ import javax.inject.Inject
 class AppLocalDataSource @Inject constructor(
     private val savedPasswordEntityMapper: SavedPasswordEntityMapper,
     private val savedPasswordModelMapper: SavedPasswordModelMapper,
+    private val userPreferences: UserPreferences,
     private val database: PasswordDatabase
 ) : LocalDataSource {
 

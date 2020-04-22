@@ -34,8 +34,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 }
 
@@ -58,8 +59,10 @@ dependencies {
 
     implementation AndroidX.room
 
+    implementation project(Modules.userPreferences)
     implementation project(Modules.coreAndroid)
     implementation project(Modules.navigator)
+    implementation project(Modules.security)
     implementation project(Modules.database)
     implementation project(Modules.injector)
     implementation project(Modules.uiKit)

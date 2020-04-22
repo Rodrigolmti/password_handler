@@ -26,6 +26,7 @@ object Modules {
     const val uiKit = ":ui-kit"
     const val database = ":database"
     const val userPreferences = ":user-preferences"
+    const val security = ":security"
 }
 
 object Kotlin {

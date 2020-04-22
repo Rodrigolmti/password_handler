@@ -9,11 +9,12 @@ import br.com.rodrigolmti.dashboard.ui.settings.SettingsFragment
 import br.com.rodrigolmti.injector.CoreComponent
 import br.com.rodrigolmti.injector.ViewModelFactoryModule
 import br.com.rodrigolmti.injector.coreComponent
+import br.com.rodrigolmti.security.di.SecurityModule
 import dagger.Component
 
 @DashboardScope
 @Component(
-    modules = [ViewModelFactoryModule::class, DashboardModule::class],
+    modules = [ViewModelFactoryModule::class, DashboardModule::class, SecurityModule::class],
     dependencies = [CoreComponent::class]
 )
 interface DashboardComponent {
