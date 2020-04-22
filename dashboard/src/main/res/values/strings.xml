@@ -48,6 +48,8 @@
 
     <string name="settings_fragment_title">Settings</string>
     <string name="settings_fragment_description">Tweak the application to your way by playing with the options below!</string>
+    <string name="settings_fragment_biometric">Request biometric to open the app</string>
+    <string name="settings_fragment_info">Made with ❤️ by Rodrigo Martins, Password keeper doesn\'t keep any data or share with our partners, all the passwords saved here will remain on the device using algorithms to encode them.</string>
 
 
 </resources>

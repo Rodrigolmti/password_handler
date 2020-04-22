@@ -1,7 +1,5 @@
 <resources>
 
-    <string name="app_name">password_keeper</string>
-
-    <string name="splash_screen_title">Password Keeper</string>
+    <string name="app_name">Password Keeper</string>
 
 </resources>
