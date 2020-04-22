@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import br.com.rodrigolmti.core_android.base.BaseFragment
 import br.com.rodrigolmti.core_android.extensions.exhaustive
+import br.com.rodrigolmti.dashboard.domain.model.BiometricEvent
+import br.com.rodrigolmti.dashboard.ui.biometric.BiometricPromptManager
 import br.com.rodrigolmti.navigator.Actions
 import br.com.rodrigolmti.password_keeper.R
 import br.com.rodrigolmti.password_keeper.ui.MainActivity
@@ -34,9 +36,27 @@ class SplashFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Handler().postDelayed({
-            viewModel.dispatchViewAction(SplashAction.Init)
-        }, DELAY)
+//        Handler().postDelayed({
+//            viewModel.dispatchViewAction(SplashAction.Init)
+//        }, DELAY)
+
+        BiometricPromptManager(
+            context,
+            childFragmentManager,
+            title = "Authenticate",
+            negativeButtonText = "Cancel"
+        ) authenticate { biometricEvent ->
+            when (biometricEvent) {
+                BiometricEvent.AuthenticationCancelled -> {
+                    print("")
+                }
+                BiometricEvent.AuthenticationSucceeded -> {
+                    print("")
+                }
+            }
+        }
+
+
         setupFields()
     }
 

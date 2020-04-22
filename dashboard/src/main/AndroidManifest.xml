@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.rodrigolmti.dashboard">
 
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+
     <application android:theme="@style/AppTheme">
         <activity android:name=".ui.DashboardActivity">
             <intent-filter>
