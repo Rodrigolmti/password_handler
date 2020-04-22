@@ -24,4 +24,11 @@ class AppUserPreferences @Inject constructor(
     }
 
     override fun getString(key: String): String? = sharedPreferences.getString(key, null)
+
+    override fun putBoolean(key: String, value: Boolean): Boolean = with(sharedPreferences.edit()) {
+        putBoolean(key, value)
+        commit()
+    }
+
+    override fun getBoolean(key: String): Boolean = sharedPreferences.getBoolean(key, false)
 }

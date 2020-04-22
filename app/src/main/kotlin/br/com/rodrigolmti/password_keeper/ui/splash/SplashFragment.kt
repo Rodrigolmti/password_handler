@@ -2,17 +2,21 @@ package br.com.rodrigolmti.password_keeper.ui.splash
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import br.com.rodrigolmti.core_android.base.BaseFragment
 import br.com.rodrigolmti.core_android.extensions.exhaustive
-import br.com.rodrigolmti.security.domain.model.BiometricEvent
-import br.com.rodrigolmti.security.biometric.BiometricPromptManager
 import br.com.rodrigolmti.navigator.Actions
 import br.com.rodrigolmti.password_keeper.R
 import br.com.rodrigolmti.password_keeper.ui.MainActivity
+import br.com.rodrigolmti.security.biometric.BiometricPromptManager
+import br.com.rodrigolmti.security.domain.model.BiometricEvent
+import br.com.rodrigolmti.uikit.hide
+import br.com.rodrigolmti.uikit.show
+import kotlinx.android.synthetic.main.fragment_splash.*
 
 private const val DELAY = 1000L
 
@@ -35,10 +39,34 @@ class SplashFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        Handler().postDelayed({
-//            viewModel.dispatchViewAction(SplashAction.Init)
-//        }, DELAY)
+        Handler().postDelayed({
+            viewModel.dispatchViewAction(SplashAction.Init)
+        }, DELAY)
+        setupFields()
+    }
 
+    private fun setupFields() {
+        tvTryAgain.setOnClickListener {
+            toLoadingState()
+            requestBiometric()
+        }
+        observeChanges()
+    }
+
+    private fun observeChanges() {
+        viewModel.viewState.action.observe(viewLifecycleOwner, Observer { action ->
+            when (action) {
+                is SplashViewState.Action.NavigateToDashboard -> {
+                    startDashboardActivity()
+                }
+                is SplashViewState.Action.ValidateBiometric -> {
+                    requestBiometric()
+                }
+            }.exhaustive
+        })
+    }
+
+    private fun requestBiometric() {
         BiometricPromptManager(
             context,
             childFragmentManager,
@@ -46,34 +74,35 @@ class SplashFragment : BaseFragment() {
             subtitle = getString(R.string.splash_fragment_biometric_subtitle)
         ) authenticate { biometricEvent ->
             when (biometricEvent) {
+                BiometricEvent.AuthenticationFailed -> {
+                    toErrorState()
+                }
                 BiometricEvent.AuthenticationCancelled -> {
-                    print("")
+                    toErrorState()
                 }
                 BiometricEvent.AuthenticationSucceeded -> {
-                    print("")
+                    startDashboardActivity()
                 }
             }
         }
-        setupFields()
     }
 
-    private fun setupFields() {
-        observeChanges()
+    private fun startDashboardActivity(): Unit? {
+        startActivity(Actions.openDashboard(requireContext()))
+        return activity?.finish()
     }
 
-    private fun observeChanges() {
-        viewModel.viewState.action.observe(viewLifecycleOwner, Observer { action ->
-            when (action) {
-                is SplashViewState.Action.KeyGenerationSucceeded -> {
-                    startActivity(Actions.openDashboard(requireContext()))
-                    activity?.finish()
-                }
-                is SplashViewState.Action.KeyGenerationError -> {
-                    startActivity(Actions.openDashboard(requireContext()))
-                    activity?.finish()
-                    //TODO: Handle the error, log events and bla bla
-                }
-            }.exhaustive
-        })
+    private fun toLoadingState() {
+        lottie.show()
+        imgVoid.hide()
+        tvVoid.hide()
+        tvTryAgain.hide()
+    }
+
+    private fun toErrorState() {
+        lottie.hide()
+        imgVoid.show()
+        tvVoid.show()
+        tvTryAgain.show()
     }
 }

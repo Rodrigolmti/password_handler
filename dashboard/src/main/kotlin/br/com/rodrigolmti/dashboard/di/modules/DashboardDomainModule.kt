@@ -3,6 +3,10 @@ package br.com.rodrigolmti.dashboard.di.modules
 import br.com.rodrigolmti.dashboard.data.repository.AppDashboardRepository
 import br.com.rodrigolmti.dashboard.domain.repository.DashboardRepository
 import br.com.rodrigolmti.dashboard.domain.use_cases.*
+import br.com.rodrigolmti.security.domain.use_case.GetUserBiometric
+import br.com.rodrigolmti.security.domain.use_case.GetUserBiometricUseCase
+import br.com.rodrigolmti.security.domain.use_case.UpdateUserBiometric
+import br.com.rodrigolmti.security.domain.use_case.UpdateUserBiometricUseCase
 import dagger.Binds
 import dagger.Module
 import dagger.Reusable

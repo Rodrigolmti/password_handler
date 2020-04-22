@@ -19,4 +19,9 @@ class AppSecurityRepository @Inject constructor(
         localDataSource.saveUserVector(vector)
 
     override suspend fun getUserVector(): String? = localDataSource.getUserVector()
+
+    override suspend fun updateUserBiometric(checked: Boolean): Boolean =
+        localDataSource.updateUserBiometric(checked)
+
+    override suspend fun getUserBiometric(): Boolean = localDataSource.getUserBiometric()
 }

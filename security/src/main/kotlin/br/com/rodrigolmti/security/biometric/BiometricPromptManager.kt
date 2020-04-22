@@ -68,6 +68,13 @@ class BiometricPromptManager(
                         biometricPromptBottomSheet.statusColor = R.color.biometric_error
                         animateHandler.postDelayed(resetAnimate, 2000)
                     }
+
+                    biometricPromptBottomSheet.isVisible.takeIf { it }?.run {
+                        biometricPromptBottomSheet.dismiss()
+                        animateHandler.removeCallbacks(resetAnimate)
+                    }
+
+                    biometricEventListener(BiometricEvent.AuthenticationFailed)
                 }
 
                 override fun onAuthenticationFailed() {

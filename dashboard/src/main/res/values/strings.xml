@@ -10,6 +10,7 @@
     <string name="action_copy">Copy</string>
     <string name="action_save">Save</string>
     <string name="action_edit">Edit</string>
+    <string name="action_try_again">Try again</string>
 
     <string name="passwords_fragment_title">Saved Passwords</string>
     <string name="passwords_fragment_description">You can see here your saved passwords, for more detail select one of them!</string>

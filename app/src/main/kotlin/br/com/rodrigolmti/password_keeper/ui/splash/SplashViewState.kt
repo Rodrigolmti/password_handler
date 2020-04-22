@@ -8,7 +8,7 @@ internal class SplashViewState @Inject constructor() {
     val action: SingleLiveEvent<Action> = SingleLiveEvent()
 
     sealed class Action {
-        object KeyGenerationSucceeded : Action()
-        object KeyGenerationError : Action()
+        object ValidateBiometric : Action()
+        object NavigateToDashboard : Action()
     }
 }

@@ -12,4 +12,8 @@ interface SecurityRepository {
     suspend fun saveUserVector(vector: String): Result<Unit, SecurityError>
 
     suspend fun getUserVector(): String?
+
+    suspend fun updateUserBiometric(checked: Boolean): Boolean
+
+    suspend fun getUserBiometric(): Boolean
 }

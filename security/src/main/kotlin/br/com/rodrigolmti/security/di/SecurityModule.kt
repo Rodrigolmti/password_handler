@@ -44,6 +44,16 @@ abstract class SecurityDomainModule {
     abstract fun bindsDecodePasswordUseCase(
         decodePassword: DecodePassword
     ): DecodePasswordUseCase
+
+    @[Binds Reusable]
+    abstract fun bindsUpdateUserBiometricUseCase(
+        updateUserBiometric: UpdateUserBiometric
+    ): UpdateUserBiometricUseCase
+
+    @[Binds Reusable]
+    abstract fun bindsGetUserBiometricUseCase(
+        getUserBiometric: GetUserBiometric
+    ): GetUserBiometricUseCase
 }
 
 @Module
