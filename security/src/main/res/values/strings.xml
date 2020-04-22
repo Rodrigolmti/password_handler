@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="biometric_sensor_touch">Touch on the biometric sensor</string>
+    <string name="biometric_failed">Not recognized</string>
+
+</resources>

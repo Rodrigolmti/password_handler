@@ -18,7 +18,4 @@
     <color name="amber600">#FDB913</color>
     <color name="greenA700">#20C05D</color>
 
-    <color name="biometric_status">@color/gray700</color>
-    <color name="biometric_error">@color/red500</color>
-
 </resources>

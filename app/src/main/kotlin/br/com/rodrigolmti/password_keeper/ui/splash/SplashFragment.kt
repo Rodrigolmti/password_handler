@@ -2,15 +2,14 @@ package br.com.rodrigolmti.password_keeper.ui.splash
 
 import android.content.Context
 import android.os.Bundle
-import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import br.com.rodrigolmti.core_android.base.BaseFragment
 import br.com.rodrigolmti.core_android.extensions.exhaustive
-import br.com.rodrigolmti.dashboard.domain.model.BiometricEvent
-import br.com.rodrigolmti.dashboard.ui.biometric.BiometricPromptManager
+import br.com.rodrigolmti.security.domain.model.BiometricEvent
+import br.com.rodrigolmti.security.biometric.BiometricPromptManager
 import br.com.rodrigolmti.navigator.Actions
 import br.com.rodrigolmti.password_keeper.R
 import br.com.rodrigolmti.password_keeper.ui.MainActivity
@@ -43,8 +42,8 @@ class SplashFragment : BaseFragment() {
         BiometricPromptManager(
             context,
             childFragmentManager,
-            title = "Authenticate",
-            negativeButtonText = "Cancel"
+            title = getString(R.string.splash_fragment_biometric_title),
+            subtitle = getString(R.string.splash_fragment_biometric_subtitle)
         ) authenticate { biometricEvent ->
             when (biometricEvent) {
                 BiometricEvent.AuthenticationCancelled -> {
@@ -55,8 +54,6 @@ class SplashFragment : BaseFragment() {
                 }
             }
         }
-
-
         setupFields()
     }
 

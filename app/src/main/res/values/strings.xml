@@ -2,4 +2,7 @@
 
     <string name="app_name">Password Keeper</string>
 
+    <string name="splash_fragment_biometric_title">Biometric Validation</string>
+    <string name="splash_fragment_biometric_subtitle">Unlock the application with your finger</string>
+
 </resources>

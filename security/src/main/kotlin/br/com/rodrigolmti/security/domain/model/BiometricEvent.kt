@@ -1,4 +1,4 @@
-package br.com.rodrigolmti.dashboard.domain.model
+package br.com.rodrigolmti.security.domain.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

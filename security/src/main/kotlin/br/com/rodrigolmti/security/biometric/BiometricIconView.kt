@@ -1,4 +1,4 @@
-package br.com.rodrigolmti.uikit.widgets
+package br.com.rodrigolmti.security.biometric
 
 import android.content.Context
 import android.graphics.drawable.Animatable
@@ -8,7 +8,7 @@ import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
-import br.com.rodrigolmti.ui_kit.R
+import br.com.rodrigolmti.security.R
 
 class BiometricIconView @JvmOverloads constructor(
     context: Context,

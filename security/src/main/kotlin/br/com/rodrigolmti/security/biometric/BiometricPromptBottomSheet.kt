@@ -1,4 +1,4 @@
-package br.com.rodrigolmti.dashboard.ui.biometric
+package br.com.rodrigolmti.security.biometric
 
 import android.content.DialogInterface
 import android.os.Bundle
@@ -11,10 +11,8 @@ import androidx.annotation.UiThread
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.os.CancellationSignal
 import androidx.fragment.app.FragmentManager
-import br.com.rodrigolmti.uikit.BaseBottomSheet
-import br.com.rodrigolmti.dashboard.R
-import br.com.rodrigolmti.dashboard.domain.model.BiometricEvent
-import br.com.rodrigolmti.uikit.widgets.BiometricIconView
+import br.com.rodrigolmti.security.R
+import br.com.rodrigolmti.security.domain.model.BiometricEvent
 import kotlinx.android.synthetic.main.biometric_prompt_bottom_sheet.*
 
 typealias BiometricEventListener = (event: BiometricEvent) -> Unit
@@ -33,7 +31,9 @@ class BiometricPromptBottomSheet private constructor(
     ) {
         @UiThread
         fun build(): BiometricPromptBottomSheet {
-            return BiometricPromptBottomSheet(this)
+            return BiometricPromptBottomSheet(
+                this
+            )
         }
 
         @UiThread

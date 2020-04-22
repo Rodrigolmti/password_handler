@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/colorPrimaryDark"
     android:paddingStart="24dp"
     android:paddingEnd="24dp">
 
@@ -53,7 +54,7 @@
         tools:text="Description"
         tools:visibility="visible" />
 
-    <br.com.rodrigolmti.uikit.widgets.BiometricIconView
+    <br.com.rodrigolmti.security.biometric.BiometricIconView
         android:id="@+id/img_fingerprint"
         android:layout_width="64dp"
         android:layout_height="64dp"
@@ -67,13 +68,15 @@
         android:id="@+id/item_status"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="20dp"
         android:ellipsize="end"
         android:gravity="center"
         android:maxLines="3"
         android:text="@string/biometric_sensor_touch"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
         android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_fingerprint" />

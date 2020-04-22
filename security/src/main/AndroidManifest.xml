@@ -1,1 +1,6 @@
-<manifest package="br.com.rodrigolmti.security" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="br.com.rodrigolmti.security">
+
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+
+</manifest>

@@ -1,4 +1,4 @@
-package br.com.rodrigolmti.core_android
+package br.com.rodrigolmti.security.biometric
 
 import android.Manifest
 import android.content.Context

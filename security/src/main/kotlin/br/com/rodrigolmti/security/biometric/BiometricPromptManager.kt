@@ -1,22 +1,19 @@
-package br.com.rodrigolmti.dashboard.ui.biometric
+package br.com.rodrigolmti.security.biometric
 
 import android.content.Context
 import android.os.Handler
 import androidx.core.hardware.fingerprint.FingerprintManagerCompat
 import androidx.core.os.CancellationSignal
 import androidx.fragment.app.FragmentManager
-import br.com.rodrigolmti.core_android.BiometricHelper
-import br.com.rodrigolmti.dashboard.R
-import br.com.rodrigolmti.dashboard.domain.model.BiometricEvent
-import br.com.rodrigolmti.uikit.widgets.BiometricIconView
+import br.com.rodrigolmti.security.R
+import br.com.rodrigolmti.security.domain.model.BiometricEvent
 
 class BiometricPromptManager(
     private val context: Context?,
     private val fragmentManager: FragmentManager,
     private var title: CharSequence? = null,
     private var subtitle: CharSequence? = null,
-    private var description: CharSequence? = null,
-    private var negativeButtonText: CharSequence? = null
+    private var description: CharSequence? = null
 ) {
 
     infix fun authenticate(biometricEventListener: BiometricEventListener) {
@@ -33,7 +30,8 @@ class BiometricPromptManager(
     private fun displayBiometricPrompt(biometricEventListener: BiometricEventListener) {
         val cancellationSignal = CancellationSignal()
 
-        val biometricPromptBottomSheet = createBiometricPromptBottomSheet(biometricEventListener, cancellationSignal)
+        val biometricPromptBottomSheet =
+            createBiometricPromptBottomSheet(biometricEventListener, cancellationSignal)
 
         val animateHandler = Handler(context?.mainLooper)
         val resetAnimate = Runnable {
@@ -83,7 +81,10 @@ class BiometricPromptManager(
         )
     }
 
-    private fun createBiometricPromptBottomSheet(biometricEventListener: BiometricEventListener, cancellationSignal: CancellationSignal): BiometricPromptBottomSheet {
+    private fun createBiometricPromptBottomSheet(
+        biometricEventListener: BiometricEventListener,
+        cancellationSignal: CancellationSignal
+    ): BiometricPromptBottomSheet {
         return BiometricPromptBottomSheet.Builder(
             fragmentManager,
             title,
