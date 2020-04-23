@@ -6,26 +6,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.ColorRes
-import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.os.CancellationSignal
 import androidx.fragment.app.FragmentManager
+import br.com.rodrigolmti.core_android.extensions.hideKeyboard
+import br.com.rodrigolmti.core_android.extensions.setStateExpanded
 import br.com.rodrigolmti.security.R
 import br.com.rodrigolmti.security.domain.model.BiometricEvent
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.biometric_prompt_bottom_sheet.*
 
 typealias BiometricEventListener = (event: BiometricEvent) -> Unit
 
 class BiometricPromptBottomSheet private constructor(
     private val builder: Builder
-) : BaseBottomSheet() {
+) : BottomSheetDialogFragment() {
 
     class Builder(
         private val fragmentManager: FragmentManager,
         val title: CharSequence? = null,
         val subtitle: CharSequence? = null,
-        val description: CharSequence? = null,
         val biometricEventListener: BiometricEventListener? = null,
         val cancellationSignal: CancellationSignal? = null
     ) {
@@ -44,6 +45,24 @@ class BiometricPromptBottomSheet private constructor(
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        setStateExpanded()
+    }
+
+    override fun getTheme(): Int {
+        return R.style.BottomSheetDialog
+    }
+
+    override fun onDismiss(dialog: DialogInterface) {
+        view?.hideKeyboard()
+        super.onDismiss(dialog)
+    }
+
+    fun show(fragmentManager: FragmentManager) {
+        show(fragmentManager, BottomSheetDialogFragment::javaClass.name)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -58,55 +77,31 @@ class BiometricPromptBottomSheet private constructor(
         initialStatus()
         title = builder.title
         subtitle = builder.subtitle
-        description = builder.description
     }
 
     private var title: CharSequence?
-        get() = item_title.text
+        get() = tvTitle.text
         set(value) {
-            item_title.text = value
+            tvTitle.text = value
         }
 
     private var subtitle: CharSequence?
-        get() = item_subtitle.text
+        get() = tvSubtitle.text
         set(value) {
-            item_subtitle.text = value
-            item_subtitle.visibility = View.VISIBLE
+            tvSubtitle.text = value
+            tvSubtitle.visibility = View.VISIBLE
         }
-
-    private var description: CharSequence?
-        get() = item_description.text
-        set(value) {
-            item_description.text = value
-            item_description.visibility = View.VISIBLE
-        }
-
-    private var biometricIcon: Int = 0
-        set(@DrawableRes value) {
-            value.takeIf { it != 0 }?.let {
-                img_fingerprint.setImageResource(it)
-            }
-
-            field = value
-        }
-
-    var stateIcon: BiometricIconView.State
-        get() = img_fingerprint.state
-        set(value) {
-            img_fingerprint.setState(value)
-        }
-
 
     var status: CharSequence?
-        get() = item_status.text
+        get() = tvStatus.text
         set(value) {
-            item_status.text = value
+            tvStatus.text = value
         }
 
     var statusColor: Int
-        get() = item_status.currentTextColor
+        get() = tvStatus.currentTextColor
         set(@ColorRes value) {
-            item_status.setTextColor(AppCompatResources.getColorStateList(requireContext(), value))
+            tvStatus.setTextColor(AppCompatResources.getColorStateList(requireContext(), value))
         }
 
     override fun onCancel(dialog: DialogInterface) {
@@ -118,7 +113,6 @@ class BiometricPromptBottomSheet private constructor(
     @UiThread
     fun initialStatus() {
         context?.let {
-            stateIcon = BiometricIconView.State.ON
             status = it.getString(R.string.biometric_sensor_touch)
             statusColor = R.color.biometric_status
         }

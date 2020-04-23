@@ -9,13 +9,13 @@
     android:paddingEnd="24dp">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/item_title"
+        android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
         android:textColor="@android:color/white"
-        app:layout_constraintBottom_toTopOf="@id/item_subtitle"
+        app:layout_constraintBottom_toTopOf="@id/tvSubtitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,49 +23,36 @@
         tools:text="Title" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/item_subtitle"
+        android:id="@+id/tvSubtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
         android:textColor="@android:color/white"
         android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/item_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/item_title"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
         tools:text="Subtitle"
         tools:visibility="visible" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/item_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-        android:textColor="@android:color/white"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/img_fingerprint"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/item_subtitle"
-        tools:text="Description"
-        tools:visibility="visible" />
-
-    <br.com.rodrigolmti.security.biometric.BiometricIconView
-        android:id="@+id/img_fingerprint"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgFingerprint"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_marginTop="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/item_status"
+        android:background="?selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintBottom_toTopOf="@id/tvStatus"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/item_description" />
+        app:layout_constraintTop_toBottomOf="@id/tvSubtitle"
+        app:srcCompat="@drawable/fingerprint_draw" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/item_status"
+        android:id="@+id/tvStatus"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -79,6 +66,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_fingerprint" />
+        app:layout_constraintTop_toBottomOf="@id/imgFingerprint" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
