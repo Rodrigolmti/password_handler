@@ -16,3 +16,4 @@ This is a simple application to handle your passwords, using:
 
 - Unit tests
 - Request pin to open the app
+- Organize layouts, dimens ...
