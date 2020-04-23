@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="padding_view">@dimen/padding_16</dimen>
-
-    <dimen name="padding_start">@dimen/padding_16</dimen>
-    <dimen name="padding_end">@dimen/padding_16</dimen>
-
-    <dimen name="padding_top_large">@dimen/padding_16</dimen>
-    <dimen name="padding_top_medium">@dimen/padding_8dp</dimen>
-
-    <dimen name="padding_8dp">8dp</dimen>
-    <dimen name="padding_16">16dp</dimen>
     <dimen name="header_view_height">120dp</dimen>
+    <dimen name="text_button_height">40dp</dimen>
 
 </resources>

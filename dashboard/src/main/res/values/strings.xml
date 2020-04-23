@@ -18,6 +18,8 @@
     <string name="passwords_fragment_copy_password_message">Password copy to clipboard</string>
     <string name="passwords_fragment_copy_login_error_message">There is no login to copy</string>
     <string name="passwords_fragment_copy_login_message">Login copy to clipboard</string>
+    <string name="passwords_fragment_copy_login">Copy login</string>
+    <string name="passwords_fragment_copy_password">Copy password</string>
 
     <string name="password_fragment_title_save">Save password</string>
     <string name="password_fragment_title_edit">Edit password</string>

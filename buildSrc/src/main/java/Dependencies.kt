@@ -1,6 +1,5 @@
 object ApplicationId {
     const val id = "br.com.rodrigolmti.password_keeper"
-    const val demo = "br.com.rodrigolmti.password_keeper.demo"
 }
 
 object Versions {
@@ -90,6 +89,17 @@ object AndroidX {
     const val room = "androidx.room:room-runtime:${Versions.room}"
     const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
     const val roomExt = "  androidx.room:room-ktx:${Versions.room}"
+}
+
+object Mockito {
+    object Versions {
+        const val mockito = "2.25.1"
+        const val mockitoKotlin = "1.5.0"
+    }
+
+    const val core = "org.mockito:mockito-core:${Versions.mockito}"
+    const val kotlin = "com.nhaarman:mockito-kotlin:${Versions.mockitoKotlin}"
+    const val android = "org.mockito:mockito-android:${Versions.mockito}"
 }
 
 object Libraries {

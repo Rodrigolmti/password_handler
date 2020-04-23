@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="padding_view">@dimen/padding_16</dimen>
+
+    <dimen name="padding_start">@dimen/padding_16</dimen>
+    <dimen name="padding_end">@dimen/padding_16</dimen>
+
+    <dimen name="padding_top_large">@dimen/padding_16</dimen>
+    <dimen name="padding_top_medium">@dimen/padding_8dp</dimen>
+
+    <dimen name="margin_start_large">@dimen/margin_16dp</dimen>
+    <dimen name="margin_start_medium">@dimen/margin_8dp</dimen>
+
+    <dimen name="margin_end_large">@dimen/margin_16dp</dimen>
+    <dimen name="margin_end_medium">@dimen/margin_8dp</dimen>
+
+    <dimen name="margin_bottom">@dimen/margin_16dp</dimen>
+
+    <dimen name="margin_top_large">@dimen/margin_16dp</dimen>
+    <dimen name="margin_top_medium">@dimen/margin_8dp</dimen>
+
+    <dimen name="corner_radios">8dp</dimen>
+
+    <dimen name="padding_8dp">8dp</dimen>
+    <dimen name="padding_16">16dp</dimen>
+
+    <dimen name="margin_8dp">8dp</dimen>
+    <dimen name="margin_16dp">16dp</dimen>
+
+    <dimen name="loading_size">110dp</dimen>
+
+    <dimen name="toolbar_height">48dp</dimen>
+
+</resources>
