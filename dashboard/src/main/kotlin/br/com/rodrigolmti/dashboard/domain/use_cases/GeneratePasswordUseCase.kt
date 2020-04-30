@@ -16,7 +16,7 @@ class GeneratePassword @Inject constructor() : GeneratePasswordUseCase {
         val random = SecureRandom()
         val stringBuilder = StringBuilder(length)
         for (i in 0 until length) {
-            val index = random.nextInt(allowedChars.size)
+            val index = random.nextInt(allowedChars.size - 1)
             val string = allowedChars[index]
             stringBuilder.append(string)
         }

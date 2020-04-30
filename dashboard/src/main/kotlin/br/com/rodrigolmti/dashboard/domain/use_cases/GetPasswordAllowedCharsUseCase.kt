@@ -33,6 +33,6 @@ class GetPasswordAllowedChars @Inject constructor() : GetPasswordAllowedCharsUse
             stringBuilder.append(CHARS)
         }
 
-        return stringBuilder.toString().split("").shuffled()
+        return stringBuilder.toString().split("").filter { char -> char != "" }.shuffled()
     }
 }

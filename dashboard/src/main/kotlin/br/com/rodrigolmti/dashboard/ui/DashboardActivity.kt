@@ -27,11 +27,6 @@ class DashboardActivity : BaseActivity(), NavigationContainer {
         setupFields()
     }
 
-    override fun onStop() {
-        super.onStop()
-        finish()
-    }
-
     private fun setupFields() {
         navHostFragment?.let {
             NavigationUI.setupWithNavController(
