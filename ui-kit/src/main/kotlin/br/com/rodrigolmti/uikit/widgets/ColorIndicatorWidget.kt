@@ -6,7 +6,6 @@ import android.graphics.Paint
 import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
-import androidx.annotation.ArrayRes
 import br.com.rodrigolmti.ui_kit.R
 import br.com.rodrigolmti.uikit.px
 
@@ -18,25 +17,19 @@ class ColorIndicatorWidget : View {
         applyStyle(attrs)
     }
 
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(
+        context,
+        attrs,
+        defStyleAttr
+    ) {
         applyStyle(attrs, defStyleAttr)
-    }
-
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int, defStyleRes: Int) : super(context, attrs, defStyleAttr, defStyleRes) {
-        applyStyle(attrs, defStyleAttr, defStyleRes)
     }
 
     private var itemRectF = RectF()
     private var backgroundPaint = Paint()
     private lateinit var colorArray: IntArray
 
-    var barPadding: Float = 3f.px
-
-    var colorArrayRes: Int = R.array.indicator_colors
-        set(@ArrayRes value) {
-            field = value
-            colorArray = resources.getIntArray(value)
-        }
+    private var barPadding: Float = 3f.px
 
     var selectedPosition: Int = 0
         set(value) {
@@ -45,11 +38,19 @@ class ColorIndicatorWidget : View {
         }
 
     private fun applyStyle(attrs: AttributeSet, defStyleAttr: Int = 0, defStyleRes: Int = 0) {
-        val typedArray = context.theme.obtainStyledAttributes(attrs, R.styleable.ColorIndicatorWidget, defStyleAttr, defStyleRes)
+        val typedArray = context.theme.obtainStyledAttributes(
+            attrs,
+            R.styleable.ColorIndicatorWidget,
+            defStyleAttr,
+            defStyleRes
+        )
 
         barPadding = typedArray.getDimension(R.styleable.ColorIndicatorWidget_barPadding, 3f.px)
 
-        colorArray = typedArray.getResourceId(R.styleable.ColorIndicatorWidget_colorArray, R.array.indicator_colors).let {
+        colorArray = typedArray.getResourceId(
+            R.styleable.ColorIndicatorWidget_colorArray,
+            R.array.indicator_colors
+        ).let {
             resources.getIntArray(it)
         }
 

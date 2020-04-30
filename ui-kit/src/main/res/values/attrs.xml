@@ -7,4 +7,9 @@
         <attr name="selectedPosition" format="integer"/>
     </declare-styleable>
 
+    <declare-styleable name="PadKeyWidget">
+        <attr name="padText" format="string"/>
+        <attr name="padIcon" format="integer"/>
+    </declare-styleable>
+
 </resources>
