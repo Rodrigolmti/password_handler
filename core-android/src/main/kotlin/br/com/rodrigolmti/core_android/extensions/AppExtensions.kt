@@ -6,7 +6,7 @@ import android.content.Context
 
 val <T> T.exhaustive: T get() = this
 
-fun Context.copy(context: String) {
+fun Context.copyToClipboard(context: String) {
     (getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager).also { clipboard ->
         val clip = ClipData.newPlainText("", context)
         clipboard.setPrimaryClip(clip)

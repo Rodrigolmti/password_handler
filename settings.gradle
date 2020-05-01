@@ -1,3 +1,4 @@
+include ':authentication'
 include ':security'
 include ':user-preferences'
 include ':database'

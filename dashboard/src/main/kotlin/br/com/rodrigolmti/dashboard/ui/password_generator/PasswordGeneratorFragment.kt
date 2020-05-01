@@ -11,7 +11,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.rodrigolmti.core_android.base.BaseFragment
-import br.com.rodrigolmti.core_android.extensions.copy
+import br.com.rodrigolmti.core_android.extensions.copyToClipboard
 import br.com.rodrigolmti.core_android.extensions.exhaustive
 import br.com.rodrigolmti.core_android.extensions.hideKeyboard
 import br.com.rodrigolmti.uikit.hide
@@ -21,7 +21,6 @@ import br.com.rodrigolmti.core_android.navigation_modes.NavigationMode
 import br.com.rodrigolmti.dashboard.R
 import br.com.rodrigolmti.dashboard.domain.model.PasswordModel
 import br.com.rodrigolmti.dashboard.ui.DashboardActivity
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.password_generator_fragment.*
 
 class PasswordGeneratorFragment : BaseFragment(), NavigationMode by ImmersiveNavigationMode {
@@ -129,7 +128,7 @@ class PasswordGeneratorFragment : BaseFragment(), NavigationMode by ImmersiveNav
     }
 
     private fun handleCopyClick(model: PasswordModel) {
-        requireContext().copy(model.password)
+        requireContext().copyToClipboard(model.password)
         showSnackbar(getString(R.string.password_generator_fragment_copy_message))
     }
 

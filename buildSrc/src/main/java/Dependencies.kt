@@ -26,6 +26,7 @@ object Modules {
     const val database = ":database"
     const val userPreferences = ":user-preferences"
     const val security = ":security"
+    const val authentication = ":authentication"
 }
 
 object Kotlin {

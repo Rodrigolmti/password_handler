@@ -1,0 +1,73 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
+android {
+    compileSdkVersion Versions.compileSdk
+    buildToolsVersion Versions.buildTools
+
+    defaultConfig {
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
+        versionCode Releases.versionCode
+        versionName Releases.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    sourceSets {
+        main {
+            java.srcDirs += 'src/main/kotlin'
+        }
+    }
+
+    buildTypes {
+        release {
+            consumerProguardFiles 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+}
+
+dependencies {
+    implementation Kotlin.stdlib
+
+    implementation AndroidX.ktx
+    implementation AndroidX.fragment
+    implementation AndroidX.appcompat
+
+    implementation Layout.constraint
+
+    implementation Navigation.navigationFragment
+    implementation Navigation.navigationUi
+
+    implementation Lifecycle.liveData
+    implementation Lifecycle.viewModel
+
+    implementation Libraries.lottie
+
+    implementation project(Modules.userPreferences)
+    implementation project(Modules.coreAndroid)
+    implementation project(Modules.navigator)
+    implementation project(Modules.security)
+    implementation project(Modules.injector)
+    implementation project(Modules.uiKit)
+
+    implementation Dagger.core
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0'
+    kapt Dagger.compiler
+}

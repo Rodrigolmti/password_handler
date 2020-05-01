@@ -9,7 +9,7 @@
 
     <declare-styleable name="PadKeyWidget">
         <attr name="padText" format="string"/>
-        <attr name="padIcon" format="integer"/>
+        <attr name="padIcon" format="reference"/>
     </declare-styleable>
 
 </resources>

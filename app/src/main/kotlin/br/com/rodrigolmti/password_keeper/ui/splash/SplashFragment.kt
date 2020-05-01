@@ -87,9 +87,14 @@ class SplashFragment : BaseFragment() {
         }
     }
 
-    private fun startDashboardActivity(): Unit? {
+    private fun startDashboardActivity() {
         startActivity(Actions.openDashboard(requireContext()))
-        return activity?.finish()
+        activity?.finish()
+    }
+
+    private fun startAuthenticationActivity() {
+        startActivity(Actions.openAuthentication(requireContext()))
+        activity?.finish()
     }
 
     private fun toLoadingState() {

@@ -5,6 +5,9 @@ import android.content.Intent
 
 object Actions {
 
+    fun openAuthentication(context: Context) =
+        internalIntent(context, "br.com.rodrigolmti.authentication.open")
+
     fun openDashboard(context: Context) =
         internalIntent(context, "br.com.rodrigolmti.dashboard.open")
 

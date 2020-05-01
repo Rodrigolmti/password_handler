@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:background="@color/colorPrimary">
+
+    <br.com.rodrigolmti.uikit.widgets.PadKeyWidget
+        android:id="@+id/padOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/padTwo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:padText="1" />
+
+    <br.com.rodrigolmti.uikit.widgets.PadKeyWidget
+        android:id="@+id/padTwo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/padOne"
+        app:layout_constraintEnd_toStartOf="@id/padThree"
+        app:layout_constraintStart_toEndOf="@id/padOne"
+        app:layout_constraintTop_toBottomOf="@id/padOne"
+        app:padText="2" />
+
+    <br.com.rodrigolmti.uikit.widgets.PadKeyWidget
+        android:id="@+id/padThree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/padOne"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/padTwo"
+        app:layout_constraintTop_toBottomOf="@id/padOne"
+        app:padText="3" />
+
+    <br.com.rodrigolmti.uikit.widgets.PadKeyWidget
+        android:id="@+id/padFour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toStartOf="@id/padFive"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/padOne"
+        app:padText="4" />
+
+    <br.com.rodrigolmti.uikit.widgets.PadKeyWidget
+        android:id="@+id/padFive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/padFour"
+        app:layout_constraintEnd_toStartOf="@id/padSix"
+        app:layout_constraintStart_toEndOf="@id/padFour"
+        app:layout_constraintTop_toBottomOf="@id/padFour"
+        app:padText="5" />
+
+    <br.com.rodrigolmti.uikit.widgets.PadKeyWidget
+        android:id="@+id/padSix"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/padFour"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/padFive"
+        app:layout_constraintTop_toBottomOf="@id/padFour"
+        app:padText="6" />
+
+    <br.com.rodrigolmti.uikit.widgets.PadKeyWidget
+        android:id="@+id/padSeven"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toStartOf="@id/padFive"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/padFour"
+        app:padText="7" />
+
+    <br.com.rodrigolmti.uikit.widgets.PadKeyWidget
+        android:id="@+id/padEight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/padSeven"
+        app:layout_constraintEnd_toStartOf="@id/padNine"
+        app:layout_constraintStart_toEndOf="@id/padSeven"
+        app:layout_constraintTop_toBottomOf="@id/padSeven"
+        app:padText="8" />
+
+    <br.com.rodrigolmti.uikit.widgets.PadKeyWidget
+        android:id="@+id/padNine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/padSeven"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/padEight"
+        app:layout_constraintTop_toBottomOf="@id/padSeven"
+        app:padText="9" />
+
+    <br.com.rodrigolmti.uikit.widgets.PadKeyWidget
+        android:id="@+id/padClear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toStartOf="@id/padZero"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/padSeven"
+        app:padIcon="@drawable/ic_keyboard_backspace" />
+
+    <br.com.rodrigolmti.uikit.widgets.PadKeyWidget
+        android:id="@+id/padZero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/padClear"
+        app:layout_constraintEnd_toStartOf="@id/padOk"
+        app:layout_constraintStart_toEndOf="@id/padClear"
+        app:layout_constraintTop_toBottomOf="@id/padClear"
+        app:padText="0" />
+
+    <br.com.rodrigolmti.uikit.widgets.PadKeyWidget
+        android:id="@+id/padOk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/padClear"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/padZero"
+        app:layout_constraintTop_toBottomOf="@id/padClear"
+        app:padIcon="@drawable/ic_keyboard_return" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

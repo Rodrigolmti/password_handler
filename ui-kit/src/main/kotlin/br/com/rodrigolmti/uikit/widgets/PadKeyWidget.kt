@@ -7,14 +7,13 @@ import br.com.rodrigolmti.ui_kit.R
 import br.com.rodrigolmti.uikit.hide
 import br.com.rodrigolmti.uikit.show
 import kotlinx.android.synthetic.main.pad_key_widget.view.*
-import kotlinx.android.synthetic.main.toolbar.view.*
 
 class PadKeyWidget : FrameLayout {
 
     constructor(context: Context) : super(context)
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
-        applyStyle(attrs)
+        setupView(attrs)
     }
 
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(
@@ -22,28 +21,21 @@ class PadKeyWidget : FrameLayout {
         attrs,
         defStyleAttr
     ) {
-        applyStyle(attrs, defStyleAttr)
+        setupView(attrs)
     }
 
-    private fun applyStyle(attrs: AttributeSet, defStyleAttr: Int = 0, defStyleRes: Int = 0) {
+    private fun setupView(attrs: AttributeSet? = null) {
         inflate(context, R.layout.pad_key_widget, this)
 
-        val typedArray = context.theme.obtainStyledAttributes(
-            attrs,
-            R.styleable.PadKeyWidget,
-            defStyleAttr,
-            defStyleRes
-        )
+        attrs?.let {
+            val typedArray = context.obtainStyledAttributes(it, R.styleable.PadKeyWidget)
 
-        text = typedArray.getString(R.styleable.PadKeyWidget_padText)
-        icon = typedArray.getInteger(R.styleable.PadKeyWidget_padIcon, 0)
+            text = typedArray.getString(R.styleable.PadKeyWidget_padText)
+            icon = typedArray.getResourceId(R.styleable.PadKeyWidget_padIcon, 0)
 
-        pad.setOnClickListener { onPadClick?.invoke() }
-
-        typedArray.recycle()
+            typedArray.recycle()
+        }
     }
-
-    var onPadClick: (() -> Unit)? = null
 
     var text: String? = null
         set(text) {
@@ -52,13 +44,13 @@ class PadKeyWidget : FrameLayout {
             field = text
         }
 
-    var icon: Int? = null
+    var icon: Int = 0
         set(value) {
-            value?.let {
-                imgBack.setImageResource(it)
-                imgBack.show()
-            } ?: run {
-                imgBack.hide()
+            if (value > 0) {
+                imgIcon.setImageResource(value)
+                imgIcon.show()
+            } else {
+                imgIcon.hide()
             }
             field = value
         }
