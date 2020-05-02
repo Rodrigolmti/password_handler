@@ -22,6 +22,9 @@ android {
         main {
             java.srcDirs += 'src/main/kotlin'
         }
+        test {
+            java.srcDirs += 'src/test/kotlin'
+        }
     }
 
     buildTypes {
@@ -42,6 +45,7 @@ android {
 
 dependencies {
     implementation Kotlin.stdlib
+    implementation Kotlin.junit
 
     implementation AndroidX.ktx
     implementation AndroidX.fragment
@@ -66,6 +70,10 @@ dependencies {
     implementation project(Modules.database)
     implementation project(Modules.injector)
     implementation project(Modules.uiKit)
+
+    implementation MockK.core
+    implementation MockK.android
+    implementation JUnit.core
 
     implementation Dagger.core
     kapt Dagger.compiler
