@@ -3,8 +3,8 @@ object ApplicationId {
 }
 
 object Versions {
-    const val kotlin = "1.3.71"
-    const val gradle = "3.6.1"
+    const val kotlin = "1.3.72"
+    const val gradle = "4.0.0"
     const val buildTools = "29.0.3"
     const val compileSdk = 29
     const val minSdk = 21
@@ -44,7 +44,7 @@ object Lifecycle {
 
 object Dagger {
     object Versions {
-        const val dagger = "2.25.4"
+        const val dagger = "2.28"
     }
 
     const val core = "com.google.dagger:dagger:${Versions.dagger}"
