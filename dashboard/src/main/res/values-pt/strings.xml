@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="dashboard_menu_passwords">Senhas</string>
+    <string name="dashboard_menu_password_generator">Gerador</string>
+    <string name="dashboard_menu_settings">Configurações</string>
+
+    <string name="generic_error">Algo deu errado, tente novamente!</string>
+
+    <string name="action_copy">Copiar</string>
+    <string name="action_save">Salvar</string>
+    <string name="action_edit">Editar</string>
+    <string name="action_try_again">Tentar de Novo</string>
+
+    <string name="passwords_fragment_title">Senhas salvas</string>
+    <string name="passwords_fragment_description">Aqui você pode ver as suas senhas salvas, selecione uma para mais detalhes!</string>
+    <string name="passwords_fragment_void">Parece que você não tem nenhuma senha, crie um nova e volte!</string>
+    <string name="passwords_fragment_copy_password_message">Senha copiada com sucesso!</string>
+    <string name="passwords_fragment_copy_login_error_message">Não existe algo para copiar!</string>
+    <string name="passwords_fragment_copy_login_message">Login cpiado com sucesso!</string>
+    <string name="passwords_fragment_copy_login">Copiar login</string>
+    <string name="passwords_fragment_copy_password">Copiar senha</string>
+
+    <string name="password_fragment_title_save">Salvar senha</string>
+    <string name="password_fragment_title_edit">Editar senha</string>
+    <string name="password_fragment_invalid_password">Senha inválida, verifique e tente de novo!</string>
+    <string name="password_fragment_password_updated">Senha atualizada!</string>
+    <string name="password_fragment_password_saved">Senha salva!</string>
+    <string name="password_fragment_invalid_label">Label inválida, verifique e tente de novo!</string>
+    <string name="password_fragment_update_error">Algo aconteceu de errado ao atualizar a senha!</string>
+    <string name="password_fragment_save_error">Algo aconteceu de errado ao salvar a senha!</string>
+    <string name="password_fragment_delete_error">Algo aconteceu de errado ao deletar a senha!</string>
+    <string name="password_fragment_generate_password_error">Algo aconteceu de errado ao gerar a senha!</string>
+
+    <string name="password_generator_fragment_title">Grador de senha</string>
+    <string name="password_generator_fragment_description">Gere novas senhas, selecionado as opções abaixo!</string>
+    <string name="password_generator_fragment_generate">Gerar</string>
+    <string name="password_generator_fragment_clear">Limpar</string>
+    <string name="password_generator_fragment_length">Tamanho da senha:</string>
+    <string name="password_generator_fragment_number">Quantidade de senhas:</string>
+    <string name="password_generator_fragment_default_number">1</string>
+    <string name="password_generator_fragment_default_length">12</string>
+    <string name="password_generator_fragment_uppercase_letters">Letras maiúsculas:</string>
+    <string name="password_generator_fragment_small_letters">Letras minúsculas:</string>
+    <string name="password_generator_fragment_numbers">Números:</string>
+    <string name="password_generator_fragment_special_characters">Caracteres especiais:</string>
+    <string name="password_generator_fragment_copy_message">Senha copiada!</string>
+    <string name="password_generator_fragment_too_small">A senha deve ter pelo menos um caracter!</string>
+    <string name="password_generator_fragment_no_params">Habilite pelo menos uma opção!</string>
+    <string name="password_generator_fragment_error">Parece que temos alguns canos quebrados no caminho, tente novamente!</string>
+
+    <string name="settings_fragment_title">Configurações</string>
+    <string name="settings_fragment_description">Configure a aplicação do seu jeito, modificando as opções abaixo!</string>
+    <string name="settings_fragment_biometric">Exigir biometria ao abrir o aplicativo</string>
+    <string name="settings_fragment_info">Feito️ por Rodrigo Martins, o password keeper não mantém nenhum dado ou compartilha com nossos parceiros, todas as senhas salvas aqui permanecerão no dispositivo usando algoritmos para codificá-las.</string>
+
+</resources>

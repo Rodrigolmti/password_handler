@@ -1,0 +1,7 @@
+<resources>
+
+    <string name="splash_fragment_biometric_title">Validação biométrica</string>
+    <string name="splash_fragment_biometric_subtitle">Desbloqueia a aplicação com o seu dedo</string>
+    <string name="splash_fragment_biometric_error">Parece que temos um problema ao identificar sua identidade, tente novamente!</string>
+
+</resources>
