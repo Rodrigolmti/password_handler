@@ -37,9 +37,9 @@ android {
     signingConfigs {
         release {
             storeFile file("keys/release.keystore")
-            storePassword ""
+            storePassword "fnswA9slDwAc0D3zIuUu7C47MkqyEAbjnKW"
             keyAlias "release"
-            keyPassword ""
+            keyPassword "fnswA9slDwAc0D3zIuUu7C47MkqyEAbjnKW"
         }
 
         debug {

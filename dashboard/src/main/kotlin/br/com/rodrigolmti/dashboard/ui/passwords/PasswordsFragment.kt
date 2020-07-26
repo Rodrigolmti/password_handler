@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -22,15 +24,20 @@ import br.com.rodrigolmti.dashboard.R
 import br.com.rodrigolmti.dashboard.domain.model.SavedPasswordModel
 import br.com.rodrigolmti.dashboard.ui.DashboardActivity
 import br.com.rodrigolmti.dashboard.ui.passwords.PasswordsViewState.State.*
+import br.com.rodrigolmti.dashboard.ui.settings.SettingsViewModel
 import br.com.rodrigolmti.uikit.hide
 import br.com.rodrigolmti.uikit.show
 import kotlinx.android.synthetic.main.password_generator_fragment.lottie
 import kotlinx.android.synthetic.main.password_generator_fragment.recyclerView
 import kotlinx.android.synthetic.main.passwords_fragment.*
+import javax.inject.Inject
 
 class PasswordsFragment : BaseFragment(), NavigationMode by ImmersiveNavigationMode {
 
-    private val viewModel by lazy { getViewModel(PasswordsViewModel::class.java) }
+    @Inject
+    internal lateinit var viewModelProviderFactory: ViewModelProvider.Factory
+
+    private val viewModel by viewModels<PasswordsViewModel> { viewModelProviderFactory }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -99,7 +106,7 @@ class PasswordsFragment : BaseFragment(), NavigationMode by ImmersiveNavigationM
                     toLoadingState()
                 }
                 ERROR -> {
-                    showSnackbar(getString(R.string.generic_error))
+                    showSnackBar(getString(R.string.generic_error))
                 }
                 EMPTY_LIST -> {
                     toEmptyState()
@@ -131,16 +138,16 @@ class PasswordsFragment : BaseFragment(), NavigationMode by ImmersiveNavigationM
                 },
                 onCopyLoginClick = { model ->
                     if (model.login.isNullOrEmpty()) {
-                        showSnackbar(getString(R.string.passwords_fragment_copy_login_error_message))
+                        showSnackBar(getString(R.string.passwords_fragment_copy_login_error_message))
                         return@SavedPasswordsAdapter
                     }
 
                     requireContext().copyToClipboard(model.login)
-                    showSnackbar(getString(R.string.passwords_fragment_copy_login_message))
+                    showSnackBar(getString(R.string.passwords_fragment_copy_login_message))
                 },
                 onCopyPasswordClick = { model ->
                     requireContext().copyToClipboard(model.password)
-                    showSnackbar(getString(R.string.passwords_fragment_copy_password_message))
+                    showSnackBar(getString(R.string.passwords_fragment_copy_password_message))
                 })
         }
     }

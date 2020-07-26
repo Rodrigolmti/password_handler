@@ -12,8 +12,8 @@ object Versions {
 }
 
 object Releases {
-    const val versionCode = 1
-    const val versionName = "1.0.0"
+    const val versionCode = 2
+    const val versionName = "1.0.1"
 }
 
 object Modules {
@@ -45,7 +45,7 @@ object Lifecycle {
 
 object Dagger {
     object Versions {
-        const val dagger = "2.28"
+        const val dagger = "2.28.3"
     }
 
     const val core = "com.google.dagger:dagger:${Versions.dagger}"

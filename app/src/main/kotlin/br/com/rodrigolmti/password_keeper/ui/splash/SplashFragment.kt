@@ -6,7 +6,9 @@ import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import br.com.rodrigolmti.core_android.base.BaseFragment
 import br.com.rodrigolmti.core_android.extensions.exhaustive
 import br.com.rodrigolmti.navigator.Actions
@@ -17,12 +19,16 @@ import br.com.rodrigolmti.security.domain.model.BiometricEvent
 import br.com.rodrigolmti.uikit.hide
 import br.com.rodrigolmti.uikit.show
 import kotlinx.android.synthetic.main.fragment_splash.*
+import javax.inject.Inject
 
 private const val DELAY = 1000L
 
 class SplashFragment : BaseFragment() {
 
-    private val viewModel by lazy { getViewModel(SplashViewModel::class.java) }
+    @Inject
+    internal lateinit var viewModelProviderFactory: ViewModelProvider.Factory
+
+    private val viewModel by viewModels<SplashViewModel> { viewModelProviderFactory }
 
     override fun onCreateView(
         inflater: LayoutInflater,
