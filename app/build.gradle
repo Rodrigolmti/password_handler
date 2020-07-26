@@ -110,6 +110,5 @@ dependencies {
 check.dependsOn ktlint
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
-if (!engBuild.toBoolean()) {
-    apply plugin: 'com.google.firebase.crashlytics'
-}
+apply plugin: 'com.google.firebase.crashlytics'
+
