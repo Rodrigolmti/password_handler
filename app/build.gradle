@@ -5,6 +5,10 @@ apply plugin: 'kotlin-kapt'
 apply from: "$rootDir/quality/ktlint.gradle"
 apply from: "$rootDir/quality/git-hooks.gradle"
 
+ext {
+    engBuild = (project.findProperty('engBuild') ?: 'true')
+}
+
 android {
     compileSdkVersion Versions.compileSdk
     buildToolsVersion Versions.buildTools
@@ -15,6 +19,8 @@ android {
         targetSdkVersion Versions.targetSdk
         versionCode Releases.versionCode
         versionName Releases.versionName
+
+        resConfigs "en"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -62,7 +68,12 @@ android {
             signingConfig signingConfigs.debug
             ext.alwaysUpdateBuildId = false
             ext.enableCrashlytics = false
+            debuggable true
         }
+    }
+
+    aaptOptions {
+        cruncherEnabled = true
     }
 }
 
@@ -99,4 +110,6 @@ dependencies {
 check.dependsOn ktlint
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
-apply plugin: 'com.google.firebase.crashlytics'
+if (!engBuild.toBoolean()) {
+    apply plugin: 'com.google.firebase.crashlytics'
+}

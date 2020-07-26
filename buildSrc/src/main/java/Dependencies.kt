@@ -2,6 +2,10 @@ object ApplicationId {
     const val id = "br.com.rodrigolmti.password_keeper"
 }
 
+object Profiles {
+    const val engBuild = "engBuild"
+}
+
 object Versions {
     const val kotlin = "1.3.72"
     const val gradle = "4.0.0"
