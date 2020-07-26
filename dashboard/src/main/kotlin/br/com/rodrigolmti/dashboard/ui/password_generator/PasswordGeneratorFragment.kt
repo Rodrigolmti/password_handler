@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,11 +23,16 @@ import br.com.rodrigolmti.core_android.navigation_modes.NavigationMode
 import br.com.rodrigolmti.dashboard.R
 import br.com.rodrigolmti.dashboard.domain.model.PasswordModel
 import br.com.rodrigolmti.dashboard.ui.DashboardActivity
+import br.com.rodrigolmti.dashboard.ui.password.PasswordViewModel
 import kotlinx.android.synthetic.main.password_generator_fragment.*
+import javax.inject.Inject
 
 class PasswordGeneratorFragment : BaseFragment(), NavigationMode by ImmersiveNavigationMode {
 
-    private val viewModel by lazy { getViewModel(PasswordGeneratorViewModel::class.java) }
+    @Inject
+    internal lateinit var viewModelProviderFactory: ViewModelProvider.Factory
+
+    private val viewModel by viewModels<PasswordGeneratorViewModel> { viewModelProviderFactory }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -84,13 +91,13 @@ class PasswordGeneratorFragment : BaseFragment(), NavigationMode by ImmersiveNav
                     toListSate()
                 }
                 PasswordGeneratorViewState.Action.ShowError -> {
-                    showSnackbar(getString(R.string.password_generator_fragment_error))
+                    showSnackBar(getString(R.string.password_generator_fragment_error))
                 }
                 PasswordGeneratorViewState.Action.ShowNoParamSelectedError -> {
-                    showSnackbar(getString(R.string.password_generator_fragment_no_params))
+                    showSnackBar(getString(R.string.password_generator_fragment_no_params))
                 }
                 PasswordGeneratorViewState.Action.ShowNumberTooSmallError -> {
-                    showSnackbar(getString(R.string.password_generator_fragment_too_small))
+                    showSnackBar(getString(R.string.password_generator_fragment_too_small))
                 }
             }.exhaustive
         })
@@ -129,7 +136,7 @@ class PasswordGeneratorFragment : BaseFragment(), NavigationMode by ImmersiveNav
 
     private fun handleCopyClick(model: PasswordModel) {
         requireContext().copyToClipboard(model.password)
-        showSnackbar(getString(R.string.password_generator_fragment_copy_message))
+        showSnackBar(getString(R.string.password_generator_fragment_copy_message))
     }
 
     private fun toLoadingState() {

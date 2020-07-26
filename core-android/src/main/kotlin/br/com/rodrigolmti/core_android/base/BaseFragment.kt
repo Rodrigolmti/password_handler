@@ -12,12 +12,6 @@ import javax.inject.Inject
 
 abstract class BaseFragment : Fragment() {
 
-    @Inject
-    internal lateinit var viewModelFactory: ViewModelProvider.Factory
-
-    fun <VM : ViewModel> getViewModel(modelClass: Class<VM>): VM =
-        ViewModelProvider(this, viewModelFactory).get(modelClass)
-
     override fun onViewCreated(
         view: View,
         savedInstanceState: Bundle?
@@ -38,7 +32,7 @@ abstract class BaseFragment : Fragment() {
         (activity as? NavigationContainer)?.isImmersiveFlow = isImmersiveFlow
     }
 
-    fun showSnackbar(message: String, duration: Int = Snackbar.LENGTH_SHORT) {
+    fun showSnackBar(message: String, duration: Int = Snackbar.LENGTH_SHORT) {
         view?.let {
             Snackbar.make(
                 it,

@@ -5,14 +5,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import br.com.rodrigolmti.authentication.R
 import br.com.rodrigolmti.authentication.ui.AuthenticationActivity
 import br.com.rodrigolmti.core_android.base.BaseFragment
 import kotlinx.android.synthetic.main.pin_fragment.*
+import javax.inject.Inject
 
 class PinFragment : BaseFragment() {
 
-    private val viewModel by lazy { getViewModel(PinViewModel::class.java) }
+    @Inject
+    internal lateinit var viewModelProviderFactory: ViewModelProvider.Factory
+
+    private val viewModel by viewModels<PinViewModel> { viewModelProviderFactory }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

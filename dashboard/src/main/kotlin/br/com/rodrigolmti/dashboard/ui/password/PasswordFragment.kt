@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import br.com.rodrigolmti.core_android.TextChangedWatcher
 import br.com.rodrigolmti.core_android.base.BaseFragment
@@ -20,10 +22,14 @@ import br.com.rodrigolmti.dashboard.ui.DashboardActivity
 import br.com.rodrigolmti.uikit.hide
 import br.com.rodrigolmti.uikit.show
 import kotlinx.android.synthetic.main.password_fragment.*
+import javax.inject.Inject
 
 class PasswordFragment : BaseFragment(), NavigationMode by DefaultNavigationMode {
 
-    private val viewModel by lazy { getViewModel(PasswordViewModel::class.java) }
+    @Inject
+    internal lateinit var viewModelProviderFactory: ViewModelProvider.Factory
+
+    private val viewModel by viewModels<PasswordViewModel> { viewModelProviderFactory }
 
     private val passwordModel: PasswordModel? by lazy {
         arguments?.let { PasswordFragmentArgs.fromBundle(it).passwordModel }
@@ -116,34 +122,34 @@ class PasswordFragment : BaseFragment(), NavigationMode by DefaultNavigationMode
                     colorIndicator.selectedPosition = action.strength
                 }
                 is PasswordViewState.Action.ShowInvalidPasswordLabel -> {
-                    showSnackbar(getString(R.string.password_fragment_invalid_label))
+                    showSnackBar(getString(R.string.password_fragment_invalid_label))
                 }
                 is PasswordViewState.Action.ShowInvalidPassword -> {
-                    showSnackbar(getString(R.string.password_fragment_invalid_password))
+                    showSnackBar(getString(R.string.password_fragment_invalid_password))
                 }
                 is PasswordViewState.Action.ShowUpdatePasswordSuccess -> {
-                    showSnackbar(getString(R.string.password_fragment_password_updated))
+                    showSnackBar(getString(R.string.password_fragment_password_updated))
                 }
                 is PasswordViewState.Action.ShowSavePasswordSuccess -> {
-                    showSnackbar(getString(R.string.password_fragment_password_saved))
+                    showSnackBar(getString(R.string.password_fragment_password_saved))
                 }
                 is PasswordViewState.Action.ShowUpdatePasswordError -> {
-                    showSnackbar(getString(R.string.password_fragment_update_error))
+                    showSnackBar(getString(R.string.password_fragment_update_error))
                 }
                 is PasswordViewState.Action.ShowSavePasswordError -> {
-                    showSnackbar(getString(R.string.password_fragment_save_error))
+                    showSnackBar(getString(R.string.password_fragment_save_error))
                 }
                 is PasswordViewState.Action.ShowDeletePasswordSuccess -> {
                     findNavController().popBackStack()
                 }
                 is PasswordViewState.Action.ShowDeletePasswordError -> {
-                    showSnackbar(getString(R.string.password_fragment_delete_error))
+                    showSnackBar(getString(R.string.password_fragment_delete_error))
                 }
                 is PasswordViewState.Action.ShowGeneratedPassword -> {
                     etPassword.setText(action.password)
                 }
                 is PasswordViewState.Action.ShowGeneratePasswordError -> {
-                    showSnackbar(getString(R.string.password_fragment_generate_password_error))
+                    showSnackBar(getString(R.string.password_fragment_generate_password_error))
                 }
             }.exhaustive
         })
