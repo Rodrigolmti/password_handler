@@ -1,17 +1,16 @@
-package br.com.rodrigolmti.dashboard.domain.use_case
+package br.com.rodrigolmti.dashboard.domain.use_cases
 
 import br.com.rodrigolmti.core_android.Result
 import br.com.rodrigolmti.dashboard.domain.error.DashboardError
 import br.com.rodrigolmti.dashboard.domain.model.SavedPasswordModel
 import br.com.rodrigolmti.dashboard.domain.repository.DashboardRepository
-import br.com.rodrigolmti.dashboard.domain.use_cases.DeleteSavedPassword
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
 
-class DeleteSavedPasswordTest {
+internal class DeleteSavedPasswordTest {
 
     private val dashboardRepository: DashboardRepository = mockk()
     private val useCase = DeleteSavedPassword(dashboardRepository)
