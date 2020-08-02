@@ -7,7 +7,6 @@ import br.com.rodrigolmti.dashboard.domain.repository.DashboardRepository
 import br.com.rodrigolmti.security.domain.use_case.EncodePasswordUseCase
 import javax.inject.Inject
 
-// TODO: Log events onError with the error
 interface UpdateSavedPasswordUseCase {
     suspend operator fun invoke(model: SavedPasswordModel): Result<Unit, DashboardError>
 }

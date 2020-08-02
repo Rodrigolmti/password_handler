@@ -96,16 +96,23 @@ object AndroidX {
     const val roomExt = "  androidx.room:room-ktx:${Versions.room}"
 }
 
-object Mockito {
+object JUnit {
     object Versions {
-        const val mockito = "2.25.1"
-        const val mockitoKotlin = "1.5.0"
+        const val junit = "4.12"
     }
 
-    const val core = "org.mockito:mockito-core:${Versions.mockito}"
-    const val kotlin = "com.nhaarman:mockito-kotlin:${Versions.mockitoKotlin}"
-    const val android = "org.mockito:mockito-android:${Versions.mockito}"
+    const val core = "junit:junit:${Versions.junit}"
 }
+
+object MockK {
+    object Versions {
+        const val mockk = "1.9.2"
+    }
+
+    const val core = "io.mockk:mockk:${Versions.mockk}"
+    const val android = "io.mockk:mockk-android:${Versions.mockk}"
+}
+
 
 object Libraries {
     object Versions {

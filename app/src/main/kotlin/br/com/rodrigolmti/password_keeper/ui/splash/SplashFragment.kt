@@ -63,7 +63,7 @@ class SplashFragment : BaseFragment() {
         viewModel.viewState.action.observe(viewLifecycleOwner, Observer { action ->
             when (action) {
                 is SplashViewState.Action.NavigateToDashboard -> {
-                    startDashboardActivity()
+                    startAuthenticationActivity()
                 }
                 is SplashViewState.Action.ValidateBiometric -> {
                     requestBiometric()
