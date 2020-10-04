@@ -77,4 +77,8 @@ dependencies {
 
     implementation Dagger.core
     kapt Dagger.compiler
+
+    implementation JUnit.core
+    implementation MockK.core
+    implementation MockK.android
 }

@@ -17,7 +17,7 @@
             android:backgroundTint="@android:color/white"
             android:enabled="false"
             android:gravity="center"
-            android:inputType="text"
+            android:inputType="numberPassword"
             android:maxLines="1"
             android:textColor="@android:color/white"
             android:textSize="32sp"

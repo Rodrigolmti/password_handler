@@ -52,6 +52,6 @@
     <string name="settings_fragment_title">Configurações</string>
     <string name="settings_fragment_description">Configure a aplicação do seu jeito, modificando as opções abaixo!</string>
     <string name="settings_fragment_biometric">Exigir biometria ao abrir o aplicativo</string>
-    <string name="settings_fragment_info">Feito️ por Rodrigo Martins, o password keeper não mantém nenhum dado ou compartilha com nossos parceiros, todas as senhas salvas aqui permanecerão no dispositivo usando algoritmos para codificá-las.</string>
+    <string name="settings_fragment_info">Feito️ por Rodrigo Martins, o Password Handler não mantém nenhum dado ou compartilha com nossos parceiros, todas as senhas salvas aqui permanecerão no dispositivo usando algoritmos para codificá-las.</string>
 
 </resources>

@@ -5,6 +5,10 @@ apply plugin: 'kotlin-kapt'
 apply from: "$rootDir/quality/ktlint.gradle"
 apply from: "$rootDir/quality/git-hooks.gradle"
 
+ext {
+    engBuild = (project.findProperty('engBuild') ?: 'true')
+}
+
 android {
     compileSdkVersion Versions.compileSdk
     buildToolsVersion Versions.buildTools
@@ -15,6 +19,8 @@ android {
         targetSdkVersion Versions.targetSdk
         versionCode Releases.versionCode
         versionName Releases.versionName
+
+        resConfigs "en"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -37,9 +43,9 @@ android {
     signingConfigs {
         release {
             storeFile file("keys/release.keystore")
-            storePassword "fnswA9slDwAc0D3zIuUu7C47MkqyEAbjnKW"
+            storePassword "-"
             keyAlias "release"
-            keyPassword "fnswA9slDwAc0D3zIuUu7C47MkqyEAbjnKW"
+            keyPassword "-"
         }
 
         debug {
@@ -62,7 +68,17 @@ android {
             signingConfig signingConfigs.debug
             ext.alwaysUpdateBuildId = false
             ext.enableCrashlytics = false
+            debuggable true
         }
+    }
+
+    aaptOptions {
+        cruncherEnabled = true
+    }
+
+    packagingOptions {
+        exclude 'META-INF/AL2.0'
+        exclude 'META-INF/LGPL2.1'
     }
 }
 
@@ -80,8 +96,8 @@ dependencies {
     implementation Navigation.navigationFragment
     implementation Navigation.navigationUi
 
-    implementation Firebase.analytics
-    implementation Firebase.crashlytics
+    releaseImplementation Firebase.analytics
+    releaseImplementation Firebase.crashlytics
 
     implementation project(Modules.userPreferences)
     implementation project(Modules.authentication)
@@ -100,3 +116,4 @@ check.dependsOn ktlint
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
+

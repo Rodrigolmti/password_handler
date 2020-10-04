@@ -14,7 +14,6 @@ internal class SplashViewModel @Inject constructor(
     private val getUserBiometricUseCase: GetUserBiometricUseCase
 ) : BaseViewModel<SplashViewState, SplashAction>() {
 
-    @Suppress("IMPLICIT_CAST_TO_ANY")
     override fun dispatchViewAction(viewAction: SplashAction) {
         when (viewAction) {
             is SplashAction.Init -> {
@@ -32,7 +31,6 @@ internal class SplashViewModel @Inject constructor(
             }
         }, onError = {
             viewState.action.value = SplashViewState.Action.NavigateToDashboard
-            //TODO: Handle the error, log events and bla bla
         })
     }
 }
