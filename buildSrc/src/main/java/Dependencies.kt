@@ -16,8 +16,8 @@ object Versions {
 }
 
 object Releases {
-    const val versionCode = 2
-    const val versionName = "1.0.1"
+    const val versionCode = 3
+    const val versionName = "1.0.2"
 }
 
 object Modules {
@@ -35,6 +35,7 @@ object Modules {
 
 object Kotlin {
     const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
+    const val junit = "org.jetbrains.kotlin:kotlin-test-junit:${Versions.kotlin}"
 }
 
 object Lifecycle {
@@ -96,6 +97,18 @@ object AndroidX {
     const val roomExt = "  androidx.room:room-ktx:${Versions.room}"
 }
 
+object AndroidXTest {
+    object Versions {
+        const val test = "1.2.0"
+        const val junit = "1.1.1"
+        const val espresso = "3.2.0"
+    }
+
+    const val ext = "androidx.test.ext:junit:${Versions.junit}"
+    const val rules = "androidx.test:rules:${Versions.test}"
+    const val runner = "androidx.test:runner:${Versions.test}"
+}
+
 object JUnit {
     object Versions {
         const val junit = "4.12"
@@ -113,6 +126,15 @@ object MockK {
     const val android = "io.mockk:mockk-android:${Versions.mockk}"
 }
 
+object Coroutines {
+    object Versions {
+        const val coroutines = "1.3.9"
+    }
+
+    const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
+    const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+    const val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
+}
 
 object Libraries {
     object Versions {

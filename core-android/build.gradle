@@ -52,4 +52,8 @@ dependencies {
 
     implementation Dagger.core
     kapt Dagger.compiler
+
+    implementation JUnit.core
+    implementation Kotlin.junit
+    implementation Coroutines.test
 }
