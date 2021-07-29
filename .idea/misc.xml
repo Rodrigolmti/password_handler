@@ -6,6 +6,7 @@
         <entry key="../../../../../layout/custom_preview.xml" value="0.246875" />
         <entry key="dashboard/src/main/res/layout/dashboard_activity.xml" value="0.189209726443769" />
         <entry key="dashboard/src/main/res/layout/generated_password_row.xml" value="0.3759057971014493" />
+        <entry key="dashboard/src/main/res/layout/password_fragment.xml" value="0.36730072463768115" />
         <entry key="ui-kit/src/main/res/layout/pad_key_widget.xml" value="0.36730072463768115" />
       </map>
     </option>
