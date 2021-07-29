@@ -19,7 +19,7 @@ internal class GeneratePasswordTest {
     @Test
     fun execute_returnRandomPassword() = runBlocking {
         val allowedChars: List<String> = listOf("A", "B", "C", "D", "E")
-        val length = SecureRandom().nextInt()
+        val length = 10
 
         val result = useCase(length, allowedChars)
 

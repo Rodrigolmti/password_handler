@@ -1,19 +1,23 @@
 package br.com.rodrigolmti.dashboard.ui
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import br.com.rodrigolmti.core_android.base.BaseActivity
 import br.com.rodrigolmti.core_android.navigation_modes.NavigationContainer
 import br.com.rodrigolmti.core_android.navigation_modes.NavigationMode
+import br.com.rodrigolmti.core_android.view_binding_delegate.viewBinding
 import br.com.rodrigolmti.dashboard.R
+import br.com.rodrigolmti.dashboard.databinding.DashboardActivityBinding
 import br.com.rodrigolmti.dashboard.di.DashboardComponent
 import br.com.rodrigolmti.uikit.hide
 import br.com.rodrigolmti.uikit.show
-import kotlinx.android.synthetic.main.dashboard_activity.*
 
 class DashboardActivity : BaseActivity(), NavigationContainer {
+
+    private val binding by viewBinding {
+        DashboardActivityBinding.inflate(layoutInflater)
+    }
 
     val component: DashboardComponent by lazy { DashboardComponent.inject(this) }
 
@@ -30,7 +34,7 @@ class DashboardActivity : BaseActivity(), NavigationContainer {
     private fun setupFields() {
         navHostFragment?.let {
             NavigationUI.setupWithNavController(
-                bottomNavigation,
+                binding.bottomNavigation,
                 it.navController
             )
         }
@@ -51,7 +55,7 @@ class DashboardActivity : BaseActivity(), NavigationContainer {
 
     override var isImmersiveFlow: Boolean = true
         set(value) {
-            if (value) bottomNavigation.show() else bottomNavigation.hide()
+            if (value) binding.bottomNavigation.show() else binding.bottomNavigation.hide()
             field = value
         }
 }

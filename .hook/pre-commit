@@ -1,5 +1,0 @@
-#!/bin/sh
-# Code style validation
-# https://github.com/shyiko/ktlint
-ROOT_FOLDER=$(git rev-parse --show-toplevel)
-git diff --name-only --cached --relative | grep '\.kt[s"]\?$' | xargs $ROOT_FOLDER/ktlint --relative .

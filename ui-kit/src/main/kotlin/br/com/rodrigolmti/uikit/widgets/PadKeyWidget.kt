@@ -2,31 +2,28 @@ package br.com.rodrigolmti.uikit.widgets
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.widget.FrameLayout
 import br.com.rodrigolmti.ui_kit.R
+import br.com.rodrigolmti.ui_kit.databinding.PadKeyWidgetBinding
 import br.com.rodrigolmti.uikit.hide
 import br.com.rodrigolmti.uikit.show
-import kotlinx.android.synthetic.main.pad_key_widget.view.*
 
-class PadKeyWidget : FrameLayout {
+class PadKeyWidget @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : FrameLayout(context, attrs, defStyleAttr) {
 
-    constructor(context: Context) : super(context)
+    private val binding =
+        PadKeyWidgetBinding.inflate(context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater)
+            .also { addView(it.root) }
 
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
-        setupView(attrs)
-    }
-
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(
-        context,
-        attrs,
-        defStyleAttr
-    ) {
+    init {
         setupView(attrs)
     }
 
     private fun setupView(attrs: AttributeSet? = null) {
-        inflate(context, R.layout.pad_key_widget, this)
-
         attrs?.let {
             val typedArray = context.obtainStyledAttributes(it, R.styleable.PadKeyWidget)
 
@@ -39,18 +36,18 @@ class PadKeyWidget : FrameLayout {
 
     var text: String? = null
         set(text) {
-            if (text.isNullOrEmpty()) tvText.hide() else tvText.show()
-            tvText.text = text
+            if (text.isNullOrEmpty()) binding.tvText.hide() else binding.tvText.show()
+            binding.tvText.text = text
             field = text
         }
 
     var icon: Int = 0
         set(value) {
             if (value > 0) {
-                imgIcon.setImageResource(value)
-                imgIcon.show()
+                binding.imgIcon.setImageResource(value)
+                binding.imgIcon.show()
             } else {
-                imgIcon.hide()
+                binding.imgIcon.hide()
             }
             field = value
         }

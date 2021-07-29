@@ -12,10 +12,11 @@ import androidx.core.os.CancellationSignal
 import androidx.fragment.app.FragmentManager
 import br.com.rodrigolmti.core_android.extensions.hideKeyboard
 import br.com.rodrigolmti.core_android.extensions.setStateExpanded
+import br.com.rodrigolmti.core_android.view_binding_delegate.viewBinding
 import br.com.rodrigolmti.security.R
+import br.com.rodrigolmti.security.databinding.BiometricPromptBottomSheetBinding
 import br.com.rodrigolmti.security.domain.model.BiometricEvent
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import kotlinx.android.synthetic.main.biometric_prompt_bottom_sheet.*
 
 typealias BiometricEventListener = (event: BiometricEvent) -> Unit
 
@@ -45,6 +46,10 @@ class BiometricPromptBottomSheet private constructor(
         }
     }
 
+    private val binding by viewBinding {
+        BiometricPromptBottomSheetBinding.inflate(layoutInflater)
+    }
+
     override fun onStart() {
         super.onStart()
         setStateExpanded()
@@ -67,9 +72,7 @@ class BiometricPromptBottomSheet private constructor(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.biometric_prompt_bottom_sheet, container, false)
-    }
+    ): View = binding.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -80,28 +83,33 @@ class BiometricPromptBottomSheet private constructor(
     }
 
     private var title: CharSequence?
-        get() = tvTitle.text
+        get() = binding.tvTitle.text
         set(value) {
-            tvTitle.text = value
+            binding.tvTitle.text = value
         }
 
     private var subtitle: CharSequence?
-        get() = tvSubtitle.text
+        get() = binding.tvSubtitle.text
         set(value) {
-            tvSubtitle.text = value
-            tvSubtitle.visibility = View.VISIBLE
+            binding.tvSubtitle.text = value
+            binding.tvSubtitle.visibility = View.VISIBLE
         }
 
     var status: CharSequence?
-        get() = tvStatus.text
+        get() = binding.tvStatus.text
         set(value) {
-            tvStatus.text = value
+            binding.tvStatus.text = value
         }
 
     var statusColor: Int
-        get() = tvStatus.currentTextColor
+        get() = binding.tvStatus.currentTextColor
         set(@ColorRes value) {
-            tvStatus.setTextColor(AppCompatResources.getColorStateList(requireContext(), value))
+            binding.tvStatus.setTextColor(
+                AppCompatResources.getColorStateList(
+                    requireContext(),
+                    value
+                )
+            )
         }
 
     override fun onCancel(dialog: DialogInterface) {

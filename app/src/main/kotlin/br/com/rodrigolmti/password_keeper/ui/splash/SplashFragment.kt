@@ -11,14 +11,15 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import br.com.rodrigolmti.core_android.base.BaseFragment
 import br.com.rodrigolmti.core_android.extensions.exhaustive
+import br.com.rodrigolmti.core_android.view_binding_delegate.viewBinding
 import br.com.rodrigolmti.navigator.Actions
 import br.com.rodrigolmti.password_keeper.R
+import br.com.rodrigolmti.password_keeper.databinding.FragmentSplashBinding
 import br.com.rodrigolmti.password_keeper.ui.MainActivity
 import br.com.rodrigolmti.security.biometric.BiometricPromptManager
 import br.com.rodrigolmti.security.domain.model.BiometricEvent
 import br.com.rodrigolmti.uikit.hide
 import br.com.rodrigolmti.uikit.show
-import kotlinx.android.synthetic.main.fragment_splash.*
 import javax.inject.Inject
 
 private const val DELAY = 1000L
@@ -28,15 +29,17 @@ class SplashFragment : BaseFragment() {
     @Inject
     internal lateinit var viewModelProviderFactory: ViewModelProvider.Factory
 
+    private val binding by viewBinding {
+        FragmentSplashBinding.inflate(layoutInflater)
+    }
+
     private val viewModel by viewModels<SplashViewModel> { viewModelProviderFactory }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_splash, container, false)
-    }
+    ): View = binding.root
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -52,7 +55,7 @@ class SplashFragment : BaseFragment() {
     }
 
     private fun setupFields() {
-        tvTryAgain.setOnClickListener {
+        binding.tvTryAgain.setOnClickListener {
             toLoadingState()
             requestBiometric()
         }
@@ -104,16 +107,16 @@ class SplashFragment : BaseFragment() {
     }
 
     private fun toLoadingState() {
-        lottie.show()
-        imgVoid.hide()
-        tvVoid.hide()
-        tvTryAgain.hide()
+        binding.lottie.show()
+        binding.imgVoid.hide()
+        binding.tvVoid.hide()
+        binding.tvTryAgain.hide()
     }
 
     private fun toErrorState() {
-        lottie.hide()
-        imgVoid.show()
-        tvVoid.show()
-        tvTryAgain.show()
+        binding.lottie.hide()
+        binding.imgVoid.show()
+        binding.tvVoid.show()
+        binding.tvTryAgain.show()
     }
 }

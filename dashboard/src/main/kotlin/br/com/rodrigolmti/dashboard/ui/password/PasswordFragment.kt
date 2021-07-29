@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import br.com.rodrigolmti.core_android.TextChangedWatcher
@@ -15,19 +14,24 @@ import br.com.rodrigolmti.core_android.extensions.exhaustive
 import br.com.rodrigolmti.core_android.extensions.hideKeyboard
 import br.com.rodrigolmti.core_android.navigation_modes.DefaultNavigationMode
 import br.com.rodrigolmti.core_android.navigation_modes.NavigationMode
+import br.com.rodrigolmti.core_android.view_binding_delegate.viewBinding
 import br.com.rodrigolmti.dashboard.R
+import br.com.rodrigolmti.dashboard.databinding.PasswordFragmentBinding
 import br.com.rodrigolmti.dashboard.domain.model.PasswordModel
 import br.com.rodrigolmti.dashboard.domain.model.SavedPasswordModel
 import br.com.rodrigolmti.dashboard.ui.DashboardActivity
 import br.com.rodrigolmti.uikit.hide
 import br.com.rodrigolmti.uikit.show
-import kotlinx.android.synthetic.main.password_fragment.*
 import javax.inject.Inject
 
 class PasswordFragment : BaseFragment(), NavigationMode by DefaultNavigationMode {
 
     @Inject
     internal lateinit var viewModelProviderFactory: ViewModelProvider.Factory
+
+    private val binding by viewBinding {
+        PasswordFragmentBinding.inflate(layoutInflater)
+    }
 
     private val viewModel by viewModels<PasswordViewModel> { viewModelProviderFactory }
 
@@ -42,9 +46,7 @@ class PasswordFragment : BaseFragment(), NavigationMode by DefaultNavigationMode
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.password_fragment, container, false)
-    }
+    ): View = binding.root
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -57,46 +59,46 @@ class PasswordFragment : BaseFragment(), NavigationMode by DefaultNavigationMode
     }
 
     private fun setupFields() {
-        toolbar.onBackClick = {
+        binding.toolbar.onBackClick = {
             findNavController().popBackStack()
         }
 
-        btnAction.setOnClickListener {
-            content.hideKeyboard()
+        binding.btnAction.setOnClickListener {
+            binding.content.hideKeyboard()
             viewModel.dispatchViewAction(
                 PasswordAction.SavePassword(
                     id = savedPasswordModel?.id,
-                    label = etPasswordLabel.text.toString(),
-                    login = etPasswordLogin.text.toString(),
-                    password = etPassword.text.toString(),
-                    strength = colorIndicator.selectedPosition
+                    label = binding.etPasswordLabel.text.toString(),
+                    login = binding.etPasswordLogin.text.toString(),
+                    password = binding.etPassword.text.toString(),
+                    strength = binding.colorIndicator.selectedPosition
                 )
             )
         }
 
-        etPassword.addTextChangedListener(TextChangedWatcher {
+        binding.etPassword.addTextChangedListener(TextChangedWatcher {
             viewModel.dispatchViewAction(PasswordAction.CalculatePasswordStrength(it))
         })
 
-        imgShuffle.setOnClickListener {
+        binding.imgShuffle.setOnClickListener {
             viewModel.dispatchViewAction(PasswordAction.ShufflePassword)
         }
 
-        toolbar.title = getString(R.string.password_fragment_title_save)
+        binding.toolbar.title = getString(R.string.password_fragment_title_save)
 
         passwordModel?.let { model ->
-            toolbar.title = getString(R.string.password_fragment_title_save)
-            btnAction.text = getString(R.string.action_save)
-            etPassword.setText(model.password)
+            binding.toolbar.title = getString(R.string.password_fragment_title_save)
+            binding.btnAction.text = getString(R.string.action_save)
+            binding.etPassword.setText(model.password)
         }
 
         savedPasswordModel?.let { model ->
-            toolbar.title = getString(R.string.password_fragment_title_edit)
-            btnAction.text = getString(R.string.action_edit)
-            etPasswordLabel.setText(model.label)
-            etPasswordLogin.setText(model.login)
-            etPassword.setText(model.password)
-            toolbar.onMenuClick = {
+            binding.toolbar.title = getString(R.string.password_fragment_title_edit)
+            binding.btnAction.text = getString(R.string.action_edit)
+            binding.etPasswordLabel.setText(model.label)
+            binding.etPasswordLogin.setText(model.login)
+            binding.etPassword.setText(model.password)
+            binding.toolbar.onMenuClick = {
                 viewModel.dispatchViewAction(PasswordAction.DeleteSavedPassword(model))
             }
         }
@@ -106,7 +108,7 @@ class PasswordFragment : BaseFragment(), NavigationMode by DefaultNavigationMode
 
     @Suppress("IMPLICIT_CAST_TO_ANY")
     private fun observeChanges() {
-        viewModel.viewState.state.observe(viewLifecycleOwner, Observer { state ->
+        viewModel.viewState.state.observe(viewLifecycleOwner, { state ->
             when (state) {
                 PasswordViewState.State.IDLE -> {
                     toIdleState()
@@ -116,10 +118,10 @@ class PasswordFragment : BaseFragment(), NavigationMode by DefaultNavigationMode
                 }
             }.exhaustive
         })
-        viewModel.viewState.action.observe(viewLifecycleOwner, Observer { action ->
+        viewModel.viewState.action.observe(viewLifecycleOwner, { action ->
             when (action) {
                 is PasswordViewState.Action.ShowPasswordStrength -> {
-                    colorIndicator.selectedPosition = action.strength
+                    binding.colorIndicator.selectedPosition = action.strength
                 }
                 is PasswordViewState.Action.ShowInvalidPasswordLabel -> {
                     showSnackBar(getString(R.string.password_fragment_invalid_label))
@@ -146,7 +148,7 @@ class PasswordFragment : BaseFragment(), NavigationMode by DefaultNavigationMode
                     showSnackBar(getString(R.string.password_fragment_delete_error))
                 }
                 is PasswordViewState.Action.ShowGeneratedPassword -> {
-                    etPassword.setText(action.password)
+                    binding.etPassword.setText(action.password)
                 }
                 is PasswordViewState.Action.ShowGeneratePasswordError -> {
                     showSnackBar(getString(R.string.password_fragment_generate_password_error))
@@ -156,14 +158,14 @@ class PasswordFragment : BaseFragment(), NavigationMode by DefaultNavigationMode
     }
 
     private fun toIdleState() {
-        btnAction.show()
-        content.show()
-        lottie.hide()
+        binding.btnAction.show()
+        binding.content.show()
+        binding.lottie.hide()
     }
 
     private fun toLoadingState() {
-        btnAction.hide()
-        content.hide()
-        lottie.show()
+        binding.btnAction.hide()
+        binding.content.hide()
+        binding.lottie.show()
     }
 }

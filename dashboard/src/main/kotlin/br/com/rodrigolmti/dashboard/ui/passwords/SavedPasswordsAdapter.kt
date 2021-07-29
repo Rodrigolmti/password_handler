@@ -1,12 +1,10 @@
 package br.com.rodrigolmti.dashboard.ui.passwords
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import br.com.rodrigolmti.dashboard.R
+import br.com.rodrigolmti.dashboard.databinding.SavedPasswordRowBinding
 import br.com.rodrigolmti.dashboard.domain.model.SavedPasswordModel
-import kotlinx.android.synthetic.main.saved_password_row.view.*
 
 internal class SavedPasswordsAdapter(
     private val password: List<SavedPasswordModel>,
@@ -16,31 +14,29 @@ internal class SavedPasswordsAdapter(
 ) :
     RecyclerView.Adapter<SavedPasswordsAdapter.ViewHolder>() {
 
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class ViewHolder(private val binding: SavedPasswordRowBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bindData(item: SavedPasswordModel) {
-            itemView.tvPassword.text = item.obfuscatedPassword
-            itemView.tvPasswordLabel.text = item.label
-            itemView.tvPasswordLogin.text = item.login ?: "-"
-            itemView.setOnClickListener {
+            binding.tvPassword.text = item.obfuscatedPassword
+            binding.tvPasswordLabel.text = item.label
+            binding.tvPasswordLogin.text = item.login ?: "-"
+            binding.root.setOnClickListener {
                 onItemClick(item)
             }
-            itemView.tvCopyLogin.setOnClickListener {
+            binding.tvCopyLogin.setOnClickListener {
                 onCopyLoginClick(item)
             }
-            itemView.tvCopyPassword.setOnClickListener {
+            binding.tvCopyPassword.setOnClickListener {
                 onCopyPasswordClick(item)
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(
-            LayoutInflater.from(parent.context).inflate(
-                R.layout.saved_password_row,
-                parent,
-                false
-            )
-        )
+        val binding = SavedPasswordRowBinding
+            .inflate(LayoutInflater.from(parent.context), parent, false)
+
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

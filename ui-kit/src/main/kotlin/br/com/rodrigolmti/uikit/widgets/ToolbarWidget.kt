@@ -2,42 +2,40 @@ package br.com.rodrigolmti.uikit.widgets
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.widget.FrameLayout
 import br.com.rodrigolmti.ui_kit.R
+import br.com.rodrigolmti.ui_kit.databinding.ToolbarBinding
 import br.com.rodrigolmti.uikit.hide
 import br.com.rodrigolmti.uikit.show
-import kotlinx.android.synthetic.main.toolbar.view.*
 
-class ToolbarWidget : FrameLayout {
+class ToolbarWidget @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : FrameLayout(context, attrs, defStyleAttr) {
 
-    constructor(context: Context) : super(context)
+    private val binding =
+        ToolbarBinding.inflate(context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater)
+            .also { addView(it.root) }
 
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
-        applyStyle()
-    }
-
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(
-        context,
-        attrs,
-        defStyleAttr
-    ) {
+    init {
         applyStyle()
     }
 
     private fun applyStyle() {
-        inflate(context, R.layout.toolbar, this)
-        imgBack.setOnClickListener {
+        binding.imgBack.setOnClickListener {
             onBackClick?.invoke()
         }
-        imgMenu.setOnClickListener {
+        binding.imgMenu.setOnClickListener {
             onMenuClick?.invoke()
         }
     }
 
     var title: String? = null
-        get() = tvTitle.text.toString()
+        get() = binding.tvTitle.text.toString()
         set(text) {
-            tvTitle.text = text
+            binding.tvTitle.text = text
             field = text
         }
 
@@ -45,7 +43,7 @@ class ToolbarWidget : FrameLayout {
 
     var onMenuClick: (() -> Unit)? = null
         set(value) {
-            if (value != null) imgMenu.show() else imgMenu.hide()
+            if (value != null) binding.imgMenu.show() else binding.imgMenu.hide()
             field = value
         }
 }

@@ -2,41 +2,46 @@ package br.com.rodrigolmti.uikit.widgets
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.widget.FrameLayout
-import br.com.rodrigolmti.ui_kit.R
-import kotlinx.android.synthetic.main.pin_keyboard_widget.view.*
+import br.com.rodrigolmti.ui_kit.databinding.PinKeyboardWidgetBinding
 
-class PinKeyboardWidget : FrameLayout {
+class PinKeyboardWidget @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : FrameLayout(context, attrs, defStyleAttr) {
 
-    constructor(context: Context) : super(context)
+    private val binding =
+        PinKeyboardWidgetBinding.inflate(context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater)
+            .also { addView(it.root) }
 
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
-        setupView()
-    }
-
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(
-        context,
-        attrs,
-        defStyleAttr
-    ) {
+    init {
         setupView()
     }
 
     private fun setupView() {
-        inflate(context, R.layout.pin_keyboard_widget, this)
-
-        padClear.setOnClickListener {
+        binding.padClear.setOnClickListener {
             if (stringBuilder.isNotEmpty()) {
                 stringBuilder.deleteCharAt(stringBuilder.length - 1)
                 sendPadKeyPressed()
             }
         }
-        padOk.setOnClickListener {
+        binding.padOk.setOnClickListener {
             onOkPressed?.invoke(stringBuilder.toString())
         }
 
         configureTextButtons(
-            padOne, padTwo, padThree, padFour, padFive, padSix, padSeven, padEight, padNine, padZero
+            binding.padOne,
+            binding.padTwo,
+            binding.padThree,
+            binding.padFour,
+            binding.padFive,
+            binding.padSix,
+            binding.padSeven,
+            binding.padEight,
+            binding.padNine,
+            binding.padZero,
         )
     }
 

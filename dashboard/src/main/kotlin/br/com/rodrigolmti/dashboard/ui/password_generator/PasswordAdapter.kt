@@ -1,12 +1,10 @@
 package br.com.rodrigolmti.dashboard.ui.password_generator
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import br.com.rodrigolmti.dashboard.R
+import br.com.rodrigolmti.dashboard.databinding.GeneratedPasswordRowBinding
 import br.com.rodrigolmti.dashboard.domain.model.PasswordModel
-import kotlinx.android.synthetic.main.generated_password_row.view.*
 
 internal class PasswordAdapter(
     private val password: List<PasswordModel>,
@@ -15,27 +13,27 @@ internal class PasswordAdapter(
 ) :
     RecyclerView.Adapter<PasswordAdapter.ViewHolder>() {
 
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class ViewHolder(private val binding: GeneratedPasswordRowBinding) :
+        RecyclerView.ViewHolder(
+            binding.root
+        ) {
         fun bindData(item: PasswordModel) {
-            itemView.password.text = item.password
-            itemView.colorIndicator.selectedPosition = item.score
-            itemView.tvCopy.setOnClickListener {
+            binding.password.text = item.password
+            binding.colorIndicator.selectedPosition = item.score
+            binding.tvCopy.setOnClickListener {
                 onCopyClick(item)
             }
-            itemView.tvSave.setOnClickListener {
+            binding.tvSave.setOnClickListener {
                 onSaveClick(item)
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(
-            LayoutInflater.from(parent.context).inflate(
-                R.layout.generated_password_row,
-                parent,
-                false
-            )
-        )
+        val binding = GeneratedPasswordRowBinding
+            .inflate(LayoutInflater.from(parent.context), parent, false)
+
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-parcelize'
 apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
@@ -11,8 +11,6 @@ android {
     defaultConfig {
         minSdkVersion Versions.minSdk
         targetSdkVersion Versions.targetSdk
-        versionCode Releases.versionCode
-        versionName Releases.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -27,6 +25,10 @@ android {
         }
     }
 
+    buildFeatures {
+        viewBinding true
+    }
+
     buildTypes {
         release {
             consumerProguardFiles 'proguard-rules.pro'
@@ -34,12 +36,12 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
+        jvmTarget = JavaVersion.VERSION_11.toString()
     }
 }
 
@@ -71,14 +73,10 @@ dependencies {
     implementation project(Modules.injector)
     implementation project(Modules.uiKit)
 
-    implementation MockK.core
-    implementation MockK.android
-    implementation JUnit.core
-
     implementation Dagger.core
     kapt Dagger.compiler
 
-    implementation JUnit.core
-    implementation MockK.core
-    implementation MockK.android
+    testImplementation MockK.core
+    androidTestImplementation MockK.android
+    testImplementation JUnit.core
 }

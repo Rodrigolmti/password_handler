@@ -1,7 +1,7 @@
 package br.com.rodrigolmti.security.domain.model
 
 import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 sealed class BiometricEvent : Parcelable {
 

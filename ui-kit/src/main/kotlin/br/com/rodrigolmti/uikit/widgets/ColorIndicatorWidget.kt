@@ -9,20 +9,14 @@ import android.view.View
 import br.com.rodrigolmti.ui_kit.R
 import br.com.rodrigolmti.uikit.px
 
-class ColorIndicatorWidget : View {
+class ColorIndicatorWidget @JvmOverloads constructor(
+    context: Context,
+    private val attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : View(context, attrs, defStyleAttr) {
 
-    constructor(context: Context) : super(context)
-
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
-        applyStyle(attrs)
-    }
-
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(
-        context,
-        attrs,
-        defStyleAttr
-    ) {
-        applyStyle(attrs, defStyleAttr)
+    init {
+        attrs?.let { applyStyle(attrs, defStyleAttr) }
     }
 
     private var itemRectF = RectF()

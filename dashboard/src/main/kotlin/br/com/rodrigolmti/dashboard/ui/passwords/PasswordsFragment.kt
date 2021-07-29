@@ -9,7 +9,6 @@ import android.view.inputmethod.EditorInfo
 import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -20,16 +19,14 @@ import br.com.rodrigolmti.core_android.extensions.copyToClipboard
 import br.com.rodrigolmti.core_android.extensions.exhaustive
 import br.com.rodrigolmti.core_android.navigation_modes.ImmersiveNavigationMode
 import br.com.rodrigolmti.core_android.navigation_modes.NavigationMode
+import br.com.rodrigolmti.core_android.view_binding_delegate.viewBinding
 import br.com.rodrigolmti.dashboard.R
+import br.com.rodrigolmti.dashboard.databinding.PasswordsFragmentBinding
 import br.com.rodrigolmti.dashboard.domain.model.SavedPasswordModel
 import br.com.rodrigolmti.dashboard.ui.DashboardActivity
 import br.com.rodrigolmti.dashboard.ui.passwords.PasswordsViewState.State.*
-import br.com.rodrigolmti.dashboard.ui.settings.SettingsViewModel
 import br.com.rodrigolmti.uikit.hide
 import br.com.rodrigolmti.uikit.show
-import kotlinx.android.synthetic.main.password_generator_fragment.lottie
-import kotlinx.android.synthetic.main.password_generator_fragment.recyclerView
-import kotlinx.android.synthetic.main.passwords_fragment.*
 import javax.inject.Inject
 
 class PasswordsFragment : BaseFragment(), NavigationMode by ImmersiveNavigationMode {
@@ -37,14 +34,16 @@ class PasswordsFragment : BaseFragment(), NavigationMode by ImmersiveNavigationM
     @Inject
     internal lateinit var viewModelProviderFactory: ViewModelProvider.Factory
 
+    private val binding by viewBinding {
+        PasswordsFragmentBinding.inflate(layoutInflater)
+    }
+
     private val viewModel by viewModels<PasswordsViewModel> { viewModelProviderFactory }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.passwords_fragment, container, false)
-    }
+    ): View = binding.root
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -58,22 +57,22 @@ class PasswordsFragment : BaseFragment(), NavigationMode by ImmersiveNavigationM
     }
 
     private fun setupFields() {
-        etSearch.setOnEditorActionListener { _, actionId, _ ->
+        binding.etSearch.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                viewModel.dispatchViewAction(PasswordsAction.FilterPasswords(etSearch.text.toString()))
+                viewModel.dispatchViewAction(PasswordsAction.FilterPasswords(binding.etSearch.text.toString()))
             }
             true
         }
 
-        etSearch.addTextChangedListener {
+        binding.etSearch.addTextChangedListener {
             viewModel.dispatchViewAction(PasswordsAction.FilterPasswords(it.toString()))
         }
 
-        imgSearch.setOnClickListener {
-            viewModel.dispatchViewAction(PasswordsAction.FilterPasswords(etSearch.text.toString()))
+        binding.imgSearch.setOnClickListener {
+            viewModel.dispatchViewAction(PasswordsAction.FilterPasswords(binding.etSearch.text.toString()))
         }
 
-        fBtnAdd.setOnClickListener {
+        binding.fBtnAdd.setOnClickListener {
             PasswordsFragmentDirections.actionPasswordsToPassword().also { navDirection ->
                 findNavController().navigate(navDirection)
             }
@@ -83,21 +82,21 @@ class PasswordsFragment : BaseFragment(), NavigationMode by ImmersiveNavigationM
     }
 
     private fun setupRecyclerView() {
-        recyclerView.apply {
+        binding.recyclerView.apply {
             setHasFixedSize(true)
             val dividerItemDecoration = DividerItemDecoration(
-                recyclerView.context,
+                binding.recyclerView.context,
                 LinearLayoutManager.VERTICAL
             )
             ContextCompat.getDrawable(requireContext(), R.drawable.item_divisor)?.let { drawable ->
                 dividerItemDecoration.setDrawable(drawable)
             }
-            recyclerView.addItemDecoration(dividerItemDecoration)
+            binding.recyclerView.addItemDecoration(dividerItemDecoration)
         }
     }
 
     private fun observeChanges() {
-        viewModel.viewState.state.observe(viewLifecycleOwner, Observer { state ->
+        viewModel.viewState.state.observe(viewLifecycleOwner, { state ->
             when (state) {
                 IDLE -> {
                     toIdleState()
@@ -113,7 +112,7 @@ class PasswordsFragment : BaseFragment(), NavigationMode by ImmersiveNavigationM
                 }
             }.exhaustive
         })
-        viewModel.viewState.action.observe(viewLifecycleOwner, Observer { action ->
+        viewModel.viewState.action.observe(viewLifecycleOwner, { action ->
             when (action) {
                 is PasswordsViewState.Action.ShowSavedPasswordList -> {
                     setupAdapter(action.passwords)
@@ -126,7 +125,7 @@ class PasswordsFragment : BaseFragment(), NavigationMode by ImmersiveNavigationM
     }
 
     private fun setupAdapter(passwords: List<SavedPasswordModel>) {
-        recyclerView.apply {
+        binding.recyclerView.apply {
             adapter = SavedPasswordsAdapter(
                 password = passwords,
                 onItemClick = {
@@ -153,23 +152,23 @@ class PasswordsFragment : BaseFragment(), NavigationMode by ImmersiveNavigationM
     }
 
     private fun toIdleState() {
-        lottie.hide()
-        recyclerView.show()
-        imgVoid.hide()
-        tvVoid.hide()
+        binding.lottie.hide()
+        binding.recyclerView.show()
+        binding.imgVoid.hide()
+        binding.tvVoid.hide()
     }
 
     private fun toLoadingState() {
-        lottie.show()
-        recyclerView.hide()
-        imgVoid.hide()
-        tvVoid.hide()
+        binding.lottie.show()
+        binding.recyclerView.hide()
+        binding.imgVoid.hide()
+        binding.tvVoid.hide()
     }
 
     private fun toEmptyState() {
-        lottie.hide()
-        recyclerView.hide()
-        imgVoid.show()
-        tvVoid.show()
+        binding.lottie.hide()
+        binding.recyclerView.hide()
+        binding.imgVoid.show()
+        binding.tvVoid.show()
     }
 }
