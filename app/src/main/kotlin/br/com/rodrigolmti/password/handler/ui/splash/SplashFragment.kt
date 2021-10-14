@@ -1,4 +1,4 @@
-package br.com.rodrigolmti.password_keeper.ui.splash
+package br.com.rodrigolmti.password.handler.ui.splash
 
 import android.content.Context
 import android.os.Bundle
@@ -13,9 +13,9 @@ import br.com.rodrigolmti.core_android.base.BaseFragment
 import br.com.rodrigolmti.core_android.extensions.exhaustive
 import br.com.rodrigolmti.core_android.view_binding_delegate.viewBinding
 import br.com.rodrigolmti.navigator.Actions
-import br.com.rodrigolmti.password_keeper.R
-import br.com.rodrigolmti.password_keeper.databinding.FragmentSplashBinding
-import br.com.rodrigolmti.password_keeper.ui.MainActivity
+import br.com.rodrigolmti.password.handler.R
+import br.com.rodrigolmti.password.handler.databinding.FragmentSplashBinding
+import br.com.rodrigolmti.password.handler.ui.MainActivity
 import br.com.rodrigolmti.security.biometric.BiometricPromptManager
 import br.com.rodrigolmti.security.domain.model.BiometricEvent
 import br.com.rodrigolmti.uikit.hide

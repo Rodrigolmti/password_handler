@@ -1,4 +1,4 @@
-package br.com.rodrigolmti.password_keeper.ui.splash
+package br.com.rodrigolmti.password.handler.ui.splash
 
 import androidx.lifecycle.viewModelScope
 import br.com.rodrigolmti.core_android.base.BaseViewModel

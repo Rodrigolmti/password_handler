@@ -14,7 +14,8 @@
 
     <string name="passwords_fragment_title">Saved Passwords</string>
     <string name="passwords_fragment_description">You can see here your saved passwords, for more detail select one of them!</string>
-    <string name="passwords_fragment_void">Wooou looks like we got into some void, try to create some passwords, and come back!</string>
+    <string name="passwords_fragment_void">Looks like we got into some void, try to create some passwords, and come back!</string>
+    <string name="passwords_fragment_field_hint">Search here &#8230;</string>
     <string name="passwords_fragment_copy_password_message">Password copy to clipboard</string>
     <string name="passwords_fragment_copy_login_error_message">There is no login to copy</string>
     <string name="passwords_fragment_copy_login_message">Login copy to clipboard</string>

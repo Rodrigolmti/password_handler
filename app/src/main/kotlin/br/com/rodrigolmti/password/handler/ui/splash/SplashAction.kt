@@ -1,4 +1,4 @@
-package br.com.rodrigolmti.password_keeper.ui.splash
+package br.com.rodrigolmti.password.handler.ui.splash
 
 internal sealed class SplashAction {
     object Init : SplashAction()

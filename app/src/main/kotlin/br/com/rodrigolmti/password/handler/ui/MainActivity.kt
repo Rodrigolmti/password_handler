@@ -1,9 +1,9 @@
-package br.com.rodrigolmti.password_keeper.ui
+package br.com.rodrigolmti.password.handler.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import br.com.rodrigolmti.password_keeper.R
-import br.com.rodrigolmti.password_keeper.di.AppComponent
+import br.com.rodrigolmti.password.handler.R
+import br.com.rodrigolmti.password.handler.di.AppComponent
 
 class MainActivity : AppCompatActivity() {
 

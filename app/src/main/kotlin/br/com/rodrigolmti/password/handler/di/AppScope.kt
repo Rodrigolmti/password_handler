@@ -1,4 +1,4 @@
-package br.com.rodrigolmti.password_keeper.di
+package br.com.rodrigolmti.password.handler.di
 
 import javax.inject.Scope
 

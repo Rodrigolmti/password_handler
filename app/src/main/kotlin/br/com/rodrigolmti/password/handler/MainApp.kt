@@ -1,4 +1,4 @@
-package br.com.rodrigolmti.password_keeper
+package br.com.rodrigolmti.password.handler
 
 import android.app.Application
 import br.com.rodrigolmti.injector.CoreComponent

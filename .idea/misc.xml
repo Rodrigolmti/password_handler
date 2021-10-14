@@ -4,14 +4,20 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.246875" />
+        <entry key="dashboard/src/main/res/drawable/password_generator_top_bg.xml" value="0.3574074074074074" />
         <entry key="dashboard/src/main/res/layout/dashboard_activity.xml" value="0.189209726443769" />
         <entry key="dashboard/src/main/res/layout/generated_password_row.xml" value="0.3759057971014493" />
         <entry key="dashboard/src/main/res/layout/password_fragment.xml" value="0.36730072463768115" />
+        <entry key="dashboard/src/main/res/layout/password_generator_fragment.xml" value="0.37817028985507245" />
+        <entry key="dashboard/src/main/res/layout/passwords_fragment.xml" value="0.37817028985507245" />
+        <entry key="dashboard/src/main/res/layout/saved_password_row.xml" value="0.37817028985507245" />
+        <entry key="dashboard/src/main/res/layout/settings_fragment.xml" value="0.37817028985507245" />
         <entry key="ui-kit/src/main/res/layout/pad_key_widget.xml" value="0.36730072463768115" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
