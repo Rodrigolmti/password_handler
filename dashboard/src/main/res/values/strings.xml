@@ -21,6 +21,7 @@
     <string name="passwords_fragment_copy_login_message">Login copy to clipboard</string>
     <string name="passwords_fragment_copy_login">Copy login</string>
     <string name="passwords_fragment_copy_password">Copy password</string>
+    <string name="passwords_fragment_input_hint">Search here &#8230;</string>
 
     <string name="password_fragment_title_save">Save password</string>
     <string name="password_fragment_title_edit">Edit password</string>
@@ -54,5 +55,10 @@
     <string name="settings_fragment_description">Tweak the application to your way by playing with the options below!</string>
     <string name="settings_fragment_biometric">Request biometric to open the app</string>
     <string name="settings_fragment_info">Made with ❤️ by Rodrigo Martins, Password Handler doesn\'t keep any data or share with our partners, all the passwords saved here will remain on the device using algorithms to encode them.</string>
+    <string name="password_screen_name_label">Password name</string>
+    <string name="password_screen_login_label">Password login (Optional)</string>
+    <string name="password_screen_generated_password">Password</string>
+    <string name="password_screen_strength_label">Password strength</string>
+
 
 </resources>

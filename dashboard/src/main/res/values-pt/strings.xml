@@ -21,6 +21,7 @@
     <string name="passwords_fragment_copy_login_message">Login cpiado com sucesso!</string>
     <string name="passwords_fragment_copy_login">Copiar login</string>
     <string name="passwords_fragment_copy_password">Copiar senha</string>
+    <string name="passwords_fragment_input_hint">Procure aqui &#8230;</string>
 
     <string name="password_fragment_title_save">Salvar senha</string>
     <string name="password_fragment_title_edit">Editar senha</string>
