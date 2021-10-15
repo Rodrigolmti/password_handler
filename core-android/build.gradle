@@ -43,7 +43,7 @@ android {
 dependencies {
     implementation Kotlin.stdlib
 
-    implementation AndroidX.ktx
+    implementation AndroidX.core
     implementation AndroidX.fragment
     implementation AndroidX.appcompat
 

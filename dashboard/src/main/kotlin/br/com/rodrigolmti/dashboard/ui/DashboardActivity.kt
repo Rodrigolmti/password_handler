@@ -27,7 +27,7 @@ class DashboardActivity : BaseActivity(), NavigationContainer {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.dashboard_activity)
+        setContentView(binding.root)
         setupFields()
     }
 

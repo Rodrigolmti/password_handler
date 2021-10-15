@@ -49,8 +49,9 @@ dependencies {
     implementation Kotlin.stdlib
     implementation Kotlin.junit
 
-    implementation AndroidX.ktx
+    implementation AndroidX.core
     implementation AndroidX.fragment
+    implementation AndroidX.design
     implementation AndroidX.appcompat
 
     implementation Layout.constraint

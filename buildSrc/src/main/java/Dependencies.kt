@@ -97,7 +97,7 @@ object AndroidX {
         const val room = "2.3.0"
     }
 
-    const val ktx = "androidx.core:core-ktx:${Versions.ktx}"
+    const val core = "androidx.core:core-ktx:${Versions.ktx}"
     const val appcompat = "androidx.appcompat:appcompat:${Versions.appcompat}"
     const val design = "com.google.android.material:material:${Versions.support}"
     const val fragment = "androidx.fragment:fragment-ktx:${Versions.fragment}"
