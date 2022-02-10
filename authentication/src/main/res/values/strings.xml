@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="authentication_activity_title">Enter your passcode</string>
+</resources>
