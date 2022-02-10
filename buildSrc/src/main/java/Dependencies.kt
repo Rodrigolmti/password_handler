@@ -57,9 +57,13 @@ object Dagger {
 }
 
 object Coroutines {
-    const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlin}"
-    const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.kotlin}"
-    const val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.kotlin}"
+    object Versions {
+        const val coroutines = "1.5.1"
+    }
+
+    const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
+    const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+    const val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
 }
 
 object Navigation {
