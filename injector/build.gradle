@@ -10,7 +10,6 @@ android {
         minSdkVersion Versions.minSdk
         targetSdkVersion Versions.targetSdk
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
 

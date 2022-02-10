@@ -12,7 +12,6 @@ android {
         minSdkVersion Versions.minSdk
         targetSdkVersion Versions.targetSdk
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
 
@@ -78,6 +77,6 @@ dependencies {
     kapt Dagger.compiler
 
     testImplementation MockK.core
-    androidTestImplementation MockK.android
+    testImplementation MockK.android
     testImplementation JUnit.core
 }

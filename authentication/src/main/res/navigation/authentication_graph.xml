@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/authentication_graph"
-    app:startDestination="@id/pinFragment">
-
-    <fragment
-        android:id="@+id/pinFragment"
-        android:name="br.com.rodrigolmti.authentication.ui.pin.PinFragment"
-        android:label="PinFragment"
-        tools:layout="@layout/pin_fragment" />
+    android:id="@+id/authentication_graph">
 
 </navigation>
