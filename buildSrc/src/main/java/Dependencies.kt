@@ -3,7 +3,7 @@ object ApplicationId {
 }
 
 object Versions {
-    const val kotlin = "1.5.20"
+    const val kotlin = "1.6.10"
     const val googleServices = "4.3.8"
     const val crashlytics = "2.7.1"
     const val gradle = "4.0.0"
@@ -57,13 +57,9 @@ object Dagger {
 }
 
 object Coroutines {
-    object Versions {
-        const val coroutines = "1.5.1"
-    }
-
-    const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
-    const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
-    const val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
+    const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kotlin}"
+    const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.kotlin}"
+    const val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.kotlin}"
 }
 
 object Navigation {
