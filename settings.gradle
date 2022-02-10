@@ -1,3 +1,5 @@
+rootProject.name = "password_keeper"
+include ':app'
 include ':authentication'
 include ':security'
 include ':user-preferences'
@@ -7,5 +9,5 @@ include ':navigator'
 include ':core-android'
 include ':injector'
 include ':dashboard'
-include ':app'
-rootProject.name = "password_keeper"
+include ':macrobenchmark'
+

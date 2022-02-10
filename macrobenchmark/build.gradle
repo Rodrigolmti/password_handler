@@ -1,0 +1,65 @@
+plugins {
+    id 'com.android.test'
+    id 'kotlin-android'
+}
+
+// [START macrobenchmark_setup_android]
+android {
+    // [START_EXCLUDE]
+    compileSdkVersion Versions.compileSdk
+    buildToolsVersion Versions.buildTools
+
+    defaultConfig {
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
+
+        consumerProguardFiles "consumer-rules.pro"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    // Note that your module name may have different name
+    targetProjectPath = ":app"
+    // Enable the benchmark to run separately from the app process
+    experimentalProperties["android.experimental.self-instrumenting"] = true
+
+    buildTypes {
+        benchmark {
+            debuggable false
+            minifyEnabled true
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11.toString()
+    }
+}
+
+// [END macrobenchmark_setup_android]
+
+// [START macrobenchmark_setup_variant]
+androidComponents {
+    beforeVariants(selector().all()) {
+        // enable only the benchmark buildType, since we only want to measure close to release performance
+        enabled = buildType == 'benchmark'
+    }
+}
+// [END macrobenchmark_setup_variant]
+
+// [START macrobenchmark_setup_dependencies]
+dependencies {
+    // [START_EXCLUDE]
+    implementation Kotlin.stdlib
+    implementation AndroidX.test
+    implementation AndroidX.espresso
+    implementation AndroidX.uiautomator
+    // [END_EXCLUDE]
+    implementation AndroidX.benchmark
+}
+// [END macrobenchmark_setup_dependencies]

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="br.com.rodrigolmti.password.handler">
 
     <application
@@ -19,6 +20,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- [START macrobenchmark_setup_profileable] -->
+        <!-- enable profiling by macrobenchmark -->
+        <profileable
+            android:shell="true"
+            tools:targetApi="q" />
+        <!-- [END macrobenchmark_setup_profileable] -->
+
     </application>
 
 </manifest>

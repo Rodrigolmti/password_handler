@@ -7,9 +7,10 @@ object Versions {
     const val googleServices = "4.3.8"
     const val crashlytics = "2.7.1"
     const val gradle = "4.0.0"
+    const val gradleTools = "7.0.0"
     const val buildTools = "30.0.2"
     const val compileSdk = 31
-    const val minSdk = 21
+    const val minSdk = 23
     const val targetSdk = 31
 }
 
@@ -112,6 +113,11 @@ object AndroidX {
         const val support = "1.4.0"
         const val fragment = "1.3.6"
         const val room = "2.3.0"
+        const val baseline = "1.2.0-alpha01"
+        const val benchmark = "1.1.0-beta01"
+        const val test = "1.1.3"
+        const val espresso = "3.4.0"
+        const val uiautomator = "2.2.0"
     }
 
     const val core = "androidx.core:core-ktx:${Versions.ktx}"
@@ -121,6 +127,12 @@ object AndroidX {
     const val room = "androidx.room:room-runtime:${Versions.room}"
     const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
     const val roomExt = "androidx.room:room-ktx:${Versions.room}"
+    const val baseline = "androidx.profileinstaller:profileinstaller:${Versions.baseline}"
+    const val benchmark = "androidx.benchmark:benchmark-macro-junit4:${Versions.benchmark}"
+
+    const val test = "androidx.test.ext:junit:${Versions.test}"
+    const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
+    const val uiautomator = "androidx.test.uiautomator:uiautomator:${Versions.uiautomator}"
 }
 
 object JUnit {

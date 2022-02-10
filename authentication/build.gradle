@@ -30,6 +30,12 @@ android {
     }
 
     buildTypes {
+        benchmark {
+            debuggable false
+            minifyEnabled true
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
         release {
             consumerProguardFiles 'proguard-rules.pro'
         }

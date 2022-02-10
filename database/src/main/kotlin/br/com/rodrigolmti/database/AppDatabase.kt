@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import br.com.rodrigolmti.database.dao.SavedPasswordDao
 import br.com.rodrigolmti.database.entity.SavedPasswordEntity
 
-@Database(entities = [SavedPasswordEntity::class], version = 1)
+@Database(entities = [SavedPasswordEntity::class], version = 1, exportSchema = true)
 abstract class AppDatabase: RoomDatabase() {
 
     abstract fun savedPasswordDao(): SavedPasswordDao

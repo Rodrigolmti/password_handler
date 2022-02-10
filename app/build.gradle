@@ -19,7 +19,13 @@ android {
 
         resConfigs "en"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += ["room.schemaLocation":
+                                      "$projectDir/schemas".toString()]
+            }
+        }
+
     }
 
     buildFeatures{
@@ -70,6 +76,13 @@ android {
             ext.enableCrashlytics = false
             debuggable true
         }
+        benchmark {
+            debuggable false
+            minifyEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
     }
 
     packagingOptions {
@@ -84,6 +97,7 @@ dependencies {
     implementation AndroidX.core
     implementation AndroidX.fragment
     implementation AndroidX.appcompat
+    implementation AndroidX.baseline
 
     implementation Layout.constraint
 
