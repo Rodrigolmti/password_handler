@@ -3,8 +3,11 @@ package br.com.rodrigolmti.authentication.di.modules
 import dagger.Module
 
 @Module(
-    includes = [AuthenticationDataModule::class,
+    includes = [
+        AuthenticationDataModule::class,
         AuthenticationViewModelModule::class,
-        AuthenticationDataModule::class]
+        AuthenticationDomainModule::class,
+        AuthenticationDataModule::class,
+    ]
 )
 internal class AuthenticationModule

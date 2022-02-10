@@ -21,8 +21,13 @@ android {
         }
     }
 
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.0.5'
+    }
+
     buildFeatures{
         viewBinding true
+        compose true
     }
 
     buildTypes {
@@ -55,6 +60,13 @@ dependencies {
 
     implementation Lifecycle.liveData
     implementation Lifecycle.viewModel
+
+    implementation Compose.toolsCompose
+    implementation Compose.activityCompose
+    implementation Compose.animationCompose
+    implementation Compose.viewModelCompose
+    implementation Compose.material3Compose
+    implementation Compose.materialCompose
 
     implementation Libraries.lottie
 

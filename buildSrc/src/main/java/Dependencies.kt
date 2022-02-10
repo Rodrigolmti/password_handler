@@ -3,14 +3,14 @@ object ApplicationId {
 }
 
 object Versions {
-    const val kotlin = "1.6.10"
+    const val kotlin = "1.5.31"
     const val googleServices = "4.3.8"
     const val crashlytics = "2.7.1"
     const val gradle = "4.0.0"
     const val buildTools = "30.0.2"
-    const val compileSdk = 30
+    const val compileSdk = 31
     const val minSdk = 21
-    const val targetSdk = 30
+    const val targetSdk = 31
 }
 
 object Releases {
@@ -54,6 +54,23 @@ object Dagger {
     const val core = "com.google.dagger:dagger:${Versions.dagger}"
     const val compiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
     const val android = "com.google.dagger:dagger-android-support:${Versions.dagger}"
+}
+
+object Compose {
+    object Versions {
+        const val viewModelCompose = "1.0.0-alpha07"
+        const val materialCompose = "1.0.0-alpha01"
+        const val activityCompose = "1.3.1"
+        const val compose = "1.0.5"
+    }
+
+    const val activityCompose = "androidx.activity:activity-compose:${Versions.activityCompose}"
+    const val material3Compose = "androidx.compose.material3:material3:${Versions.materialCompose}"
+    const val materialCompose = "androidx.compose.material:material:${Versions.compose}"
+    const val animationCompose = "androidx.compose.animation:animation:${Versions.compose}"
+    const val toolsCompose = "androidx.compose.ui:ui-tooling:${Versions.compose}"
+    const val viewModelCompose =
+        "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.viewModelCompose}"
 }
 
 object Coroutines {

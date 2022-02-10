@@ -3,6 +3,4 @@ package br.com.rodrigolmti.authentication.di.modules
 import dagger.Module
 
 @Module
-internal abstract class AuthenticationDataModule {
-
-}
+internal abstract class AuthenticationDataModule

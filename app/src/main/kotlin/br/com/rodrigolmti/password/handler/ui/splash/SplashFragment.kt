@@ -97,7 +97,8 @@ class SplashFragment : BaseFragment() {
     }
 
     private fun startDashboardActivity() {
-        startActivity(Actions.openDashboard(requireContext()))
+//        startActivity(Actions.openDashboard(requireContext()))
+        startActivity(Actions.openAuthentication(requireContext()))
         activity?.finish()
     }
 

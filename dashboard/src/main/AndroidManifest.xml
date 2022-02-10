@@ -4,9 +4,10 @@
 
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
 
-    <application
-        android:theme="@style/AppTheme">
-        <activity android:name=".ui.DashboardActivity">
+    <application android:theme="@style/AppTheme">
+        <activity
+            android:name=".ui.DashboardActivity"
+            android:exported="false">
             <intent-filter>
                 <action android:name="br.com.rodrigolmti.dashboard.open" />
                 <category android:name="android.intent.category.DEFAULT" />

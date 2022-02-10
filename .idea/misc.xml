@@ -8,7 +8,7 @@
         <entry key="authentication/src/main/res/layout/pin_fragment.xml" value="0.3645833333333333" />
         <entry key="dashboard/src/main/res/drawable/password_generator_top_bg.xml" value="0.3574074074074074" />
         <entry key="dashboard/src/main/res/layout/dashboard_activity.xml" value="0.189209726443769" />
-        <entry key="dashboard/src/main/res/layout/generated_password_row.xml" value="0.3759057971014493" />
+        <entry key="dashboard/src/main/res/layout/generated_password_row.xml" value="0.1" />
         <entry key="dashboard/src/main/res/layout/password_fragment.xml" value="0.36730072463768115" />
         <entry key="dashboard/src/main/res/layout/password_generator_fragment.xml" value="0.33" />
         <entry key="dashboard/src/main/res/layout/passwords_fragment.xml" value="0.37817028985507245" />

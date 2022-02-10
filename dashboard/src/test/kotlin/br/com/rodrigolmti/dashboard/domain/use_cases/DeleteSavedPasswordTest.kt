@@ -50,8 +50,6 @@ internal class DeleteSavedPasswordTest {
     private fun prepareScenario(result: Result<Unit, DashboardError>) {
         coEvery {
             repository.deletePassword(any())
-        } answers {
-            result
-        }
+        } answers { result }
     }
 }
