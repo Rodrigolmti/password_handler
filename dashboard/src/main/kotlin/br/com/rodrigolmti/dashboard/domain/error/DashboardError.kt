@@ -4,7 +4,7 @@ sealed class DashboardError {
     object GeneratePasswordError : DashboardError()
     object InsertSavedPasswordError : DashboardError()
     object GetAllSavedPasswordsError : DashboardError()
-    object UpdateSavesPasswordError : DashboardError()
+    object UpdateSavedPasswordError : DashboardError()
     object DeleteSavedPasswordError : DashboardError()
     object EncodePasswordError : DashboardError()
 }

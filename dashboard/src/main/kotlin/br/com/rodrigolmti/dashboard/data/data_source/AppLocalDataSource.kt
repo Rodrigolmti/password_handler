@@ -6,8 +6,6 @@ import br.com.rodrigolmti.dashboard.data.mapper.SavedPasswordModelMapper
 import br.com.rodrigolmti.dashboard.domain.error.DashboardError
 import br.com.rodrigolmti.dashboard.domain.model.SavedPasswordModel
 import br.com.rodrigolmti.database.PasswordDatabase
-import br.com.rodrigolmti.user_preferences.USER_BIOMETRIC
-import br.com.rodrigolmti.user_preferences.UserPreferences
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -47,7 +45,7 @@ class AppLocalDataSource @Inject constructor(
                 database.database().savedPasswordDao().update(entity)
                 Result.Success(Unit)
             } catch (error: Exception) {
-                Result.Error(DashboardError.UpdateSavesPasswordError)
+                Result.Error(DashboardError.UpdateSavedPasswordError)
             }
         }
 

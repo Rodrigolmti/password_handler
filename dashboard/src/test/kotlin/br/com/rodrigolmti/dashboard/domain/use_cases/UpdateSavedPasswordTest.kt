@@ -12,7 +12,7 @@ import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
 
-internal class SavePasswordTest {
+internal class UpdateSavedPasswordTest {
 
     private val dashboardRepository: DashboardRepository = mockk()
     private val encodePasswordUseCase: EncodePasswordUseCase = mockk()
@@ -27,7 +27,7 @@ internal class SavePasswordTest {
         label = "google"
     )
 
-    private val useCase = SavePassword(
+    private val useCase = UpdateSavedPassword(
         dashboardRepository,
         encodePasswordUseCase
     )
@@ -48,34 +48,34 @@ internal class SavePasswordTest {
     fun call_encode_password_return_success() = runBlocking {
         coEvery { encodePasswordUseCase(model.password) } returns Result.Success(encoded)
         coEvery {
-            dashboardRepository.savePassword(model.copy(password = encoded))
+            dashboardRepository.updatePassword(model.copy(password = encoded))
         } returns Result.Success(Unit)
 
         useCase(model)
 
         coVerify(exactly = 1) { encodePasswordUseCase(model.password) }
-        coVerify(exactly = 1) { dashboardRepository.savePassword(model.copy(password = encoded)) }
+        coVerify(exactly = 1) { dashboardRepository.updatePassword(model.copy(password = encoded)) }
     }
 
     @Test
-    fun call_save_password_return_error() = runBlocking {
+    fun call_update_password_return_error() = runBlocking {
         coEvery { encodePasswordUseCase(model.password) } returns Result.Success(encoded)
         coEvery {
-            dashboardRepository.savePassword(model.copy(password = encoded))
-        } returns Result.Error(DashboardError.InsertSavedPasswordError)
+            dashboardRepository.updatePassword(model.copy(password = encoded))
+        } returns Result.Error(DashboardError.UpdateSavedPasswordError)
 
         val response = useCase(model)
 
         assert(
-            response is Result.Error && response.value == DashboardError.InsertSavedPasswordError
+            response is Result.Error && response.value == DashboardError.UpdateSavedPasswordError
         )
     }
 
     @Test
-    fun call_save_password_return_success() = runBlocking {
+    fun call_update_password_return_success() = runBlocking {
         coEvery { encodePasswordUseCase(model.password) } returns Result.Success(encoded)
         coEvery {
-            dashboardRepository.savePassword(model.copy(password = encoded))
+            dashboardRepository.updatePassword(model.copy(password = encoded))
         } returns Result.Success(Unit)
 
         val response = useCase(model)

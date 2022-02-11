@@ -23,12 +23,12 @@ class UpdateSavedPassword @Inject constructor(
                     return Result.Success(Unit)
                 },
                 onError = {
-                    return Result.Error(DashboardError.UpdateSavesPasswordError)
+                    return Result.Error(DashboardError.UpdateSavedPasswordError)
                 }
             )
         }, onError = {
             return Result.Error(DashboardError.EncodePasswordError)
         })
-        return Result.Error(DashboardError.UpdateSavesPasswordError)
+        return Result.Error(DashboardError.UpdateSavedPasswordError)
     }
 }
