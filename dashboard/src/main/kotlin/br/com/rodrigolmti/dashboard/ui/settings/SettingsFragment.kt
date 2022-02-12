@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import br.com.rodrigolmti.core_android.base.BaseFragment
 import br.com.rodrigolmti.core_android.extensions.exhaustive
@@ -15,6 +14,8 @@ import br.com.rodrigolmti.core_android.navigation_modes.NavigationMode
 import br.com.rodrigolmti.core_android.view_binding_delegate.viewBinding
 import br.com.rodrigolmti.dashboard.databinding.SettingsFragmentBinding
 import br.com.rodrigolmti.dashboard.ui.DashboardActivity
+import br.com.rodrigolmti.navigator.AuthenticationOrigin
+import br.com.rodrigolmti.navigator.Navigator
 import javax.inject.Inject
 
 class SettingsFragment : BaseFragment(), NavigationMode by ImmersiveNavigationMode {
@@ -46,18 +47,23 @@ class SettingsFragment : BaseFragment(), NavigationMode by ImmersiveNavigationMo
 
     private fun setupFields() {
         binding.sBiometric.setOnCheckedChangeListener { _, isChecked ->
-            viewModel.dispatchViewAction(SettingsAction.BiometricChanged(isChecked))
+//            viewModel.dispatchViewAction(SettingsAction.BiometricChanged(isChecked))
+            startAuthenticationActivity()
         }
         observeChanges()
     }
 
+    private fun startAuthenticationActivity() {
+        Navigator.navigateToAuthentication(requireContext(), AuthenticationOrigin.SETTINGS)
+    }
+
     private fun observeChanges() {
-        viewModel.viewState.action.observe(viewLifecycleOwner, Observer { action ->
+        viewModel.viewState.action.observe(viewLifecycleOwner) { action ->
             when (action) {
                 is SettingsViewState.Action.UpdateBiometricSwitch -> {
                     binding.sBiometric.isChecked = action.checked
                 }
             }.exhaustive
-        })
+        }
     }
 }

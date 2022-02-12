@@ -56,4 +56,9 @@
     <string name="settings_fragment_biometric">Exigir biometria ao abrir o aplicativo</string>
     <string name="settings_fragment_info">Feito️ por Rodrigo Martins, o Password Handler não mantém nenhum dado ou compartilha com nossos parceiros, todas as senhas salvas aqui permanecerão no dispositivo usando algoritmos para codificá-las.</string>
 
+    <string name="password_screen_name_label">Nome da senha</string>
+    <string name="password_screen_login_label">Login (Opcional)</string>
+    <string name="password_screen_generated_password">Senha</string>
+    <string name="password_screen_strength_label">Força da senha</string>
+
 </resources>

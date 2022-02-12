@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="authentication_activity_title">Enter your passcode</string>
+    <string name="authentication_activity_delete_action">Delete</string>
+    <string name="authentication_activity_create_pin">To enable biometrics you need to setup a pin before. In case you sensor fail you can still open the app with a backup pin code.</string>
+    <string name="authentication_activity_ok_action">Ok</string>
 </resources>

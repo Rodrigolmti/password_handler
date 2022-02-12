@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="authentication_activity_title">Digite sua código</string>
+    <string name="authentication_activity_delete_action">Deletar</string>
+    <string name="authentication_activity_create_pin">Para ativar a biometria você precisa configurar um código de acesso. No caso de falha no sensor de biometria, você ainda pode abrir o aplicativo com código de backup.</string>
+    <string name="authentication_activity_ok_action">Ok</string>
+</resources>

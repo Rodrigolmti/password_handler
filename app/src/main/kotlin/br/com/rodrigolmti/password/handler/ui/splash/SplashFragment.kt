@@ -7,12 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import br.com.rodrigolmti.core_android.base.BaseFragment
 import br.com.rodrigolmti.core_android.extensions.exhaustive
 import br.com.rodrigolmti.core_android.view_binding_delegate.viewBinding
-import br.com.rodrigolmti.navigator.Actions
+import br.com.rodrigolmti.navigator.AuthenticationOrigin
+import br.com.rodrigolmti.navigator.Navigator
 import br.com.rodrigolmti.password.handler.R
 import br.com.rodrigolmti.password.handler.databinding.FragmentSplashBinding
 import br.com.rodrigolmti.password.handler.ui.MainActivity
@@ -63,7 +63,7 @@ class SplashFragment : BaseFragment() {
     }
 
     private fun observeChanges() {
-        viewModel.viewState.action.observe(viewLifecycleOwner, Observer { action ->
+        viewModel.viewState.action.observe(viewLifecycleOwner) { action ->
             when (action) {
                 is SplashViewState.Action.NavigateToDashboard -> {
                     startDashboardActivity()
@@ -72,7 +72,7 @@ class SplashFragment : BaseFragment() {
                     requestBiometric()
                 }
             }.exhaustive
-        })
+        }
     }
 
     private fun requestBiometric() {
@@ -97,13 +97,12 @@ class SplashFragment : BaseFragment() {
     }
 
     private fun startDashboardActivity() {
-        startActivity(Actions.openDashboard(requireContext()))
-//        startActivity(Actions.openAuthentication(requireContext()))
+        Navigator.navigateToDashboard(requireContext())
         activity?.finish()
     }
 
     private fun startAuthenticationActivity() {
-        startActivity(Actions.openAuthentication(requireContext()))
+        Navigator.navigateToAuthentication(requireContext(), AuthenticationOrigin.AUTHENTICATION)
         activity?.finish()
     }
 
