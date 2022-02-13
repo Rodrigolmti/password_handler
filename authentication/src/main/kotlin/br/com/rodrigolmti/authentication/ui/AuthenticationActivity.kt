@@ -2,6 +2,7 @@ package br.com.rodrigolmti.authentication.ui
 
 import android.os.Bundle
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -21,6 +22,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.ViewModelProvider
 import br.com.rodrigolmti.authentication.R
 import br.com.rodrigolmti.authentication.di.AuthenticationComponent
 import br.com.rodrigolmti.authentication.ui.theme.*
@@ -29,10 +31,16 @@ import br.com.rodrigolmti.navigator.AuthenticationOrigin
 import br.com.rodrigolmti.navigator.Navigator
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 class AuthenticationActivity : BaseActivity() {
 
     val component: AuthenticationComponent by lazy { AuthenticationComponent.inject(this) }
+
+    @Inject
+    internal lateinit var viewModelProviderFactory: ViewModelProvider.Factory
+
+    private val viewModel by viewModels<AuthenticationViewModel> { viewModelProviderFactory }
 
     private val utm by lazy {
         intent.extras?.getParcelable(Navigator.AuthenticationOriginKey) ?: AuthenticationOrigin.NONE

@@ -8,6 +8,6 @@ class AppPasswordDatabase @Inject constructor(private val app: Application) : Pa
 
     override fun database(): AppDatabase = Room.databaseBuilder(
         app.applicationContext,
-        AppDatabase::class.java, "password-keeper-db"
+        AppDatabase::class.java, "password-keeper-db",
     ).build()
 }

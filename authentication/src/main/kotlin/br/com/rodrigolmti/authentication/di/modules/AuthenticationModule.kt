@@ -7,7 +7,6 @@ import dagger.Module
         AuthenticationDataModule::class,
         AuthenticationViewModelModule::class,
         AuthenticationDomainModule::class,
-        AuthenticationDataModule::class,
     ]
 )
 internal class AuthenticationModule

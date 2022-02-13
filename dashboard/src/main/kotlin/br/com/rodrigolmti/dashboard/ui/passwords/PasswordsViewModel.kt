@@ -2,7 +2,6 @@ package br.com.rodrigolmti.dashboard.ui.passwords
 
 import androidx.lifecycle.viewModelScope
 import br.com.rodrigolmti.core_android.base.BaseViewModel
-import br.com.rodrigolmti.core_android.extensions.exhaustive
 import br.com.rodrigolmti.dashboard.domain.model.SavedPasswordModel
 import br.com.rodrigolmti.dashboard.domain.use_cases.GetAllSavedPasswordsUseCase
 import kotlinx.coroutines.launch
@@ -27,7 +26,7 @@ internal class PasswordsViewModel @Inject constructor(
             is PasswordsAction.FilterPasswords -> {
                 filterPassword(viewAction.query)
             }
-        }.exhaustive
+        }
     }
 
     private fun initAction() = viewModelScope.launch {

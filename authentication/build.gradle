@@ -2,7 +2,6 @@ plugins {
     id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-kapt'
-    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -20,6 +19,9 @@ android {
         main {
             java.srcDirs += 'src/main/kotlin'
         }
+        test {
+            java.srcDirs += 'src/test/kotlin'
+        }
     }
 
     composeOptions {
@@ -27,19 +29,18 @@ android {
     }
 
     buildFeatures{
-        viewBinding true
         compose true
     }
 
     buildTypes {
+        release {
+            consumerProguardFiles 'proguard-rules.pro'
+        }
         benchmark {
             debuggable false
             minifyEnabled true
             signingConfig signingConfigs.debug
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-        release {
-            consumerProguardFiles 'proguard-rules.pro'
         }
     }
 
@@ -60,11 +61,6 @@ dependencies {
     implementation AndroidX.fragment
     implementation AndroidX.appcompat
 
-    implementation Layout.constraint
-
-    implementation Navigation.navigationFragment
-    implementation Navigation.navigationUi
-
     implementation Lifecycle.liveData
     implementation Lifecycle.viewModel
 
@@ -75,12 +71,12 @@ dependencies {
     implementation Compose.material3Compose
     implementation Compose.materialCompose
 
-    implementation Libraries.lottie
+    implementation AndroidX.room
 
     implementation project(Modules.userPreferences)
     implementation project(Modules.coreAndroid)
     implementation project(Modules.navigator)
-    implementation project(Modules.security)
+    implementation project(Modules.database)
     implementation project(Modules.injector)
     implementation project(Modules.uiKit)
 
