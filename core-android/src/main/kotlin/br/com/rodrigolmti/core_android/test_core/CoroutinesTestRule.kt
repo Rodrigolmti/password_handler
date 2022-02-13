@@ -1,6 +1,6 @@
 package br.com.rodrigolmti.core_android.test_core
 
-import br.com.rodrigolmti.core_android.DispatcherProvider
+import br.com.rodrigolmti.injector.DispatcherProvider
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

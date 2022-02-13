@@ -54,7 +54,7 @@
     <string name="settings_fragment_title">Settings</string>
     <string name="settings_fragment_description">Tweak the application to your way by playing with the options below!</string>
     <string name="settings_fragment_biometric">Request biometric to open the app</string>
-    <string name="settings_fragment_info">Made with ❤️ by Rodrigo Martins, Password Handler doesn\'t keep any data or share with our partners, all the passwords saved here will remain on the device using algorithms to encode them.</string>
+    <string name="settings_fragment_info">Made with ❤️ by Rodrigo Martins, Password Handler save all your data locally in your device, we do not keep any information that links to you. It is your responsibility to backup and store your password.</string>
 
     <string name="password_screen_name_label">Password name</string>
     <string name="password_screen_login_label">Login (Optional)</string>

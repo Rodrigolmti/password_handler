@@ -1,0 +1,12 @@
+# Refactor
+
+1. Stop using generic exception handling for coroutines. With the generic exception the parent
+coroutine will not receive it.
+
+2. Extract, passwords, generator e settings from dashboard module, and create a module for each
+
+# Tasks
+
+1. Finish pin creation flow
+2. Add pin verification step in case biometrics fails
+3. If the user does not create a pin, rollback authentication switcher on settings screen

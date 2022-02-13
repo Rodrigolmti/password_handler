@@ -21,6 +21,11 @@ internal abstract class CoreModule {
     abstract fun bindAppDatabase(
         appPasswordDatabase: AppPasswordDatabase
     ): PasswordDatabase
+
+    @[Binds]
+    abstract fun bindDispatcherProvider(
+        appDispatcherProvider: AppDispatcherProvider
+    ): DispatcherProvider
 }
 
 @Module

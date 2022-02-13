@@ -16,6 +16,8 @@ interface CoreComponent {
 
     fun providesDatabase(): PasswordDatabase
 
+    fun providesDispatcherProvider() : DispatcherProvider
+
     fun providesUserPreferences(): UserPreferences
 
     @Component.Builder
