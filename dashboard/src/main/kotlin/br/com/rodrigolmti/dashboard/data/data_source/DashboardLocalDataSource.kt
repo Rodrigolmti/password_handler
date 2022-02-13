@@ -4,7 +4,7 @@ import br.com.rodrigolmti.core_android.Result
 import br.com.rodrigolmti.dashboard.domain.error.DashboardError
 import br.com.rodrigolmti.dashboard.domain.model.SavedPasswordModel
 
-interface LocalDataSource {
+interface DashboardLocalDataSource {
 
     suspend fun deletePassword(model: SavedPasswordModel): Result<Unit, DashboardError>
 

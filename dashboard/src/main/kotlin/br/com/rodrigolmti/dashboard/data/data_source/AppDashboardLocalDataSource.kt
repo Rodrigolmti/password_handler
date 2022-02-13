@@ -10,11 +10,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class AppLocalDataSource @Inject constructor(
+class AppDashboardLocalDataSource @Inject constructor(
     private val savedPasswordEntityMapper: SavedPasswordEntityMapper,
     private val savedPasswordModelMapper: SavedPasswordModelMapper,
     private val database: PasswordDatabase
-) : LocalDataSource {
+) : DashboardLocalDataSource {
 
     override suspend fun deletePassword(model: SavedPasswordModel): Result<Unit, DashboardError> =
         withContext(Dispatchers.IO) {

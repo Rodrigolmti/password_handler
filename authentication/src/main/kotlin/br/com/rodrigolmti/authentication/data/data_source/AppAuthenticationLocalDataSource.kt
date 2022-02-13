@@ -8,10 +8,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class AppLocalDataSource @Inject constructor(
+class AppAuthenticationLocalDataSource @Inject constructor(
     private val database: PasswordDatabase,
     private val backupPinEntityMapper: BackupPinEntityMapper
-) : LocalDataSource {
+) : AuthenticationLocalDataSource {
 
     override suspend fun deletePin(): Result<Unit, AuthenticationError> =
         withContext(Dispatchers.IO) {
