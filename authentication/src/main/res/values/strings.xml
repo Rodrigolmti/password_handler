@@ -2,6 +2,7 @@
 <resources>
     <string name="authentication_activity_title">Enter your passcode</string>
     <string name="authentication_activity_delete_action">Delete</string>
-    <string name="authentication_activity_create_pin">To enable biometrics you need to setup a pin before. In case you sensor fail you can still open the app with a backup pin code.</string>
-    <string name="authentication_activity_ok_action">Ok</string>
+    <string name="authentication_activity_create_pin">To enable biometrics you need to setup a pin before. In case your sensor fails you will still be able to open the app with a backup pin code.</string>
+    <string name="authentication_activity_create_pin_description">Type a pin with 6 digits, you can not change it later, but you can remove and add again. Just disable authentication on settings screen.</string>
+    <string name="authentication_activity_ok_action">OK</string>
 </resources>

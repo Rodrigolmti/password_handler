@@ -7,10 +7,13 @@ import br.com.rodrigolmti.password.handler.di.AppComponent
 
 class MainActivity : AppCompatActivity() {
 
-    val component: AppComponent by lazy { AppComponent.inject(this) }
+    val component: AppComponent by lazy { AppComponent.create(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        component.inject(this)
+
         setContentView(R.layout.splash_activity)
     }
 }

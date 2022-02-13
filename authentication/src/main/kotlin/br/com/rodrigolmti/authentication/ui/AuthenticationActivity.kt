@@ -30,9 +30,10 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@ExperimentalMaterialApi
 class AuthenticationActivity : BaseActivity() {
 
-    val component: AuthenticationComponent by lazy { AuthenticationComponent.inject(this) }
+    val component: AuthenticationComponent by lazy { AuthenticationComponent.create(this) }
 
     @Inject
     internal lateinit var viewModelProviderFactory: ViewModelProvider.Factory
@@ -43,11 +44,14 @@ class AuthenticationActivity : BaseActivity() {
         intent.extras?.getParcelable(Navigator.AuthenticationOriginKey) ?: AuthenticationOrigin.NONE
     }
 
-    @ExperimentalMaterialApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        component.inject(this)
+
         setContent {
+
+            val viewState = viewModel.viewState.state
 
             val modalBottomSheetState = rememberModalBottomSheetState(
                 initialValue = ModalBottomSheetValue.Hidden
@@ -63,14 +67,28 @@ class AuthenticationActivity : BaseActivity() {
                     color = dark
                 ) {
 
-                    BuildModalBottomSheet(modalBottomSheetState, scope)
+                    when (viewState.value) {
+                        AuthenticationViewState.State.IDLE,
+                        null
+                        -> BuildModalBottomSheet(
+                            modalBottomSheetState,
+                            scope
+                        )
+                        AuthenticationViewState.State.LOADING -> BuildScreenLoading()
+                    }
                 }
             }
         }
     }
 
     @Composable
-    @ExperimentalMaterialApi
+    private fun BuildScreenLoading() {
+        CircularProgressIndicator(
+            color = red,
+        )
+    }
+
+    @Composable
     private fun BuildModalBottomSheet(
         modalBottomSheetState: ModalBottomSheetState,
         scope: CoroutineScope
@@ -95,6 +113,13 @@ class AuthenticationActivity : BaseActivity() {
                             color = white
                         )
 
+                        Spacer(modifier = Modifier.height(cottonCandy))
+
+                        Text(
+                            getString(R.string.authentication_activity_create_pin_description),
+                            color = white
+                        )
+
                         Spacer(modifier = Modifier.height(ceriseRed))
 
                         BuildOkButton(scope, modalBottomSheetState)
@@ -109,7 +134,6 @@ class AuthenticationActivity : BaseActivity() {
     }
 
     @Composable
-    @ExperimentalMaterialApi
     private fun BuildOkButton(
         scope: CoroutineScope,
         modalBottomSheetState: ModalBottomSheetState
@@ -140,10 +164,18 @@ class AuthenticationActivity : BaseActivity() {
 
     @Composable
     fun BuildBody() {
-
         val passcode = remember { mutableStateOf("") }
         val passcodeLength = passcode.value.length
-        val buttonEnabled = passcodeLength < 6
+
+        val passcodeFillRequirement = passcodeLength >= 6
+
+        if (passcodeFillRequirement) {
+            if (utm == AuthenticationOrigin.SETTINGS) {
+                viewModel.dispatchViewAction(AuthenticationAction.SavePin(passcode.value))
+            } else {
+                viewModel.dispatchViewAction(AuthenticationAction.CheckPin(passcode.value))
+            }
+        }
 
         Column(
             modifier = Modifier.fillMaxSize(),
@@ -170,7 +202,7 @@ class AuthenticationActivity : BaseActivity() {
                 modifier = Modifier.fillMaxWidth(),
             ) {
                 for (number in 1..3) {
-                    BuildKeyButton(number.toString(), buttonEnabled) {
+                    BuildKeyButton(number.toString(), !passcodeFillRequirement) {
                         addPasscode(
                             passcode,
                             it
@@ -186,7 +218,7 @@ class AuthenticationActivity : BaseActivity() {
                 modifier = Modifier.fillMaxWidth(),
             ) {
                 for (number in 4..6) {
-                    BuildKeyButton(number.toString(), buttonEnabled) {
+                    BuildKeyButton(number.toString(), !passcodeFillRequirement) {
                         addPasscode(
                             passcode,
                             it
@@ -202,7 +234,7 @@ class AuthenticationActivity : BaseActivity() {
                 modifier = Modifier.fillMaxWidth(),
             ) {
                 for (number in 7..9) {
-                    BuildKeyButton(number.toString(), buttonEnabled) {
+                    BuildKeyButton(number.toString(), !passcodeFillRequirement) {
                         addPasscode(
                             passcode,
                             it
@@ -219,13 +251,13 @@ class AuthenticationActivity : BaseActivity() {
             ) {
                 BuildKeyButton(
                     "",
-                    buttonEnabled,
+                    !passcodeFillRequirement,
                     backgroundColor = dark,
                     labelColor = dark,
                 )
                 BuildKeyButton(
                     "0",
-                    buttonEnabled,
+                    !passcodeFillRequirement,
                 ) {
                     addPasscode(
                         passcode,

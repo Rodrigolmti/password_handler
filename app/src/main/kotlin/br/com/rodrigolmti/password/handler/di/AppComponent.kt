@@ -17,6 +17,8 @@ interface AppComponent {
 
     fun inject(fragment: SplashFragment)
 
+    fun inject(activity: MainActivity)
+
     @Component.Builder
     interface Builder {
 
@@ -27,7 +29,7 @@ interface AppComponent {
 
     companion object {
 
-        fun inject(activity: MainActivity): AppComponent = DaggerAppComponent.builder()
+        fun create(activity: MainActivity): AppComponent = DaggerAppComponent.builder()
             .coreComponent(activity.coreComponent())
             .build()
     }

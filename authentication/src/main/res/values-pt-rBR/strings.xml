@@ -3,5 +3,6 @@
     <string name="authentication_activity_title">Digite sua código</string>
     <string name="authentication_activity_delete_action">Deletar</string>
     <string name="authentication_activity_create_pin">Para ativar a biometria você precisa configurar um código de acesso. No caso de falha no sensor de biometria, você ainda pode abrir o aplicativo com código de backup.</string>
+    <string name="authentication_activity_create_pin_description">Digite um pin de 6 digitos, você não poderá altera-lo depois, mas você pode remover a autenticação. Va na tela se configurações e desablite a autenticação.</string>
     <string name="authentication_activity_ok_action">Ok</string>
 </resources>

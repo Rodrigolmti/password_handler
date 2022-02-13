@@ -19,7 +19,7 @@ class DashboardActivity : BaseActivity(), NavigationContainer {
         DashboardActivityBinding.inflate(layoutInflater)
     }
 
-    val component: DashboardComponent by lazy { DashboardComponent.inject(this) }
+    val component: DashboardComponent by lazy { DashboardComponent.create(this) }
 
     private val navHostFragment: NavHostFragment? by lazy {
         supportFragmentManager.findFragmentById(R.id.navHost) as NavHostFragment?
@@ -27,6 +27,9 @@ class DashboardActivity : BaseActivity(), NavigationContainer {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        component.inject(this)
+
         setContentView(binding.root)
         setupFields()
     }

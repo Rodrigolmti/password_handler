@@ -76,6 +76,7 @@ dependencies {
     implementation project(Modules.userPreferences)
     implementation project(Modules.coreAndroid)
     implementation project(Modules.navigator)
+    implementation project(Modules.security)
     implementation project(Modules.database)
     implementation project(Modules.injector)
     implementation project(Modules.uiKit)
