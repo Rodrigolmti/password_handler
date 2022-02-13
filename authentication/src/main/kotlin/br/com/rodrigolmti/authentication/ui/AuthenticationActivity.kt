@@ -3,7 +3,6 @@ package br.com.rodrigolmti.authentication.ui
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -16,11 +15,9 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.ViewModelProvider
 import br.com.rodrigolmti.authentication.R
@@ -86,7 +83,7 @@ class AuthenticationActivity : BaseActivity() {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(24.dp)
+                        .padding(tradeWind)
                 ) {
                     Column(
                         modifier = Modifier
@@ -98,11 +95,11 @@ class AuthenticationActivity : BaseActivity() {
                             color = white
                         )
 
-                        Spacer(modifier = Modifier.height(32.dp))
+                        Spacer(modifier = Modifier.height(ceriseRed))
 
                         BuildOkButton(scope, modalBottomSheetState)
 
-                        Spacer(modifier = Modifier.height(16.dp))
+                        Spacer(modifier = Modifier.height(cottonCandy))
                     }
                 }
             }
@@ -123,16 +120,12 @@ class AuthenticationActivity : BaseActivity() {
                 scope.launch { modalBottomSheetState.hide() }
 
             },
-            shape = RoundedCornerShape(8.dp),
+            shape = RoundedCornerShape(malibu),
             modifier = Modifier
                 .fillMaxWidth()
-                .height(65.dp)
-                .padding(all = 10.dp),
+                .height(violetEggplant)
+                .padding(all = malibu),
             enabled = true,
-            border = BorderStroke(
-                width = 1.dp,
-                brush = SolidColor(red)
-            ),
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = red,
             )
@@ -158,7 +151,7 @@ class AuthenticationActivity : BaseActivity() {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
-            Spacer(modifier = Modifier.height(64.dp))
+            Spacer(modifier = Modifier.height(violetEggplant))
 
             Text(
                 stringResource(R.string.authentication_activity_title),
@@ -166,11 +159,11 @@ class AuthenticationActivity : BaseActivity() {
                 fontSize = 22.sp,
             )
 
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(tradeWind))
 
             BuildPasscodeLengthIndicator(passcode.value.length)
 
-            Spacer(modifier = Modifier.height(64.dp))
+            Spacer(modifier = Modifier.height(violetEggplant))
 
             Row(
                 horizontalArrangement = Arrangement.SpaceEvenly,
@@ -186,7 +179,7 @@ class AuthenticationActivity : BaseActivity() {
                 }
             }
 
-            Spacer(modifier = Modifier.height(32.dp))
+            Spacer(modifier = Modifier.height(ceriseRed))
 
             Row(
                 horizontalArrangement = Arrangement.SpaceEvenly,
@@ -202,7 +195,7 @@ class AuthenticationActivity : BaseActivity() {
                 }
             }
 
-            Spacer(modifier = Modifier.height(32.dp))
+            Spacer(modifier = Modifier.height(ceriseRed))
 
             Row(
                 horizontalArrangement = Arrangement.SpaceEvenly,
@@ -218,7 +211,7 @@ class AuthenticationActivity : BaseActivity() {
                 }
             }
 
-            Spacer(modifier = Modifier.height(32.dp))
+            Spacer(modifier = Modifier.height(ceriseRed))
 
             Row(
                 horizontalArrangement = Arrangement.SpaceEvenly,
@@ -296,8 +289,8 @@ class AuthenticationActivity : BaseActivity() {
                 color = labelColor,
                 fontSize = 20.sp,
                 modifier = Modifier
-                    .padding(6.dp)
-                    .defaultMinSize(64.dp)
+                    .padding(malibu)
+                    .defaultMinSize(violetEggplant)
             )
         }
     }
